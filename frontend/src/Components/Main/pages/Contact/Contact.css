@@ -1,0 +1,303 @@
+.contact-start-view {
+  position: relative;
+  height: calc(100vh - 89px);
+  width: 100vw;
+  margin-top: 89px;
+  background-image: url(../../../../img/contact_bcg_1920x1080.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.contact-start-view > div {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.contact-start-view .header-text h1 {
+  margin: 15px;
+  font-size: 50px;
+  color: #fffcf2;
+  letter-spacing: 2px;
+  font-weight: 200;
+  text-transform: uppercase;
+}
+
+.contact-start-view .decoration {
+  width: 50px;
+  height: 3px;
+  background-color: #cbaa70;
+}
+
+/* IKONY */
+.all-contacts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 100px;
+  background-color: #fffcf2;
+}
+
+.all-contacts > div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 55px;
+  margin: 0 50px;
+  background-color: #444;
+  border-radius: 50px;
+  color: #cbaa70;
+  cursor: pointer;
+}
+
+.all-contacts > div > svg {
+  font-size: 25px;
+}
+
+.all-contacts > div > .more-info {
+  position: absolute;
+  top: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  font-weight: bolder;
+  background-color: rgba(228, 228, 228, 0.225);
+  transition: 0.6s;
+}
+
+.all-contacts > div:hover > .more-info,
+.all-contacts > div:active > .more-info {
+  width: 250px;
+  height: 100px;
+  font-size: 15px;
+}
+
+/* FORMULARZ */
+
+.contact-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: max-content;
+  padding: 150px 0;
+  background-color: #fffcf2;
+}
+
+.contact-form h3 {
+  width: 100%;
+  margin-bottom: 50px;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 19px;
+  color: #333;
+  text-transform: uppercase;
+}
+
+.contact-form form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 975px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-form form input,
+.contact-form form textarea {
+  margin-top: 10px;
+  line-height: 36px;
+  border: 1px solid #cbaa70;
+  background-color: rgba(228, 228, 228, 0.225);
+  padding: 0 7px 0 42px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.contact-form form textarea {
+  padding: 0 7px;
+}
+
+.contact-form form input:focus,
+.contact-form form textarea:focus {
+  outline: 2px solid #cbaa70;
+}
+
+.contact-form form textarea {
+  height: 200px;
+  max-width: 100%;
+}
+
+.contact-form form label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 33.3333%;
+  padding: 25px 35px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #5c5c5c;
+}
+.contact-form form label > div {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.contact-form form label > div > .icon {
+  position: absolute;
+  top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  border-right: 1px solid #cbaa70;
+}
+
+.contact-form form label > div > .icon svg {
+  font-size: 16px;
+  color: #b3b3b3;
+}
+
+.contact-form form label:last-of-type {
+  width: 100%;
+}
+
+.contact-form form label:last-of-type input {
+  height: 200px;
+}
+
+.contact-form form > input {
+  line-height: 50px;
+  width: max-content;
+  padding: 0 30px;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: #cbaa70;
+  letter-spacing: 1px;
+  color: #fffcf2;
+  text-transform: uppercase;
+}
+
+.contact-form form > input:focus {
+  outline: none;
+}
+
+.contact-form form > input:hover {
+  background-color: #ceaa6c;
+  cursor: pointer;
+  text-shadow: 0px 0px 1px #fffcf2;
+}
+
+@media (max-width: 1000px) {
+  .contact-form form {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .contact-form form label {
+    width: 50%;
+  }
+  @media (max-width: 700px) {
+    .contact-form form {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .contact-form form label {
+      width: 75%;
+    }
+    @media (max-width: 650px) {
+      .all-contacts > div {
+        margin: 0 10px;
+      }
+      @media (max-width: 500px) {
+        .all-contacts {
+          flex-direction: column;
+          padding-top: 50px;
+          align-items: flex-start;
+          padding-left: 10px;
+        }
+
+        .all-contacts > div {
+          margin: 15px;
+          cursor: auto;
+        }
+
+        .all-contacts > div > .more-info {
+          align-items: flex-end;
+          justify-content: flex-start;
+          width: 250px;
+          height: 100px;
+          font-size: 15px;
+          transform: translateX(80%) translateY(-105%);
+          cursor: auto;
+        }
+
+        .contact-form {
+          padding: 50px 0;
+        }
+
+        .contact-form form label {
+          width: 100%;
+        }
+        @media (max-width: 500px) {
+          .contact-start-view .decoration {
+            width: 30px;
+          }
+          .contact-start-view .header-text h1 {
+            font-size: 45px;
+          }
+          .all-contacts {
+            align-items: center;
+          }
+
+          .all-contacts > div {
+            width: 90px;
+            height: 40px;
+            margin: 0 0 100px 0;
+            cursor: auto;
+            border-radius: 20px;
+          }
+
+          .all-contacts > div > svg {
+            font-size: 20px;
+          }
+
+          .all-contacts > div > .more-info {
+            align-items: center;
+            justify-content: center;
+            width: 250px;
+            height: 50px;
+            margin-top: 5px;
+            font-size: 13px;
+            cursor: auto;
+            transform: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-height: 440px) and (orientation: landscape) {
+  .contact-start-view {
+    height: calc(100vh - 59px);
+    margin-top: 59px;
+  }
+}

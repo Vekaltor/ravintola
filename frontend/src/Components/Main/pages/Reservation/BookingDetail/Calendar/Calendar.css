@@ -1,0 +1,238 @@
+.form-reservation > form .back-calendar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: -1;
+  transition: background-color 0.3s 0.35s, z-index 0s 0.6s;
+}
+
+.form-reservation > form .back-calendar.active {
+  background-color: #30303027;
+  z-index: 1;
+  transition: background-color 0.3s 0s, z-index 0s 0s;
+}
+
+.form-reservation > form .calendar {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  width: 700px;
+  height: 450px;
+  padding: 15px;
+  background-color: white;
+  transform: translate(-50%, 150%);
+  transition: all 0s, transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+}
+
+.form-reservation > form .calendar.active {
+  transform: translate(-50%, -50%);
+}
+
+.calendar .content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.calendar .content .month-year {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.calendar .content .month-year span {
+  display: inline-block;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.calendar .content .month-year span:nth-of-type(1)::first-letter {
+  text-transform: uppercase;
+}
+
+.calendar .content .month-year span:nth-of-type(2) {
+  margin-left: 10px;
+  margin-top: 4px;
+  font-style: italic;
+  font-size: 20px;
+  color: #a2a2a2;
+}
+
+.calendar .content .tag-days {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0 25px;
+  margin: 50px 0 30px 0;
+}
+
+.calendar .content .tag-days .tag-day {
+  width: calc(100% / 7);
+  font-size: 17px;
+  font-weight: bolder;
+  color: #333;
+  text-align: center;
+}
+
+.calendar .content .days {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0 25px;
+}
+
+.calendar .content .days .day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% / 7);
+  height: 30px;
+  font-size: 17px;
+  color: #b1b1b1;
+  font-weight: 300;
+}
+
+.calendar .content .days .day:hover {
+  cursor: pointer;
+  background-color: #30303018;
+}
+
+.calendar .content .days .day.current-month {
+  color: #555;
+  font-weight: 600;
+}
+
+.calendar .content .days .day.today {
+  background-color: #444;
+  color: #cbaa70;
+}
+
+.calendar .content .days .day:active,
+.calendar .content .days .day.selected {
+  background-color: #cbaa70;
+  color: #555;
+  font-weight: 600;
+}
+
+.calendar .interactive-buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  width: 100%;
+  margin: 15px 0;
+}
+
+.calendar .interactive-buttons div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bolder;
+}
+
+.calendar .interactive-buttons div:hover {
+  cursor: pointer;
+  background-color: #30303018;
+  user-select: none;
+}
+
+.calendar .interactive-buttons div::selection {
+  user-select: none;
+  background-color: transparent;
+}
+
+.calendar .interactive-buttons div svg {
+  margin-right: 5px;
+  color: #444;
+  font-size: 30px;
+}
+
+.calendar .interactive-buttons div svg *.exit {
+  display: auto;
+}
+
+.calendar > .arrows {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.calendar > .arrows span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 50px;
+  margin: 15px;
+}
+.calendar > .arrows span:hover {
+  background-color: #30303018;
+  cursor: pointer;
+}
+.calendar > .arrows svg {
+  margin: 10px;
+  font-size: 35px;
+  color: #444;
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .form-reservation > form .calendar {
+    top: 65%;
+    left: 50%;
+    width: 500px;
+    height: 350px;
+    padding: 15px;
+  }
+
+  .calendar .content .tag-days {
+    margin: 20px 0 20px 0;
+  }
+
+  .calendar .interactive-buttons {
+    margin: 0;
+  }
+
+  .calendar .content .days {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0 20px;
+  }
+  @media (max-width: 500px) {
+    .form-reservation > form .calendar {
+      top: 65%;
+      left: 50%;
+      width: 100%;
+      height: fit-content;
+      padding: 15px 0px 50px 0px;
+    }
+
+    .calendar > .arrows span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 50px;
+      margin: 15px 0 15px 0;
+    }
+  }
+}

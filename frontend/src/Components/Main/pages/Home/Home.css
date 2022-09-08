@@ -1,0 +1,1120 @@
+.home {
+  position: relative;
+  height: fit-content;
+  margin-top: 74px;
+  background-color: #333131;
+}
+
+/* 4 SLAJDY Z OPISEM KUCHNI */
+
+.about-restauration {
+  width: 100%;
+  height: auto;
+  padding-bottom: 50px;
+  padding-top: 50px;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fffcf2;
+  text-align: center;
+}
+
+.about-restauration > span {
+  display: inline-block;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 20px;
+}
+
+.about-restauration > span > h1 {
+  font-size: 70px;
+  color: #999966;
+  font-family: "Great Vibes", cursive;
+}
+
+.about-restauration > div {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+
+.about-restauration > div > .element {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-basis: 600px;
+  width: 100%;
+}
+
+.about-restauration > div > .element:nth-of-type(2n + 2) {
+  flex-direction: row-reverse;
+}
+
+.about-restauration > div > .element > .image {
+  position: relative;
+  width: 1000px;
+  height: 400px;
+  min-width: 500px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.image.left {
+  transform: translateX(-120%);
+}
+
+.image.right {
+  transform: translateX(120%);
+}
+
+.element.scrolled > .image.left,
+.element.scrolled > .image.right {
+  transform: translateX(0);
+}
+
+.about-restauration > div > .element > .image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: 1px 1px 1px #403d3947;
+  filter: brightness(0.8) saturate(1.5);
+  transition: box-shadow 0.4s 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.about-restauration > div > .element.scrolled > .image > img {
+  box-shadow: 25px 30px 10px #403d3947;
+}
+
+.about-restauration
+  > div
+  > .element.scrolled:nth-of-type(2n + 2)
+  > .image
+  > img {
+  box-shadow: -25px 30px 10px #403d3947;
+}
+
+.about-restauration > div > .element > .text {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding: 0 25px;
+}
+
+.about-restauration > div > .element > .text > h1 {
+  margin-bottom: 25px;
+  color: #cbaa70;
+  line-height: 40px;
+  font-size: 1.2em;
+  font-family: "Oleo Script Swash Caps", cursive;
+  padding: 0 25%;
+  text-align: left;
+}
+
+.about-restauration > div > .element:nth-of-type(2n + 2) > .text > h1 {
+  text-align: right;
+}
+.about-restauration > div > .element > .text > span {
+  display: block;
+  padding: 0px 25%;
+  font-size: 17px;
+  letter-spacing: 1px;
+  font-family: "Roboto", sans-serif;
+  text-align: left;
+}
+
+.about-restauration > div > .element:nth-of-type(2n + 2) > .text span {
+  text-align: right;
+}
+
+@media (max-width: 1500px) {
+  .about-restauration > div > .element > .text > span {
+    padding: 0 0 0 25%;
+  }
+
+  .about-restauration > div > .element:nth-of-type(2n + 2) > .text > span {
+    padding: 0 25% 0 0;
+  }
+
+  .about-restauration > div > .element:nth-of-type(2n + 2) > .text > h1 {
+    padding: 0 25% 0 0;
+  }
+
+  .about-restauration > div > .element > .text > h1 {
+    padding: 0 0 0 25%;
+  }
+
+  @media (max-width: 1300px) {
+    .about-restauration > div > .element > .image {
+      height: 400px;
+    }
+
+    .about-restauration > div > .element > .text > span {
+      padding: 0 0 0 10%;
+    }
+
+    .about-restauration > div > .element:nth-of-type(2n + 2) > .text > span {
+      padding: 0 10% 0 0;
+    }
+
+    .about-restauration > div > .element:nth-of-type(2n + 2) > .text > h1 {
+      padding: 0 10% 0 0;
+    }
+
+    .about-restauration > div > .element > .text > h1 {
+      padding: 0 0 0 10%;
+    }
+
+    @media (max-width: 1200px) {
+      .about-restauration > div > .element {
+        flex-basis: 500px;
+      }
+
+      .about-restauration > div > .element > .image {
+        height: 350px;
+        width: 500px;
+      }
+
+      @media (max-width: 1000px) {
+        .about-restauration > div > .element {
+          flex-basis: 450px;
+        }
+
+        .about-restauration > div > .element > .image {
+          width: 450px;
+          height: 300px;
+          min-width: 300px;
+        }
+
+        .about-restauration > div > .element > .text {
+          padding: 0 10px;
+        }
+        @media (max-width: 800px) {
+          .about-restauration > span {
+            width: 95%;
+          }
+
+          .about-restauration > div > .element > .text > h1 {
+            font-size: 1em;
+          }
+
+          .about-restauration > div > .element > .text > span {
+            font-size: 15px;
+          }
+
+          @media (max-width: 750px) {
+            .about-restauration {
+              width: 100%;
+              margin-top: 0px;
+            }
+
+            .about-restauration > div > .element {
+              flex-direction: column;
+            }
+
+            .about-restauration > div > .element:nth-of-type(2n + 2) {
+              flex-direction: column;
+            }
+            .about-restauration > div > .element > .text {
+              margin: 35px 0 100px 0;
+              width: 90%;
+            }
+
+            .about-restauration > span > h1 {
+              margin-bottom: 100px;
+            }
+
+            .element.scrolled > .image.left,
+            .element.scrolled > .image.right {
+              width: 90%;
+            }
+
+            @media (max-width: 600px) {
+              .about-restauration > span > h1 {
+                object-fit: contain;
+                object-position: center;
+                line-height: 50px;
+                text-align: center;
+                margin-bottom: 40px;
+                margin-top: 20px;
+              }
+
+              .about-restauration > div > .element > .text > span {
+                padding: 0 0 0 10px;
+              }
+
+              .about-restauration
+                > div
+                > .element:nth-of-type(2n + 2)
+                > .text
+                > span {
+                padding: 0 10px 0 0;
+              }
+
+              .about-restauration
+                > div
+                > .element:nth-of-type(2n + 2)
+                > .text
+                > h1 {
+                padding: 0 10px 0 0;
+              }
+
+              .about-restauration > div > .element > .text > h1 {
+                padding: 0 0 0 10px;
+              }
+
+              .about-restauration > div > .element.scrolled > .image > img {
+                box-shadow: none;
+              }
+              .about-restauration
+                > div
+                > .element.scrolled:nth-of-type(2n + 2)
+                > .image
+                > img {
+                box-shadow: none;
+              }
+
+              @media (max-width: 361px) {
+                .about-restauration {
+                  padding-bottom: 0px;
+                  padding-top: 15px;
+                  margin-top: 0;
+                }
+                .about-restauration > div {
+                  width: 100%;
+                }
+
+                .about-restauration > div > .element > .text {
+                  width: 100%;
+                  padding: 0 15px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/* O menu restauracji */
+
+.aboutMenu {
+  display: flex;
+  width: 100%;
+  height: 80vh;
+  min-height: 675px;
+  background-color: #16191e;
+  z-index: 1;
+}
+.aboutMenu > div {
+  width: 50%;
+}
+
+.aboutMenu > .aboutMenu-content {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 100px;
+  padding-top: 150px;
+}
+
+.aboutMenu > .aboutMenu-content div {
+  width: 75%;
+  height: fit-content;
+}
+.aboutMenu > .aboutMenu-content div .header h1 {
+  margin-bottom: -10px;
+  color: #999966;
+  font-size: 55px;
+  font-family: "Great Vibes", cursive;
+  font-weight: 100;
+}
+
+.aboutMenu > .aboutMenu-content div .header span {
+  display: inline-block;
+  color: #fffcf2;
+  font-size: 35px;
+  font-weight: bolder;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.aboutMenu > .aboutMenu-content > div > .text {
+  display: inline-block;
+  width: 45%;
+  margin: 25px 5% 25px 0;
+  margin-right: 5%;
+  color: #999999;
+  font-size: 14px;
+  line-height: 2.2;
+}
+
+.aboutMenu > .aboutMenu-content > div > .href-to-menu {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+}
+
+.aboutMenu > .aboutMenu-content > div > .href-to-menu > a {
+  display: block;
+  line-height: 50px;
+  padding-right: 30px;
+  border-left: 4px solid #fffcf2;
+  color: #fffcf2;
+  cursor: pointer;
+  text-decoration: none;
+}
+.aboutMenu > .aboutMenu-content > div > .href-to-menu:hover > a {
+  color: #ff7f00;
+  border-left-color: #ff7f00;
+}
+
+.aboutMenu > .aboutMenu-content > div > .href-to-menu > a > span {
+  width: fit-content;
+  height: fit-content;
+  padding-left: 25px;
+  font-size: 15px;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+.aboutMenu > .aboutMenu-image {
+  height: 100%;
+}
+
+.aboutMenu > .aboutMenu-image img {
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  object-fit: cover;
+}
+
+@media (max-width: 1400px) {
+  .aboutMenu > .aboutMenu-content {
+    padding-right: 50px;
+    width: 65%;
+  }
+  .aboutMenu > .aboutMenu-content div {
+    width: 85%;
+  }
+
+  .aboutMenu > .aboutMenu-image {
+    width: 35%;
+  }
+  @media (max-width: 1000px) {
+    .aboutMenu > .aboutMenu-content {
+      padding-top: 75px;
+    }
+
+    @media (max-width: 900px) {
+      .aboutMenu > .aboutMenu-content {
+        padding-right: 25px;
+      }
+      .aboutMenu > .aboutMenu-content div {
+        width: 90%;
+      }
+
+      @media (max-width: 700px) {
+        .aboutMenu {
+          flex-direction: column;
+          height: fit-content;
+        }
+
+        .aboutMenu > .aboutMenu-content {
+          width: 100%;
+          padding-bottom: 50px;
+        }
+
+        .aboutMenu > .aboutMenu-image {
+          width: 100%;
+        }
+        @media (max-width: 500px) {
+          .aboutMenu > .aboutMenu-content div {
+            display: flex;
+            flex-direction: column;
+          }
+          .aboutMenu > .aboutMenu-content > div > .text {
+            width: 90%;
+          }
+          @media (max-width: 361px) {
+            .aboutMenu {
+              height: fit-content;
+            }
+            .aboutMenu > .aboutMenu-content {
+              padding-top: 50px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* REKOMENDACJA SZEFA KUCHNI */
+
+.recommends {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 0;
+  right: 0;
+  height: fit-content;
+  width: 70vw;
+  padding-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -100px;
+  background-color: #fffcf2;
+}
+
+.recommends > .recommends-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 20vh;
+}
+
+.recommends > .recommends-header h1 span {
+  font-size: 45px;
+  text-transform: uppercase;
+  color: #999966;
+  font-weight: 100;
+}
+
+.recommends h1 span:nth-of-type(2) {
+  position: relative;
+  top: -8px;
+  left: 0;
+  margin: 0 7px 0 3px;
+  font-size: 35px;
+  font-weight: 700;
+  color: #ff7f00;
+  border-bottom: 2px solid #999966;
+}
+
+.recommends .recommended {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+}
+
+.recommends .recommended .option {
+  position: relative;
+  width: 400px;
+  height: 250px;
+  margin: 2px;
+  object-fit: contain;
+  object-position: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.recommends .recommended .option .animation-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #33313180;
+  cursor: pointer;
+  transform: translateY(-100%);
+  transition: 0.3s linear;
+  z-index: 1;
+}
+.recommends .recommended .option:hover .animation-block,
+.recommends .recommended .option:active .animation-block {
+  transform: translateY(0);
+  z-index: 1;
+}
+
+.recommends .recommended .option .animation-text {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+  transform: translateY(-100%);
+  transition: 0.3s linear;
+  z-index: 1;
+}
+
+.recommends .recommended .option .animation-text h3 {
+  width: 100%;
+  height: auto;
+  font-size: 20px;
+  color: #fffcf2;
+  text-align: left;
+  padding-top: 30px;
+  color: #fffcf2;
+  /* text-shadow: 1px 1px 1px b; */
+}
+
+.recommends .recommended .option .animation-text span {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 75%;
+  text-align: right;
+  font-size: 15px;
+  color: #fffcf2;
+  text-shadow: 1px 1px 1px #333131;
+}
+
+.recommends .recommended .option:hover .animation-text,
+.recommends .recommended .option:active .animation-text {
+  transform: translateY(0);
+  z-index: 1;
+}
+
+.recommends .recommended .option > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.click-to-show {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: auto;
+  width: auto;
+  background-color: #16191ea7;
+  padding: 10px;
+  color: #999966dd;
+  z-index: 2;
+  transition: 0.2s linear;
+}
+
+.recommends .recommended .option:hover .animation-block ~ .click-to-show,
+.recommends .recommended .option:active .animation-block ~ .click-to-show {
+  opacity: 0;
+}
+
+@media (max-width: 1200px) {
+  .recommends {
+    width: 90vw;
+  }
+
+  @media (max-width: 890px) {
+    .recommends .recommended .option {
+      width: 75%;
+      height: 325px;
+      padding: 5px;
+    }
+
+    .recommends > .recommends-header h1 span {
+      font-size: 35px;
+    }
+    .recommends h1 span:nth-of-type(2) {
+      top: -4px;
+      font-size: 30px;
+    }
+    @media (max-width: 700px) {
+      .recommends {
+        margin-top: -100px;
+      }
+      @media (max-width: 600px) {
+        .recommends {
+          width: 100%;
+          margin-top: -10px;
+        }
+
+        .recommends > .recommends-header h1 {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .recommends h1 span:nth-of-type(2) {
+          top: 0;
+        }
+
+        .recommends .recommended .option {
+          width: 100%;
+        }
+
+        @media (max-width: 500px) {
+          .click-to-show {
+            padding: 20px;
+          }
+
+          .click-to-show svg {
+            font-size: 2em;
+          }
+          @media (max-width: 361px) {
+            .recommends > .recommends-header h1 span {
+              font-size: 25px;
+            }
+            .recommends h1 span:nth-of-type(2) {
+              font-size: 22px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-height: 900px) {
+  .aboutMenu > .aboutMenu-content {
+    padding-top: 75px;
+  }
+  .recommends {
+    margin-top: -50px;
+  }
+  @media (max-height: 600px) {
+    .recommends > .recommends-header {
+      padding: 60px 0;
+    }
+  }
+}
+
+/* KOMENTARZE */
+
+.home > section:nth-of-type(4) > header {
+  display: flex;
+  justify-content: center;
+}
+
+.header-comments {
+  display: flex;
+  position: relative;
+  width: fit-content;
+  margin-top: 150px;
+  text-align: center;
+  color: #fffcf2;
+}
+
+.section-comments {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  height: fit-content;
+  padding: 100px 0;
+  margin-left: auto;
+  margin-right: auto;
+  color: #fffcf2;
+}
+
+.header-comments::before {
+  content: "";
+  position: relative;
+  bottom: -27px;
+  left: -10px;
+  display: block;
+  width: 33px;
+  height: 3px;
+  background-color: #999966;
+}
+
+.header-comments::after {
+  content: "";
+  position: relative;
+  bottom: -27px;
+  right: -10px;
+  display: block;
+  width: 33px;
+  height: 3px;
+  background-color: #999966;
+}
+
+.section-comments .comment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+  margin: 50px 0;
+}
+
+.section-comments .comment:nth-child(2n) {
+  margin: 50px 50px;
+}
+.section-comments .comment .image img {
+  width: 100px;
+  height: 100px;
+  border-left: 3px solid #999966;
+  border-bottom: 5px solid #999966;
+  border-top: 1px solid #999966;
+  border-radius: 50%;
+}
+
+.section-comments .comment .description {
+  flex-basis: 190px;
+  width: 60%;
+  font-size: 14px;
+  text-align: center;
+  margin: 20px 0;
+  padding-left: 10px;
+  font-weight: 100;
+  line-height: 19px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.section-comments .comment .description::-webkit-scrollbar {
+  display: none;
+}
+
+.section-comments .comment .author {
+  display: flex;
+  justify-content: right;
+  align-items: flex-end;
+  width: 80%;
+  text-align: right;
+  font-style: italic;
+}
+
+.section-comments .comment .author span {
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.section-comments .comment .author span:nth-of-type(1) {
+  position: relative;
+  top: 25px;
+  left: -20px;
+  display: inline-block;
+  font-family: "Water Brush", cursive;
+  font-size: 70px;
+  line-height: 50px;
+  color: #cbaa70;
+}
+
+.section-comments .comment .author span:nth-of-type(3) {
+  color: #cbaa70;
+  margin-left: 10px;
+}
+@media (max-width: 1500px) {
+  .section-comments .comment .description {
+    width: 80%;
+  }
+  @media (max-width: 1100px) {
+    .section-comments .comment .description {
+      width: 100%;
+    }
+    @media (max-width: 800px) {
+      .section-comments {
+        flex-direction: column;
+      }
+      .section-comments .comment {
+        width: 100%;
+        margin-bottom: 100px;
+      }
+
+      .section-comments .comment:nth-child(2n) {
+        margin: 50px 0 100px 0;
+      }
+
+      .section-comments .comment .description {
+        flex-basis: auto;
+      }
+
+      @media (max-width: 500px) {
+        .header-comments {
+          font-size: 0.8em;
+          overflow: hidden;
+        }
+        .section-comments {
+          padding: 0;
+        }
+
+        .header-comments::before {
+          bottom: -22px;
+          height: 2px;
+        }
+
+        .header-comments::after {
+          bottom: -22px;
+          height: 2px;
+        }
+
+        @media (max-width: 360px) {
+          .header-comments {
+            margin-top: 50px;
+          }
+          .section-comments {
+            padding-top: 0;
+            height: fit-content;
+          }
+
+          .section-comments .comment {
+            width: 100%;
+            margin-bottom: 100px;
+          }
+
+          .section-comments .comment:nth-child(2n) {
+            margin: 0 0 50px 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-height: 400px) and (orientation: landscape) {
+  .section-comments .comment {
+    margin: 25px 0;
+  }
+}
+
+/* REZERWACJA */
+
+.sectionReservation {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  margin-bottom: 100px;
+  overflow: hidden;
+}
+
+.leftSide {
+  display: flex;
+  align-items: center;
+  width: 65%;
+  height: 100%;
+
+  background-color: #fffcf2;
+}
+
+.leftSide > img {
+  width: 200px;
+  margin-left: -500px;
+  transition: margin-left 0.5s linear, width 0.7s linear,
+    transform 0.35s 0.3s linear;
+}
+
+.leftSide > img.scrolled {
+  width: 500px;
+  margin-left: 100px;
+  transform: rotate(360deg);
+}
+
+@keyframes identifier {
+}
+
+.rightSide {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35%;
+  height: 100%;
+  background-color: #fffcf2;
+  z-index: 1;
+}
+
+.rightSide::before {
+  content: "";
+  position: absolute;
+  left: -500px;
+  top: -500px;
+  background-color: #cbaa70;
+  width: 2000px;
+  height: 1100px;
+  transform: rotate(40deg);
+}
+
+/* PRZYCISK DO REZERWACJI */
+
+.home .btnToReservation {
+  width: fit-content;
+  height: fit-content;
+  animation: move 3s linear infinite;
+  color: #fffcf2;
+  z-index: 2;
+}
+
+.home .btnToReservation a {
+  color: inherit;
+}
+
+.home .btnToReservation button {
+  position: relative;
+  left: 0;
+  top: 0;
+  padding: 15px 35px;
+  color: inherit;
+  background-color: transparent;
+  border: 10px solid#fffcf2;
+  text-transform: uppercase;
+  font-weight: bolder;
+  letter-spacing: 3px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.home .btnToReservation:hover button {
+  box-shadow: 0 0 5px #fffcf2;
+}
+
+@keyframes move {
+  0% {
+    transform: translate(0px) rotate(0deg);
+  }
+  1% {
+    transform: translate(-5px) rotate(0deg);
+  }
+  2% {
+    transform: translate(0px) rotate(-1deg);
+  }
+  3% {
+    transform: translate(5px) rotate(1deg);
+  }
+  4% {
+    transform: translate(0px) rotate(-1deg);
+  }
+  5% {
+    transform: translate(-5px) rotate(1deg);
+  }
+  6% {
+    transform: translate(0px) rotate(-1deg);
+  }
+  7% {
+    transform: translate(5px) rotate(1deg);
+  }
+  8% {
+    transform: translate(0px) rotate(0deg);
+  }
+  100% {
+    transform: translate(0px) rotate(0deg);
+  }
+}
+
+@media (max-width: 1400px) {
+  .leftSide > img.scrolled {
+    width: 400px;
+    margin-left: 50px;
+    transform: rotate(360deg);
+  }
+  @media (max-width: 1100px) {
+    .leftSide > img.scrolled {
+      margin-left: 20px;
+      width: 350px;
+    }
+    @media (max-width: 1000px) {
+      .leftSide {
+        width: 65%;
+      }
+      .rightSide {
+        width: 35%;
+      }
+
+      .leftSide > img.scrolled {
+        margin-left: 20px;
+        margin-top: 100px;
+        width: 300px;
+      }
+      @media (max-width: 800px) {
+        .leftSide > img.scrolled {
+          margin-top: 120px;
+          width: 250px;
+        }
+        @media (max-width: 700px) {
+          .leftSide {
+            display: none;
+          }
+          .rightSide {
+            width: 100%;
+            max-height: 40vh;
+            overflow: hidden;
+          }
+          .leftSide > img {
+            display: none;
+          }
+
+          .rightSide::before {
+            left: 50%;
+            top: 50%;
+            width: 100%;
+            height: 100%;
+            transform-origin: 0 0;
+            transform: rotate(45deg) translateX(-50%) translateY(-50%);
+          }
+          @media (max-width: 500px) {
+            .sectionReservation {
+              margin: 0;
+              height: 450px;
+            }
+
+            .rightSide {
+              background-image: url("../../../../img/local_640x426.jpg");
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+              overflow: visible;
+              background-color: transparent;
+            }
+            .rightSide::before {
+              content: none;
+            }
+
+            .home .btnToReservation {
+              display: flex;
+              justify-content: center;
+              background-color: rgba(0, 0, 0, 0.5);
+              width: 100%;
+              padding: 20px 0;
+            }
+
+            .home .btnToReservation button {
+              padding: 10px 20px;
+              font-size: 0.8em;
+            }
+            @media (max-width: 361px) {
+              .rightSide {
+                width: 101%;
+                max-height: 60vh;
+                overflow: hidden;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-height: 400px) {
+  .sectionReservation {
+    height: 300px;
+    margin-bottom: 0;
+  }
+  .leftSide > img.scrolled {
+    width: 200px;
+  }
+}
+
+.block-image {
+  width: 100%;
+  height: 65vh;
+  background-image: url("../../../../img/food_1920x1080.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+@media (max-width: 500px) {
+  .block-image {
+    display: none;
+  }
+  .home > :nth-child(4) {
+    margin-bottom: 0;
+  }
+}
