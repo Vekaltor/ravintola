@@ -1,3 +1,3 @@
-export const pathToApi = "http://localhost:8080/";
+export const pathToApi = "https://ravintola.herokuapp.com/";
 // http://localhost:8080/
 // https://ravintola.herokuapp.com/

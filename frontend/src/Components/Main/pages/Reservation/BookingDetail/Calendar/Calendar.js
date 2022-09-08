@@ -35,6 +35,8 @@ class Calendar extends Component {
   };
 
   handleChangeOption(e) {
+    console.log(e.target);
+
     this.props.runReservationService(e);
     this.deleteStyleFromSelected();
     this.props.setDate(e.target.dataset.key);
