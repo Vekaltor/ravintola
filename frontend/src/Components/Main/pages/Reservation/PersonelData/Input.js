@@ -39,7 +39,7 @@ function Input({
           type={type}
           onInput={(e) => {
             if (name === "phone") input(e, keyCode);
-            setState(e.target.value);
+            setState(e.target.name, e.target.value);
           }}
           onKeyDown={name === "phone" ? (e) => getKeyCode(e) : null}
         />

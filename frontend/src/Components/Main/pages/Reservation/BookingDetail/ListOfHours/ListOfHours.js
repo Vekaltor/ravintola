@@ -6,7 +6,7 @@ function ListOfHours(props) {
   function handleClick(e) {
     props.removeStyleFromPrevSelected();
     props.addStyleToSelectedTarget(e);
-    props.setTime(e.textContent);
+    props.setTime("time", e.textContent);
     props.setActive(false);
   }
 

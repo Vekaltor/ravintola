@@ -8,7 +8,10 @@ export default class ReservationService {
   getAllReservations() {
     let listReservations = [];
     fetch(pathToApi + "reservation")
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) return response.json();
+        throw Error(response.status);
+      })
       .then((reservations) => {
         reservations.forEach((reservation) => {
           listReservations.push(reservation);
@@ -21,7 +24,10 @@ export default class ReservationService {
   getAllTables() {
     let tablesByAmountPeople = [];
     fetch(pathToApi + "seattable")
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) return response.json();
+        throw Error(response.status);
+      })
       .then((tables) => {
         tables.forEach((table) => {
           tablesByAmountPeople.push(table);
@@ -150,7 +156,7 @@ export default class ReservationService {
     this.availableTables.push(availableTablesPerHour);
   }
 
-  makeReservation(
+  makeReservation({
     date,
     time,
     amountPeople,
@@ -158,14 +164,11 @@ export default class ReservationService {
     surname,
     email,
     phone,
-    hoursAndAvailablesTables
-  ) {
+    availableTablesByHour,
+  }) {
     let submitReservation = true;
     const dateTime = date + " " + time;
-    const tableId = this.#getFirstAvailableTableId(
-      hoursAndAvailablesTables,
-      time
-    );
+    const tableId = this.#getFirstAvailableTableId(availableTablesByHour, time);
 
     fetch(pathToApi + "reservation", {
       method: "POST",

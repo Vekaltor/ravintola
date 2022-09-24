@@ -35,11 +35,9 @@ class Calendar extends Component {
   };
 
   handleChangeOption(e) {
-    console.log(e.target);
-
     this.props.runReservationService(e);
     this.deleteStyleFromSelected();
-    this.props.setDate(e.target.dataset.key);
+    this.props.setDate("date", e.target.dataset.key);
     e.target.classList.add("selected");
     this.setState({
       currentDate: e.target.dataset.key,
@@ -49,7 +47,7 @@ class Calendar extends Component {
   goToCurrentDate() {
     this.deleteStyleFromSelected();
     const currentDate = this.props.formatDate(new Date());
-    this.props.setDate(currentDate);
+    this.props.setDate("date", currentDate);
     this.setState({
       currentDate: currentDate,
     });

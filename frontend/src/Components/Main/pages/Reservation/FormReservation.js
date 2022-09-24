@@ -34,74 +34,15 @@ class FormReservation extends Component {
 
   handleSubmitReservation() {
     const service = new ReservationService();
-    const response = service.makeReservation(
-      this.state.date,
-      this.state.time,
-      this.state.amountPeople,
-      this.state.name,
-      this.state.surname,
-      this.state.email,
-      this.state.phone,
-      this.state.availableTablesByHour
-    );
+    const response = service.makeReservation(this.state);
     this.clearData();
-    this.setSubmitReservation(response);
+    this.setFormState("submitReservation", response);
   }
 
-  setDate(newValue) {
+  setFormState(name, newValue) {
+    if (name === "amountPeople") newValue = parseInt(newValue);
     this.setState({
-      date: newValue,
-    });
-  }
-
-  setTime(newValue) {
-    this.setState({
-      time: newValue,
-    });
-  }
-
-  setAmountPeople(newValue) {
-    this.setState({
-      amountPeople: parseInt(newValue),
-    });
-  }
-
-  setName(newValue) {
-    this.setState({
-      name: newValue,
-    });
-  }
-  setSurname(newValue) {
-    this.setState({
-      surname: newValue,
-    });
-  }
-  setEmail(newValue) {
-    this.setState({
-      email: newValue,
-    });
-  }
-  setPhone(newValue) {
-    this.setState({
-      phone: newValue,
-    });
-  }
-
-  setIsValidate(newValue) {
-    this.setState({
-      isValidate: newValue,
-    });
-  }
-
-  setSubmitReservation(newValue) {
-    this.setState({
-      submitReservation: newValue,
-    });
-  }
-
-  setAvailableTablesByHour(newValue) {
-    this.setState({
-      availableTablesByHour: newValue,
+      [name]: newValue,
     });
   }
 
@@ -151,12 +92,7 @@ class FormReservation extends Component {
             date={this.state.date}
             time={this.state.time}
             amountPeople={this.state.amountPeople}
-            setDate={this.setDate.bind(this)}
-            setTime={this.setTime.bind(this)}
-            setAmountPeople={this.setAmountPeople.bind(this)}
-            setAvailableTablesByHour={this.setAvailableTablesByHour.bind(this)}
-            setIsValidate={this.setIsValidate.bind(this)}
-            setSubmitReservation={this.setSubmitReservation.bind(this)}
+            setFormState={this.setFormState.bind(this)}
             formatDate={this.formatDate.bind(this)}
             padTo2Digits={this.padTo2Digits.bind(this)}
             focusIconStyle={this.handleFocus.bind(this)}
@@ -167,10 +103,7 @@ class FormReservation extends Component {
             surname={this.state.surname}
             email={this.state.email}
             phone={this.state.phone}
-            setName={this.setName.bind(this)}
-            setSurname={this.setSurname.bind(this)}
-            setEmail={this.setEmail.bind(this)}
-            setPhone={this.setPhone.bind(this)}
+            setFormState={this.setFormState.bind(this)}
             focusIconStyle={this.handleFocus.bind(this)}
             blurIconStyle={this.handleBlur.bind(this)}
           />

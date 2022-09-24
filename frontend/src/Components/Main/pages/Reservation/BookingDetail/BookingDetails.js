@@ -12,12 +12,7 @@ function BookingDetails({
   date,
   time,
   amountPeople,
-  setDate,
-  setTime,
-  setAmountPeople,
-  setAvailableTablesByHour,
-  setIsValidate,
-  setSubmitReservation,
+  setFormState,
   formatDate,
   padTo2Digits,
   ...props
@@ -50,11 +45,11 @@ function BookingDetails({
 
   const runReservationService = (e) => {
     if (!time) {
-      setIsValidate(false);
-      setSubmitReservation(false);
+      setFormState("isValidate", false);
+      setFormState("submitReservation", false);
     }
     if (e.target.name === "people" || e.target.className.includes("day"))
-      setTime("");
+      setFormState("time", "");
     fetchData();
     initializeReservationService();
   };
@@ -73,7 +68,7 @@ function BookingDetails({
       filteredTables,
       hours
     );
-    setAvailableTablesByHour(service.availableTables);
+    setFormState("availableTablesByHour", service.availableTables);
     setListHours(listHours);
   }
 
@@ -92,7 +87,7 @@ function BookingDetails({
     <div>
       <DayInput
         date={date}
-        setDate={setDate}
+        setDate={setFormState}
         formatDate={formatDate}
         padTo2Digits={padTo2Digits}
         runReservationService={runReservationService}
@@ -103,13 +98,13 @@ function BookingDetails({
         listHours={listHours}
         selectedDate={date}
         selectedAmountPeople={amountPeople}
-        setTime={setTime}
+        setTime={setFormState}
         runReservationService={runReservationService}
         {...props}
       />
       <PepopleAmountInput
         amountPeople={amountPeople}
-        setAmountPeople={setAmountPeople}
+        setAmountPeople={setFormState}
         runReservationService={runReservationService}
         {...props}
       />

@@ -12,10 +12,7 @@ function PersonalData({
   surname,
   email,
   phone,
-  setName,
-  setSurname,
-  setEmail,
-  setPhone,
+  setFormState,
   focusIconStyle,
   blurIconStyle,
 }) {
@@ -31,7 +28,7 @@ function PersonalData({
           type="text"
           value={name}
           icon={<BsFillPersonFill />}
-          setState={setName}
+          setState={setFormState}
           focusIconStyle={focusIconStyle}
           blurIconStyle={blurIconStyle}
         />
@@ -41,7 +38,7 @@ function PersonalData({
           type="text"
           value={surname}
           icon={<BsFillPersonFill />}
-          setState={setSurname}
+          setState={setFormState}
           focusIconStyle={focusIconStyle}
           blurIconStyle={blurIconStyle}
         />
@@ -51,7 +48,7 @@ function PersonalData({
           type="email"
           value={email}
           icon={<AiOutlineMail />}
-          setState={setEmail}
+          setState={setFormState}
           focusIconStyle={focusIconStyle}
           blurIconStyle={blurIconStyle}
         />
@@ -61,7 +58,7 @@ function PersonalData({
           type="tel"
           value={phone}
           icon={<GiSmartphone />}
-          setState={setPhone}
+          setState={setFormState}
           focusIconStyle={focusIconStyle}
           blurIconStyle={blurIconStyle}
           input={validator.typingNumberPhone}

@@ -12,9 +12,13 @@ function Menu(props) {
 
   const getData = () => {
     fetch(pathToApi + "api/menu")
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) return response.json();
+        throw Error(response.status);
+      })
       .then((data) => data.sort(compareCategoryMeals))
-      .then((data) => setData(data));
+      .then((data) => setData(data))
+      .catch((error) => console.log(error));
   };
 
   const compareCategoryMeals = (a, b) => {

@@ -64,7 +64,7 @@ function ListOfNumberPpl({
 
   const handleChange = (e) => {
     runReservationService(e);
-    setAmountPeople(e.target.value);
+    setAmountPeople("amountPeople", e.target.value);
   };
 
   return (
