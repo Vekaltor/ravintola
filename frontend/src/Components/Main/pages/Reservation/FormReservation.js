@@ -24,16 +24,20 @@ class FormReservation extends Component {
 
   validator = new ReservationDataValidator(".form-reservation > form");
 
-  handleClick(e) {
-    e.preventDefault();
-    if (this.state.time === "") this.setSubmitReservation(false);
+  handleClick() {
+    if (this.state.time === "")
+      this.setDataFormState("submitReservation", false);
     this.validator.validateForm();
     if (this.validator.isValidate) {
-      this.handleSubmitReservation();
-    } else this.setIsValidate(false);
+      this.submitReservation();
+    } else this.setDataFormState("isValidate", false);
   }
 
-  handleSubmitReservation() {
+  handleSubmitForm(e) {
+    e.preventDefault();
+  }
+
+  submitReservation() {
     const service = new ReservationService();
     const response = service.makeReservation(this.state);
     this.clearData();
@@ -86,7 +90,7 @@ class FormReservation extends Component {
 
   render() {
     const announcementComponent = this.state.submitReservation ? (
-      <Announcement submitReservation={this.state.submitReservation} />
+      <Announcement />
     ) : null;
 
     return (
@@ -108,14 +112,14 @@ class FormReservation extends Component {
       >
         <div className="form-reservation">
           <h1>Zarezerwuj stolik</h1>
-          <form method="POST">
+          <form method="POST" onSubmit={(e) => this.handleSubmitForm(e)}>
             <BookingDetails />
             <PersonalData />
             <input
               className="inputSubmit"
               type="submit"
               value="poproś o rezerwację"
-              onClick={(e) => this.handleClick(e)}
+              onClick={this.handleClick.bind(this)}
             />
             {announcementComponent}
           </form>
