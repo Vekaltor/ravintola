@@ -1,56 +1,53 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
+import ReservationContext from "../ReservationContext";
 import ReservationService from "../ReservationService";
 
 import DayInput from "./DayInput";
 import PepopleAmountInput from "./PeopleAmountInput";
 import TimeInput from "./TimeInput";
 
-function BookingDetails({
-  date,
-  time,
-  amountPeople,
-  setFormState,
-  formatDate,
-  padTo2Digits,
-  ...props
-}) {
-  const hours = [
-    "14:00",
-    "14:30",
-    "15:00",
-    "15:30",
-    "16:00",
-    "16:30",
-    "17:00",
-    "17:30",
-    "18:00",
-    "18:30",
-    "19:00",
-    "19:30",
-    "20:00",
-    "20:30",
-    "21:00",
-    "21:30",
-    "22:00",
-  ];
+const hours = [
+  "14:00",
+  "14:30",
+  "15:00",
+  "15:30",
+  "16:00",
+  "16:30",
+  "17:00",
+  "17:30",
+  "18:00",
+  "18:30",
+  "19:00",
+  "19:30",
+  "20:00",
+  "20:30",
+  "21:00",
+  "21:30",
+  "22:00",
+];
 
+function BookingDetails() {
   const [listReservations, setListReservations] = useState([]);
   const [listTables, setListTables] = useState([]);
   const [listHours, setListHours] = useState(hours);
 
+  const { date, time, amountPeople, setDataFormState } =
+    useContext(ReservationContext);
+
   const service = new ReservationService();
 
   const runReservationService = (e) => {
-    if (!time) {
-      setFormState("isValidate", false);
-      setFormState("submitReservation", false);
-    }
-    if (e.target.name === "people" || e.target.className.includes("day"))
-      setFormState("time", "");
+    console.log("run service");
     fetchData();
+
+    if (!time) {
+      setDataFormState("isValidate", false);
+      setDataFormState("submitReservation", false);
+    } else {
+      setDataFormState("time", "");
+    }
+
     initializeReservationService();
   };
 
@@ -68,7 +65,7 @@ function BookingDetails({
       filteredTables,
       hours
     );
-    setFormState("availableTablesByHour", service.availableTables);
+    setDataFormState("availableTablesByHour", service.availableTables);
     setListHours(listHours);
   }
 
@@ -81,33 +78,14 @@ function BookingDetails({
 
   useEffect(() => {
     fetchData();
+    if (listReservations.length > 0) runReservationService();
   }, [date, amountPeople]);
 
   return (
     <div>
-      <DayInput
-        date={date}
-        setDate={setFormState}
-        formatDate={formatDate}
-        padTo2Digits={padTo2Digits}
-        runReservationService={runReservationService}
-        {...props}
-      />
-      <TimeInput
-        time={time}
-        listHours={listHours}
-        selectedDate={date}
-        selectedAmountPeople={amountPeople}
-        setTime={setFormState}
-        runReservationService={runReservationService}
-        {...props}
-      />
-      <PepopleAmountInput
-        amountPeople={amountPeople}
-        setAmountPeople={setFormState}
-        runReservationService={runReservationService}
-        {...props}
-      />
+      <DayInput />
+      <TimeInput listHours={listHours} />
+      <PepopleAmountInput />
     </div>
   );
 }

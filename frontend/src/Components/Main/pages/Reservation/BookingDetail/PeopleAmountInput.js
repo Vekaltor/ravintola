@@ -3,26 +3,14 @@ import IconForInput from "../IconForInput";
 
 import { BsFillPeopleFill } from "react-icons/bs";
 
-function PepopleAmountInput({
-  amountPeople,
-  setAmountPeople,
-  runReservationService,
-  focusIconStyle,
-  blurIconStyle,
-}) {
+function PepopleAmountInput() {
   return (
     <>
       <label>
         <span>Liczba osób</span>
         <div>
           <IconForInput icon={<BsFillPeopleFill />} />
-          <ListOfNumberPpl
-            amountPeople={amountPeople}
-            setAmountPeople={setAmountPeople}
-            focus={focusIconStyle}
-            blur={blurIconStyle}
-            runReservationService={runReservationService}
-          />
+          <ListOfNumberPpl />
         </div>
       </label>
     </>

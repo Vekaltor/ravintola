@@ -1,21 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import Calendar from "./Calendar/Calendar";
-
-import { BsCalendarPlus } from "react-icons/bs";
 import IconForInput from "../IconForInput";
 
-function DayInput({
-  date,
-  setDate,
-  formatDate,
-  padTo2Digits,
-  runReservationService,
-  focusIconStyle,
-  blurIconStyle,
-}) {
+import ReservationContext from "../ReservationContext";
+
+import { BsCalendarPlus } from "react-icons/bs";
+
+function DayInput() {
   const [isActive, setIsActive] = useState(false);
-  // const [date, setDate] = useState(formatDate(date));
+
+  const { date, focus, blur, setDataFormState, padTo2Digits, formatDate } =
+    useContext(ReservationContext);
 
   return (
     <>
@@ -29,20 +25,19 @@ function DayInput({
             readOnly
             type="text"
             value={date}
-            onFocus={focusIconStyle}
-            onBlur={blurIconStyle}
+            onFocus={focus}
+            onBlur={blur}
             onClick={() => setIsActive(true)}
           />
         </div>
       </label>
       <Calendar
         date={date}
-        setDate={setDate}
+        setDataFormState={setDataFormState}
         active={isActive}
         setActive={setIsActive}
         formatterOfNumbers={padTo2Digits}
         formatDate={formatDate}
-        runReservationService={runReservationService}
       />
     </>
   );

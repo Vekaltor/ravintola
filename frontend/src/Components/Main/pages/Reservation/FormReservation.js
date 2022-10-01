@@ -6,6 +6,7 @@ import Announcement from "./Announcement";
 
 import ReservationDataValidator from "./ReservationDataValidator";
 import ReservationService from "./ReservationService";
+import ReservationContext from "./ReservationContext";
 
 class FormReservation extends Component {
   state = {
@@ -36,10 +37,10 @@ class FormReservation extends Component {
     const service = new ReservationService();
     const response = service.makeReservation(this.state);
     this.clearData();
-    this.setFormState("submitReservation", response);
+    this.setDataFormState("submitReservation", response);
   }
 
-  setFormState(name, newValue) {
+  setDataFormState(name, newValue) {
     if (name === "amountPeople") newValue = parseInt(newValue);
     this.setState({
       [name]: newValue,
@@ -84,40 +85,42 @@ class FormReservation extends Component {
   };
 
   render() {
+    const announcementComponent = this.state.submitReservation ? (
+      <Announcement submitReservation={this.state.submitReservation} />
+    ) : null;
+
     return (
-      <div className="form-reservation">
-        <h1>Zarezerwuj stolik</h1>
-        <form method="POST">
-          <BookingDetails
-            date={this.state.date}
-            time={this.state.time}
-            amountPeople={this.state.amountPeople}
-            setFormState={this.setFormState.bind(this)}
-            formatDate={this.formatDate.bind(this)}
-            padTo2Digits={this.padTo2Digits.bind(this)}
-            focusIconStyle={this.handleFocus.bind(this)}
-            blurIconStyle={this.handleBlur.bind(this)}
-          />
-          <PersonalData
-            name={this.state.name}
-            surname={this.state.surname}
-            email={this.state.email}
-            phone={this.state.phone}
-            setFormState={this.setFormState.bind(this)}
-            focusIconStyle={this.handleFocus.bind(this)}
-            blurIconStyle={this.handleBlur.bind(this)}
-          />
-          <input
-            className="inputSubmit"
-            type="submit"
-            value="poproś o rezerwację"
-            onClick={(e) => this.handleClick(e)}
-          />
-          {this.state.submitReservation ? (
-            <Announcement submitReservation={this.state.submitReservation} />
-          ) : null}
-        </form>
-      </div>
+      <ReservationContext.Provider
+        value={{
+          date: this.state.date,
+          time: this.state.time,
+          amountPeople: this.state.amountPeople,
+          name: this.state.name,
+          surname: this.state.surname,
+          email: this.state.email,
+          phone: this.state.phone,
+          setDataFormState: this.setDataFormState.bind(this),
+          formatDate: this.formatDate.bind(this),
+          padTo2Digits: this.padTo2Digits.bind(this),
+          focus: this.handleFocus.bind(this),
+          blur: this.handleBlur.bind(this),
+        }}
+      >
+        <div className="form-reservation">
+          <h1>Zarezerwuj stolik</h1>
+          <form method="POST">
+            <BookingDetails />
+            <PersonalData />
+            <input
+              className="inputSubmit"
+              type="submit"
+              value="poproś o rezerwację"
+              onClick={(e) => this.handleClick(e)}
+            />
+            {announcementComponent}
+          </form>
+        </div>
+      </ReservationContext.Provider>
     );
   }
 }

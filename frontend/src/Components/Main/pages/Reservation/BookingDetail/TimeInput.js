@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import IconForInput from "../IconForInput";
 import ListOfHours from "./ListOfHours/ListOfHours";
@@ -6,40 +6,20 @@ import ListOfHours from "./ListOfHours/ListOfHours";
 import ReservationDataValidator from "../ReservationDataValidator";
 
 import { MdOutlineAccessTime } from "react-icons/md";
+import ReservationContext from "../ReservationContext";
 
-function TimeInput({
-  time,
-  listHours,
-  setTime,
-  runReservationService,
-  focusIconStyle,
-  blurIconStyle,
-}) {
+function TimeInput({ listHours }) {
   const [isActive, setIsActive] = useState(false);
 
   const validator = new ReservationDataValidator(".form-reservation > form");
 
+  const elementListOfHoursRef = useRef();
+
   const handleClick = (e) => {
-    const listOfHours = document.querySelector(".list-of-hours");
-    listOfHours.scrollTo(0, 0);
     disableScroll();
-
-    removeStyleFromPrevSelected();
-    validator.removeInvalidStyles(e);
-
-    runReservationService(e);
+    elementListOfHoursRef.current.scrollTo(0, 0);
+    validator.removeInvalidStyles(e.target);
     setIsActive(true);
-  };
-
-  const addStyleToSelectedTarget = (target) => {
-    target.classList.add("selected");
-    enableScroll();
-  };
-
-  const removeStyleFromPrevSelected = () => {
-    if (!document.querySelector(".list-of-hours span.selected")) return;
-    const prevSelected = document.querySelector(".list-of-hours span.selected");
-    prevSelected.classList.remove("selected");
   };
 
   const closeList = (className, e) => {
@@ -57,33 +37,36 @@ function TimeInput({
   };
 
   return (
-    <>
-      <label>
-        <span>Godzina</span>
-        <div>
-          <IconForInput icon={<MdOutlineAccessTime />} />
-          <input
-            data-to-validate
-            name="time"
-            type="text"
-            value={time}
-            readOnly
-            onFocus={focusIconStyle}
-            onBlur={blurIconStyle}
-            onClick={(e) => handleClick(e)}
+    <ReservationContext.Consumer>
+      {({ time, focus, blur, setDataFormState }) => (
+        <>
+          <label>
+            <span>Godzina</span>
+            <div>
+              <IconForInput icon={<MdOutlineAccessTime />} />
+              <input
+                data-to-validate
+                name="time"
+                type="text"
+                value={time}
+                readOnly
+                onFocus={focus}
+                onBlur={blur}
+                onClick={(e) => handleClick(e)}
+              />
+            </div>
+          </label>
+          <ListOfHours
+            listHours={listHours}
+            active={isActive}
+            setActive={setIsActive}
+            setDataFormState={setDataFormState}
+            closeList={closeList}
+            elementListOfHoursRef={elementListOfHoursRef}
           />
-        </div>
-      </label>
-      <ListOfHours
-        listHours={listHours}
-        active={isActive}
-        setActive={setIsActive}
-        setTime={setTime}
-        removeStyleFromPrevSelected={removeStyleFromPrevSelected}
-        addStyleToSelectedTarget={addStyleToSelectedTarget}
-        closeList={closeList}
-      />
-    </>
+        </>
+      )}
+    </ReservationContext.Consumer>
   );
 }
 

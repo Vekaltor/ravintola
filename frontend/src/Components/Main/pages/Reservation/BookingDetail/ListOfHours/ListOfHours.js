@@ -3,23 +3,33 @@ import Hours from "./Hours";
 import "./ListOfHours.css";
 
 function ListOfHours(props) {
+  const {
+    active,
+    listHours,
+    closeList,
+    setActive,
+    setDataFormState,
+    elementListOfHoursRef,
+  } = props;
+
   function handleClick(e) {
-    props.removeStyleFromPrevSelected();
-    props.addStyleToSelectedTarget(e);
-    props.setTime("time", e.textContent);
-    props.setActive(false);
+    setDataFormState("time", e.textContent);
+    setActive(false);
   }
+
+  const classActive = active ? " active" : " ";
 
   return (
     <div
-      onClick={(e) => props.closeList("behind-list-of-hours", e)}
-      className={
-        props.active ? "behind-list-of-hours active" : "behind-list-of-hours"
-      }
+      onClick={(e) => closeList("behind-list-of-hours", e)}
+      className={`behind-list-of-hours ${classActive}`}
     >
-      <div className={props.active ? "list-of-hours active" : "list-of-hours"}>
-        <Hours listHours={props.listHours} click={handleClick} />
-        <ExitButton click={props.closeList} />
+      <div
+        ref={elementListOfHoursRef}
+        className={`list-of-hours ${classActive}`}
+      >
+        <Hours listHours={listHours} click={handleClick} />
+        <ExitButton click={closeList} />
       </div>
     </div>
   );

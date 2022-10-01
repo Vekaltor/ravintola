@@ -6,17 +6,14 @@ import ReservationDataValidator from "../ReservationDataValidator";
 import { BsFillPersonFill } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import { GiSmartphone } from "react-icons/gi";
+import { useContext } from "react";
+import ReservationContext from "../ReservationContext";
 
-function PersonalData({
-  name,
-  surname,
-  email,
-  phone,
-  setFormState,
-  focusIconStyle,
-  blurIconStyle,
-}) {
+function PersonalData() {
   const validator = new ReservationDataValidator(".form-reservation > form");
+
+  const { name, surname, email, phone, setFormState, focus, blur } =
+    useContext(ReservationContext);
 
   return (
     <div>
@@ -29,8 +26,8 @@ function PersonalData({
           value={name}
           icon={<BsFillPersonFill />}
           setState={setFormState}
-          focusIconStyle={focusIconStyle}
-          blurIconStyle={blurIconStyle}
+          focusIconStyle={focus}
+          blurIconStyle={blur}
         />
         <Input
           title="Nazwisko"
@@ -39,8 +36,8 @@ function PersonalData({
           value={surname}
           icon={<BsFillPersonFill />}
           setState={setFormState}
-          focusIconStyle={focusIconStyle}
-          blurIconStyle={blurIconStyle}
+          focusIconStyle={focus}
+          blurIconStyle={blur}
         />
         <Input
           title="Email"
@@ -49,8 +46,8 @@ function PersonalData({
           value={email}
           icon={<AiOutlineMail />}
           setState={setFormState}
-          focusIconStyle={focusIconStyle}
-          blurIconStyle={blurIconStyle}
+          focusIconStyle={focus}
+          blurIconStyle={blur}
         />
         <Input
           title="Numer telefonu"
@@ -59,8 +56,8 @@ function PersonalData({
           value={phone}
           icon={<GiSmartphone />}
           setState={setFormState}
-          focusIconStyle={focusIconStyle}
-          blurIconStyle={blurIconStyle}
+          focusIconStyle={focus}
+          blurIconStyle={blur}
           input={validator.typingNumberPhone}
         />
       </div>

@@ -9,13 +9,12 @@ import "./Calendar.css";
 
 class Calendar extends Component {
   state = {
+    currentDate: this.props.date,
     year: 0,
     month: 0,
-    day: 0,
-    currentDate: this.props.date,
   };
 
-  handleChangeMonth = (event) => {
+  changeMonth = (event) => {
     const direction = event.target.dataset.direction * 1;
     if (this.state.month + direction < 0) {
       this.setState((prevState) => ({
@@ -34,10 +33,9 @@ class Calendar extends Component {
     }
   };
 
-  handleChangeOption(e) {
-    this.props.runReservationService(e);
-    this.deleteStyleFromSelected();
-    this.props.setDate("date", e.target.dataset.key);
+  changeDay(e) {
+    this.deleteStyleForSelected();
+    this.props.setDataFormState("date", e.target.dataset.key);
     e.target.classList.add("selected");
     this.setState({
       currentDate: e.target.dataset.key,
@@ -45,16 +43,16 @@ class Calendar extends Component {
   }
 
   goToCurrentDate() {
-    this.deleteStyleFromSelected();
+    this.deleteStyleForSelected();
     const currentDate = this.props.formatDate(new Date());
-    this.props.setDate("date", currentDate);
+    this.props.setDataFormState("date", currentDate);
     this.setState({
       currentDate: currentDate,
     });
-    this.getDate();
+    this.setYearAndMonth();
   }
 
-  deleteStyleFromSelected() {
+  deleteStyleForSelected() {
     document
       .querySelectorAll(".day")
       .forEach((element) => element.classList.remove("selected"));
@@ -65,41 +63,42 @@ class Calendar extends Component {
     this.props.setActive(false);
   }
 
+  setYearAndMonth() {
+    this.setState((prevState) => ({
+      year: this.dateStringToNumber(prevState.currentDate, 6, 10),
+      month: this.dateStringToNumber(prevState.currentDate, 3, 5) - 1,
+    }));
+  }
+
   dateStringToNumber(date, start, howMuch) {
     return parseInt(date.slice(start, howMuch));
   }
 
-  getDate() {
-    this.setState((prevState) => ({
-      year: this.dateStringToNumber(prevState.currentDate, 6, 10),
-      month: this.dateStringToNumber(prevState.currentDate, 3, 5) - 1,
-      day: this.dateStringToNumber(prevState.currentDate, 0, 2),
-    }));
-  }
-
   componentDidMount() {
-    this.getDate();
+    this.setYearAndMonth();
   }
 
   render() {
+    const classActive = this.props.active ? " active" : null;
+
     return (
       <div
-        className={this.props.active ? "back-calendar active" : "back-calendar"}
+        className={`back-calendar ${classActive}`}
         onClick={(e) => this.closeCalendar(e, "back-calendar")}
       >
-        <div className={this.props.active ? "calendar active" : "calendar"}>
+        <div className={`calendar ${classActive}`}>
           <CalendarContent
             year={this.state.year}
             month={this.state.month}
             currentSelectedDate={this.state.currentDate}
-            click={this.handleChangeOption.bind(this)}
+            click={this.changeDay.bind(this)}
             formatter={this.props.formatterOfNumbers}
           />
           <InteractiveButtons
             closeCalendar={this.closeCalendar.bind(this)}
             goToCurrentDate={this.goToCurrentDate.bind(this)}
           />
-          <Arrows changeMonth={this.handleChangeMonth} />
+          <Arrows changeMonth={this.changeMonth} />
         </div>
       </div>
     );

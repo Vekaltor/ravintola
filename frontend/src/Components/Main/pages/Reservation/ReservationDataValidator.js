@@ -74,17 +74,17 @@ export default class ReservationDataValidator {
     } else this.isValidate &&= true;
   }
 
-  #addInvalidStyles(element) {
+  #addInvalidStyles(target) {
     setTimeout(() => {
-      element.parentElement.parentElement.className = "invalid";
-      element.parentElement.className = "invalid";
+      target.parentElement.parentElement.className = "invalid";
+      target.parentElement.className = "invalid";
     }, 1);
   }
 
-  removeInvalidStyles(e) {
-    if (!e.target.parentElement.parentElement.className) return;
-    e.target.parentElement.parentElement.className = "";
-    e.target.parentElement.className = "";
+  removeInvalidStyles(target) {
+    if (!target.parentElement.parentElement.className) return;
+    target.parentElement.parentElement.className = "";
+    target.parentElement.className = "";
   }
 
   #clearStyles() {

@@ -4,13 +4,9 @@ import React from "react";
 import MonthName from "./MonthName";
 import TagDays from "./TagDays";
 
-function CalendarContent({
-  year,
-  month,
-  currentSelectedDate,
-  click,
-  formatter,
-}) {
+function CalendarContent(props) {
+  const { year, month, currentSelectedDate, click, formatter } = props;
+
   const days = [];
 
   function addDayToArray(day, month, year, click, className) {
@@ -73,6 +69,8 @@ function CalendarContent({
     prevMonthDays(firstDayIndex, prevLastDay);
     currentMonthDays(lastDay);
     nextMonthDays();
+
+    return days;
   }
 
   function setDateCorrectly(day, month, year) {
@@ -106,10 +104,7 @@ function CalendarContent({
     <div className="content">
       <MonthName month={month} year={year} />
       <TagDays />
-      <div className="days" key={"cos"}>
-        {createDays()}
-        {days}
-      </div>
+      <div className="days">{createDays()}</div>
     </div>
   );
 }

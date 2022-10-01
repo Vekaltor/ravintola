@@ -1,17 +1,14 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { pathToApi } from "../../../../PathToAPI";
+import ReservationContext from "../ReservationContext";
 
-function ListOfNumberPpl({
-  amountPeople,
-  setAmountPeople,
-  focus,
-  blur,
-  runReservationService,
-}) {
+function ListOfNumberPpl() {
   const [isOpen, setIsOpen] = useState(false);
   const [maxNumberOfSeats, setMaxNumberOfSeats] = useState(0);
+
+  const { amountPeople, setDataFormState, focus, blur } =
+    useContext(ReservationContext);
 
   const getMaxNumberOfSeats = () => {
     let maxNumberOfSeats = 0;
@@ -63,8 +60,7 @@ function ListOfNumberPpl({
   };
 
   const handleChange = (e) => {
-    runReservationService(e);
-    setAmountPeople("amountPeople", e.target.value);
+    setDataFormState("amountPeople", e.target.value);
   };
 
   return (
