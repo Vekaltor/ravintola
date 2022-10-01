@@ -12,7 +12,7 @@ import ReservationContext from "../ReservationContext";
 function PersonalData() {
   const validator = new ReservationDataValidator(".form-reservation > form");
 
-  const { name, surname, email, phone, setFormState, focus, blur } =
+  const { name, surname, email, phone, setDataFormState, focus, blur } =
     useContext(ReservationContext);
 
   return (
@@ -25,9 +25,9 @@ function PersonalData() {
           type="text"
           value={name}
           icon={<BsFillPersonFill />}
-          setState={setFormState}
-          focusIconStyle={focus}
-          blurIconStyle={blur}
+          setDataFormState={setDataFormState}
+          focus={focus}
+          blur={blur}
         />
         <Input
           title="Nazwisko"
@@ -35,9 +35,9 @@ function PersonalData() {
           type="text"
           value={surname}
           icon={<BsFillPersonFill />}
-          setState={setFormState}
-          focusIconStyle={focus}
-          blurIconStyle={blur}
+          setDataFormState={setDataFormState}
+          focus={focus}
+          blur={blur}
         />
         <Input
           title="Email"
@@ -45,9 +45,9 @@ function PersonalData() {
           type="email"
           value={email}
           icon={<AiOutlineMail />}
-          setState={setFormState}
-          focusIconStyle={focus}
-          blurIconStyle={blur}
+          setDataFormState={setDataFormState}
+          focus={focus}
+          blur={blur}
         />
         <Input
           title="Numer telefonu"
@@ -55,9 +55,9 @@ function PersonalData() {
           type="tel"
           value={phone}
           icon={<GiSmartphone />}
-          setState={setFormState}
-          focusIconStyle={focus}
-          blurIconStyle={blur}
+          setDataFormState={setDataFormState}
+          focus={focus}
+          blur={blur}
           input={validator.typingNumberPhone}
         />
       </div>

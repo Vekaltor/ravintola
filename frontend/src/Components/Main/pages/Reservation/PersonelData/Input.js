@@ -8,9 +8,9 @@ function Input({
   type,
   value,
   icon: Icon,
-  setState,
-  focusIconStyle,
-  blurIconStyle,
+  setDataFormState,
+  focus,
+  blur,
   input,
 }) {
   const [keyCode, setKeyCode] = useState();
@@ -21,8 +21,8 @@ function Input({
   };
 
   const handleFocus = (e) => {
-    validator.removeInvalidStyles(e);
-    focusIconStyle(e);
+    validator.removeInvalidStyles(e.target);
+    focus(e);
   };
 
   return (
@@ -35,11 +35,11 @@ function Input({
           name={name}
           value={value}
           onFocus={(e) => handleFocus(e)}
-          onBlur={(e) => blurIconStyle(e)}
+          onBlur={(e) => blur(e)}
           type={type}
           onInput={(e) => {
             if (name === "phone") input(e, keyCode);
-            setState(e.target.name, e.target.value);
+            setDataFormState(e.target.name, e.target.value);
           }}
           onKeyDown={name === "phone" ? (e) => getKeyCode(e) : null}
         />
