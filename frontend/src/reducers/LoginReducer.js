@@ -12,11 +12,9 @@ export const actions = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case actions.loggingAdmin:
-      return { isAdminLogged: true };
+      return { auth: { token: true } };
     case actions.logoutAdmin:
-      console.log("eeee");
-
-      return { isAdminLogged: false };
+      return { auth: { token: false } };
     default:
       throw new Error();
   }
