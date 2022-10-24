@@ -1,29 +1,24 @@
-import React, { Component } from "react";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import { Provider } from "react-redux";
+import { configureStore } from "redux";
+import allReducers from "./reducers";
 
 import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Footer from "./Footer/Footer";
 import Nav from "./Nav/Nav";
-
+import Admin from "./Admin/Admin";
 import Error404 from "./Main/pages/Error404/Error404";
 
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
 
-class App extends Component {
-  state = {};
+function App() {
+  let store = configureStore(allReducers);
 
-  scrollToTop() {
-    window.scrollTo(0, 0);
-  }
-
-  render() {
-    return (
+  return (
+    <Provider store={store}>
       <div className="wrapper">
         <Router>
           <Routes>
@@ -38,13 +33,13 @@ class App extends Component {
                 </>
               }
             ></Route>
-            <Route path="/admin/*" exact></Route>
+            <Route path="/admin/*" element={<Admin />} />
             <Route path="/error" exact element={<Error404 props />}></Route>
           </Routes>
         </Router>
       </div>
-    );
-  }
+    </Provider>
+  );
 }
 
 export default App;
