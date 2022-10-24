@@ -6,7 +6,6 @@ import Menu from "./pages/Menu/Menu";
 import Reservation from "./pages/Reservation/Reservation";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
-import Error404 from "./pages/Error404/Error404";
 
 import "./Main.css";
 
@@ -43,7 +42,6 @@ class Main extends Component {
             element={<Contact load={this.scrollToTop} />}
           ></Route>
           <Route path="*" element={<Navigate to={"/error"} />} />
-          <Route path="/error" element={<Error404 />}></Route>
         </Routes>
       </main>
     );

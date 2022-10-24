@@ -18,7 +18,7 @@ function PersonalData() {
   return (
     <div>
       <div className="left">
-        <h2>Dane osobowe</h2>{" "}
+        <h2>Dane osobowe</h2>
         <Input
           title="Imię"
           name="name"
