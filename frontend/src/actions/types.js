@@ -1,0 +1,2 @@
+export const LOGGING_ADMIN = "LOGGING_ADMIN";
+export const LOGOUT_ADMIN = "LOGOUT_ADMIN";

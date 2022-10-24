@@ -5,3 +5,18 @@
   width: 100vw;
   background-color: aliceblue;
 }
+
+.page-admin .login {
+  width: 600px;
+}
+
+.page-admin .login label {
+  font-size: 20px;
+}
+
+.page-admin .login button {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: bolder;
+  letter-spacing: 2px;
+}
