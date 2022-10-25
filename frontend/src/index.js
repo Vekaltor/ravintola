@@ -9,8 +9,6 @@ import { createStore } from "redux";
 import allReducers from "./reducers/allReducers";
 
 import "./index.css";
-import "bootstrap/dist/js/bootstrap.bundle";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 let store = createStore(allReducers);
 

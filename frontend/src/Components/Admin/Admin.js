@@ -10,7 +10,10 @@ import PanelAdmin from "./PanelAdmin";
 import PrivateRoutes from "./PrivateRoutes";
 import Products from "./Products";
 
+import { useSelector } from "react-redux";
+
 const Admin = () => {
+  const { auth } = useSelector((state) => state.admin);
   return (
     <div className="page-admin d-flex">
       <Routes>
