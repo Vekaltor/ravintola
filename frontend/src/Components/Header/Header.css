@@ -36,9 +36,11 @@
 }
 
 .mainHeader .top .wrapper .nameLogo {
+  margin: 0;
   color: #fffcf2;
   font-family: "Splash", cursive;
   font-weight: bold;
+  font-size: 30px;
 }
 
 .mainHeader .top .wrapper > div {
