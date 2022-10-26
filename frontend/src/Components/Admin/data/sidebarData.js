@@ -62,9 +62,11 @@ export const menuSideBar = [
       },
     ],
   },
-  {
-    id: 4,
-    categoryTitle: "Użytkownik",
-    links: [{ id: 0, Icon: <MdLogout />, name: "Wyloguj", pathname: "/admin" }],
-  },
+  // {
+  //   id: 4,
+  //   categoryTitle: "Użytkownik",
+  //   links: [
+  //     { id: 0, Icon: <MdLogout />, name: "Wyloguj", pathname: "/admin" },
+  //   ],
+  // },
 ];

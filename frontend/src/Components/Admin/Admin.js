@@ -7,8 +7,7 @@ import { loggingAdmin, logoutAdmin } from "../../actions/adminActions";
 
 import Login from "./Login";
 import PanelAdmin from "./PanelAdmin";
-import PrivateRoutes from "./PrivateRoutes";
-import Products from "./Products";
+import PrivateRoute from "./PrivateRoute";
 
 import { useSelector } from "react-redux";
 
@@ -17,11 +16,10 @@ const Admin = () => {
   return (
     <div className="page-admin d-flex">
       <Routes>
-        <Route element={<PrivateRoutes />}>
-          <Route element={<PanelAdmin />} index />
-          <Route element={<Products />} path="products" />
+        <Route element={<PrivateRoute />}>
+          <Route element={<PanelAdmin />} path="/*" />
         </Route>
-        <Route element={<Login />} path="login" />
+        <Route element={<Login />} path="logowanie" />
       </Routes>
     </div>
   );
