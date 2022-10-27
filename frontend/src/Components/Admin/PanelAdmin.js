@@ -7,6 +7,7 @@ import Sidebar from "./Sidebar";
 
 class PanelAdmin extends Component {
   state = {};
+
   render() {
     return (
       <div className="page-admin">

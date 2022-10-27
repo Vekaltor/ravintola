@@ -9,17 +9,14 @@ import Login from "./Login";
 import PanelAdmin from "./PanelAdmin";
 import PrivateRoute from "./PrivateRoute";
 
-import { useSelector } from "react-redux";
-
 const Admin = () => {
-  const { auth } = useSelector((state) => state.admin);
   return (
-    <div className="page-admin d-flex">
+    <div className="page-admin">
       <Routes>
         <Route element={<PrivateRoute />}>
-          <Route element={<PanelAdmin />} path="/*" />
+          <Route exact path="/*" element={<PanelAdmin />} />
         </Route>
-        <Route element={<Login />} path="logowanie" />
+        <Route element={<Login />} path="/logowanie" />
       </Routes>
     </div>
   );

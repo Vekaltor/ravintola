@@ -12,7 +12,7 @@ export const menuSideBar = [
   {
     id: 0,
     categoryTitle: "Główna",
-    links: [{ id: 0, Icon: <MdDashboard />, name: "Home", pathname: "home" }],
+    links: [{ id: 0, Icon: <MdDashboard />, name: "Home", pathname: "" }],
   },
   {
     id: 1,
