@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import LoginForm from "./LoginForm";
 import { useEffect, useState } from "react";
 import ImageLoginForm from "./ImageLoginForm";
-import Validator from "./LoginValidator";
 
 // TESTED VARIOUBLES
 const data = { login: "admin", pass: "admin" };
