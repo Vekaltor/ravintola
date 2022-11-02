@@ -4,6 +4,7 @@ import { loggingAdmin } from "../../actions/adminActions";
 import { useDispatch, useSelector } from "react-redux";
 import LoginForm from "./LoginForm";
 import { useEffect } from "react";
+import ImageLoginForm from "./ImageLoginForm";
 
 // TESTED VARIOUBLES
 const data = { login: "admin", pass: "admin" };
@@ -25,8 +26,11 @@ function Login() {
   }, []);
 
   return (
-    <div className="row m-auto login">
-      <LoginForm click={handleClick} />
+    <div className="login">
+      <div>
+        <LoginForm click={handleClick} />
+        <ImageLoginForm />
+      </div>
     </div>
   );
 }
