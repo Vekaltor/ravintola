@@ -22,10 +22,11 @@ function Login() {
 
   function waitingTime() {
     setIsLogging(true);
+    //In the future get data(login pass) from API => loading time)
     setTimeout(() => {
       dispatch(loggingAdmin());
       navigate("/admin");
-    }, 3000);
+    }, 2000);
   }
 
   useEffect(() => {
@@ -35,14 +36,15 @@ function Login() {
   const elementLoading = (
     <div className="loading-login">
       <span className="loader"></span>
-      <span className="title">Logowanie ...</span>
+      <span className="title">
+        Logowanie <span className="dots"></span>
+      </span>
     </div>
   );
 
   return (
     <div className="login">
       {isLogging ? elementLoading : null}
-
       <div>
         <LoginForm click={handleClick} />
         <ImageLoginForm />
