@@ -61,6 +61,13 @@ Administration panel in progress ...
 
 ![image](https://user-images.githubusercontent.com/56607344/198078114-2604681c-ae26-416f-a8b9-e241fdf4fe75.png)
 
+#### Login
+login: admin
+<br>
+password: admin
+
+![image](https://user-images.githubusercontent.com/56607344/199515558-05080a8f-1acf-49e4-8ed5-e18fafbd02f7.png)
+
 ### - Slider
 Slider video created with createContext / Providers to handle state. 
 Buttons allow you to select a specific slide, arrows scroll to the 
