@@ -5,19 +5,22 @@ import { useDispatch, useSelector } from "react-redux";
 import LoginForm from "./LoginForm";
 import { useEffect, useState } from "react";
 import ImageLoginForm from "./ImageLoginForm";
+import Validator from "./LoginValidator";
 
 // TESTED VARIOUBLES
 const data = { login: "admin", pass: "admin" };
 
 function Login() {
   const [isLogging, setIsLogging] = useState(false);
+  const [error, setError] = useState("");
 
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const { auth } = useSelector((state) => state.admin);
 
-  function handleClick(login, pass) {
-    if (data.login === login && data.pass === pass) waitingTime();
+  function handleClick(login, password) {
+    if (data.login === login && data.pass === password) waitingTime();
+    else setError("Niepoprawny login lub hasło.");
   }
 
   function waitingTime() {
@@ -46,7 +49,7 @@ function Login() {
     <div className="login">
       {isLogging ? elementLoading : null}
       <div>
-        <LoginForm click={handleClick} />
+        <LoginForm click={handleClick} error={error} setError={setError} />
         <ImageLoginForm />
       </div>
     </div>

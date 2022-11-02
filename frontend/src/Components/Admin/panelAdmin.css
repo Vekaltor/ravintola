@@ -111,7 +111,7 @@
   padding: 50px 40px;
 }
 
-.page-admin .login .form > div:nth-of-type(2) {
+.page-admin .login .form > div.button-login {
   margin-left: auto;
 }
 
@@ -264,6 +264,12 @@
 
 .page-admin .login .image-login-form .title span {
   color: #0d6dfd;
+}
+
+.page-admin .login .error-login {
+  color: red;
+  font-weight: bold;
+  font-size: 12px;
 }
 
 /* LOGOUT  */

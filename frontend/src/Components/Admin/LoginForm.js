@@ -1,11 +1,23 @@
 import { useState } from "react";
 
 import { FaUser, FaLock } from "react-icons/fa";
+import ErrorLogin from "./ErrorLogin";
+import Validator from "./LoginValidator";
 
-const LoginForm = (props) => {
+const LoginForm = ({ error, setError, click }) => {
   const [login, setLogin] = useState("");
   const [pass, setPass] = useState("");
-  const [incorrectData, setIncorrectData] = useState(false);
+
+  function handleValidator(login, password) {
+    const validator = new Validator(login, password);
+    validator.validate();
+    if (!validator.getIsValidate()) {
+      let error = validator.getMessage();
+      setError(error);
+      return false;
+    }
+    return true;
+  }
 
   function handleChangeLogin(target) {
     setLogin(target.value);
@@ -26,7 +38,8 @@ const LoginForm = (props) => {
   }
 
   function handleClick() {
-    props.click(login, pass);
+    setError("");
+    if (!handleValidator(login, pass) === false) click(login, pass);
     clearData();
   }
 
@@ -36,7 +49,6 @@ const LoginForm = (props) => {
 
   function handleFocus(target) {
     addActiveStyles(target);
-    setIncorrectData(false);
   }
 
   function handleBlur(target) {
@@ -47,6 +59,8 @@ const LoginForm = (props) => {
     setPass("");
     setLogin("");
   }
+
+  const errorComponent = error !== "" ? <ErrorLogin message={error} /> : null;
 
   return (
     <form onSubmit={(e) => handleSubmit(e)} className="form">
@@ -83,10 +97,9 @@ const LoginForm = (props) => {
           />
         </label>
       </div>
-      <div>
-        <button className="" onClick={handleClick}>
-          Logowanie
-        </button>
+      {errorComponent}
+      <div className="button-login">
+        <button onClick={handleClick}>Logowanie</button>
       </div>
     </form>
   );
