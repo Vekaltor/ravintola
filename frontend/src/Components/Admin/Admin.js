@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { loggingAdmin, logoutAdmin } from "../../actions/adminActions";
 
-import Login from "./Login";
+import Login from "./Login/Login";
 import PanelAdmin from "./PanelAdmin";
 import PrivateRoute from "./PrivateRoute";
 

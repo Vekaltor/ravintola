@@ -6,6 +6,7 @@ function Notifications() {
       <span className="icon">
         <MdNotificationsNone />
       </span>
+      <span className="counter">1</span>
     </div>
   );
 }
