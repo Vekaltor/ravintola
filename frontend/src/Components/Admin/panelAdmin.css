@@ -320,7 +320,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(68, 68, 68, 0.596);
-  z-index: 1;
+  z-index: 5;
 }
 
 .page-admin .logout-popup {
@@ -649,16 +649,21 @@
 .content-admin-panel .box-dishes {
   width: 90%;
   height: calc(100% - 50px);
-  padding: 20px 0;
+  padding-bottom: 20px;
   margin: 25px auto;
   border: 1px solid #ddd;
   overflow-y: scroll;
 }
 
 .content-admin-panel .box-dishes .dishes-search {
+  position: sticky;
+  left: 0;
+  top: 0;
   width: 100%;
   margin-bottom: 25px;
-  padding: 0 20px;
+  padding: 30px 20px 20px 20px;
+  background-color: white;
+  z-index: 1;
 }
 
 .content-admin-panel .box-dishes .dishes-search form {
@@ -718,6 +723,12 @@
   width: 100%;
 }
 
+.content-admin-panel .box-dishes .dishes-search form select.categories option,
+.content-admin-panel .box-dishes .dishes-search form select.recommended option {
+  font-size: 14px;
+  padding: 20px 0;
+}
+
 .content-admin-panel .box-dishes .dishes-search form select:focus,
 .content-admin-panel .box-dishes .dishes-search form input:focus {
   outline: none;
@@ -734,7 +745,7 @@
   display: flex;
   align-items: center;
   width: auto;
-  background-color: transparent;
+  background-color: white;
   cursor: pointer;
 }
 
@@ -838,14 +849,10 @@
 }
 
 .content-admin-panel .dishes .dish .name {
-  min-width: 150px;
-  width: 150px;
+  min-width: 100px;
+  width: 100px;
   margin: 0 20px;
   font-weight: bold;
-}
-
-.content-admin-panel .dishes .dish.prototype .name {
-  font-weight: normal;
 }
 
 .content-admin-panel .dishes .dish .description {
@@ -862,7 +869,7 @@
   justify-content: center;
   min-width: 100px;
   width: 100px;
-  margin: 0 20px;
+  margin: 0 40px;
 }
 
 .content-admin-panel .dishes .dish .recommended .star svg {
@@ -879,12 +886,36 @@
   min-width: 40px;
   width: 40px;
   text-align: right;
+  font-weight: bold;
 }
+
 .content-admin-panel .dishes .dish .settings {
+  display: flex;
+  justify-content: right;
   min-width: 100px;
   width: 100px;
-  margin-left: 10px;
+  margin-left: 20px;
   text-align: right;
+}
+
+.content-admin-panel .dishes .dish.prototype .settings {
+  display: block;
+}
+
+.content-admin-panel .dishes .dish .settings span {
+  padding: 0 10px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.content-admin-panel .dishes .dish .settings svg {
+  font-size: 20px;
+  color: #444;
+  transition: 0.15s linear;
+}
+
+.content-admin-panel .dishes .dish .settings span:hover svg {
+  color: rgba(17, 0, 255, 0.674);
 }
 
 /* RWD  */
