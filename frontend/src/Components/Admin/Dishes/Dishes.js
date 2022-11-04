@@ -14,24 +14,27 @@ const Dishes = () => {
   const [recommended, setRecommended] = useState();
   const [filteredDishes, setFilteredDishes] = useState([]);
 
+  const [listChecked, setListChecked] = useState([]);
+
   const applyFilters = (filteredDishes) => {
     setFilteredDishes(filteredDishes);
   };
 
-  const deleteDish = (idDishToDelete) => {
-    const newListDishes = dishes.filter((dish) => dish.id !== idDishToDelete);
-    setDishes(newListDishes);
-    fetch(pathToApi + `api/menu/${idDishToDelete}`, {
-      method: "DELETE",
-    }).catch((error) => console.log(error));
-  };
+  const createJsxDishes = (dishesToMap) => {
+    if (isFilterOn() || filteredDishes.length)
+      dishesToMap = intersection(dishes, filteredDishes);
 
-  const createJsxDishes = (dishes) => {
-    if (isFilterOn()) dishes = intersection(dishes, filteredDishes);
-
-    return dishes.map((dish) => (
+    return dishesToMap.map((dish) => (
       <li key={dish.id} className="dish">
-        <Dish key={dish.id} dish={dish} deleteDish={deleteDish} />
+        <Dish
+          key={dish.id}
+          dish={dish}
+          dishes={dishes}
+          listChecked={listChecked}
+          setDishes={setDishes}
+          setListChecked={setListChecked}
+          setFilteredDishes={setFilteredDishes}
+        />
       </li>
     ));
   };
@@ -59,7 +62,7 @@ const Dishes = () => {
 
   useEffect(() => {
     if (!dishes.length) fetchDishes();
-  }, []);
+  }, [dishes]);
 
   const jsxDishes = createJsxDishes(dishes);
 
@@ -76,7 +79,7 @@ const Dishes = () => {
         setRecommended={setRecommended}
       />
       <ul className="dishes">
-        <PrototypeDish />
+        <PrototypeDish setListChecked={setListChecked} />
         {jsxDishes}
       </ul>
     </div>

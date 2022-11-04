@@ -2,8 +2,6 @@ import { BiSearch } from "react-icons/bi";
 import FiltrCategory from "./FiltrCategory";
 import FiltrRecommended from "./FiltrRecommended";
 
-import "./select";
-
 const FilterDishes = ({
   dishes,
   phrase,
@@ -45,26 +43,23 @@ const FilterDishes = ({
 
   const filterDishes = (phrase, category, recommended) => {
     let filteredDishes = dishes;
-    let isEmpty = true;
-    if (phrase && phrase.length !== 0) {
+    let isWithoutFilters = true;
+    if (phrase && phrase.length > 0) {
       let temporaryArray = filterByPhrase(phrase);
       filteredDishes = intersection(filteredDishes, temporaryArray);
-      isEmpty = false;
+      isWithoutFilters = false;
     }
-
     if (category) {
       let temporaryArray = filterByCategory(category);
       filteredDishes = intersection(filteredDishes, temporaryArray);
-      isEmpty = false;
+      isWithoutFilters = false;
     }
-
     if (recommended) {
       let temporaryArray = filterByRecommended(recommended);
       filteredDishes = intersection(filteredDishes, temporaryArray);
-      isEmpty = false;
+      isWithoutFilters = false;
     }
-
-    if (isEmpty) return dishes;
+    if (isWithoutFilters) return dishes;
     return filteredDishes;
   };
 
@@ -98,6 +93,7 @@ const FilterDishes = ({
     <div className="dishes-search">
       <form onSubmit={handleSubmit}>
         <input
+          value={phrase}
           type="search"
           placeholder="Wyszukaj danie"
           onInput={handleInputPhrase}
