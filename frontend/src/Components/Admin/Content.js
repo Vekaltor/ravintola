@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import Dishes from "./Dishes";
+import Dishes from "./Dishes/Dishes";
 
 function Content() {
   return (
