@@ -5,19 +5,25 @@ import { categoryOrder } from "../../Main/pages/Menu/Data";
 const FiltrCategory = ({ select }) => {
   const jsxOptions = (
     <>
-      <option selected hidden>
+      <option selected hidden value="">
         Kategorie
       </option>
       <option value="">Wszystkie</option>
-      {categoryOrder.map((category) => (
-        <option value={category.categoryName}>{category.polishTitle}</option>
+      {categoryOrder.map((category, index) => (
+        <option key={index} value={category.categoryName}>
+          {category.polishTitle}
+        </option>
       ))}
     </>
   );
 
   return (
     <div className="select-wrapper">
-      <select className="categories" onChange={(e) => select(e)}>
+      <select
+        defaultValue=""
+        className="categories"
+        onChange={(e) => select(e)}
+      >
         {jsxOptions}
       </select>
       <span className="arrow">

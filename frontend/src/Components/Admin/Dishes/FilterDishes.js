@@ -1,15 +1,19 @@
-import { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import FiltrCategory from "./FiltrCategory";
 import FiltrRecommended from "./FiltrRecommended";
 
 import "./select";
 
-const FilterDishes = ({ dishes, applyFilters }) => {
-  const [phrase, setPhrase] = useState();
-  const [category, setCategory] = useState();
-  const [recommended, setRecommended] = useState();
-
+const FilterDishes = ({
+  dishes,
+  phrase,
+  category,
+  recommended,
+  setPhrase,
+  setCategory,
+  setRecommended,
+  applyFilters,
+}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -19,18 +23,20 @@ const FilterDishes = ({ dishes, applyFilters }) => {
   };
 
   const handleInputPhrase = (e) => {
-    const newPhrase = e.target.value;
-    setPhrase(newPhrase);
+    const phrase = e.target.value;
+    setPhrase(phrase);
+    //Real-time search of dish phrases
+    applyFilters(filterDishes(phrase, category, recommended));
   };
 
   const handleSelectCategory = (e) => {
-    const newCategory = e.target.value;
-    setCategory(newCategory);
+    const category = e.target.value;
+    setCategory(category);
   };
 
   const handleSelectRecommended = (e) => {
-    const newRecommended = e.target.value;
-    setRecommended(newRecommended);
+    const recommended = e.target.value;
+    setRecommended(recommended);
   };
 
   const intersection = (arrA, arrB) => {

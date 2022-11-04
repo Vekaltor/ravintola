@@ -1,11 +1,9 @@
 import Star from "./Star";
 
-import { RiDeleteBin5Fill } from "react-icons/ri";
-import { BsBoxArrowInUpRight } from "react-icons/bs";
-
 import src from "../../../img/food2_1920x1280.jpg";
+import SettingsDish from "./SettingsDish";
 
-const Dish = ({ dish }) => {
+const Dish = ({ dish, deleteDish }) => {
   return (
     <>
       <div className="checkbox">
@@ -20,14 +18,7 @@ const Dish = ({ dish }) => {
         <Star recommended={dish.recommended} />
       </div>
       <div className="price">{dish.price} zł</div>
-      <div className="settings">
-        <span className="more-info">
-          <BsBoxArrowInUpRight />
-        </span>
-        <span className="delete">
-          <RiDeleteBin5Fill />
-        </span>
-      </div>
+      <SettingsDish dish={dish} deleteDish={deleteDish} />
     </>
   );
 };
