@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import { loggingAdmin } from "../../../actions/adminActions";
+import { loggingAdmin } from "../../../actions/rootActions";
 import { useDispatch, useSelector } from "react-redux";
 
 import LoginForm from "./LoginForm";
@@ -16,7 +16,7 @@ function Login() {
 
   let navigate = useNavigate();
   const dispatch = useDispatch();
-  const { auth } = useSelector((state) => state.admin);
+  const { auth } = useSelector((state) => state.root);
 
   function handleClick(login, password) {
     if (data.login === login && data.pass === password) waitingTime();

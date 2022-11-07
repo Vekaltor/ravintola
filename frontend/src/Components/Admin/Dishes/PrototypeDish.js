@@ -1,7 +1,14 @@
 import { useRef } from "react";
 
-const PrototypeDish = ({ setListChecked }) => {
+import { useDispatch } from "react-redux";
+import {
+  checkedAllDishes,
+  uncheckedAllDishes,
+} from "../../../actions/adminActions";
+
+const PrototypeDish = () => {
   const checkboxRef = useRef();
+  const dispatch = useDispatch();
 
   const handleChange = () => {
     let checked = checkboxRef.current.checked;
@@ -18,20 +25,13 @@ const PrototypeDish = ({ setListChecked }) => {
   const selectAllDishes = () => {
     let dishesCheckbox = [...document.querySelectorAll("[data-dish-checkbox]")];
     dishesCheckbox.map((dishCheckbox) => (dishCheckbox.checked = true));
-
-    setListChecked(dishesCheckbox);
+    dispatch(checkedAllDishes());
   };
 
   const unselectAllDishes = () => {
     let dishesCheckbox = [...document.querySelectorAll("[data-dish-checkbox]")];
     dishesCheckbox.map((dishCheckbox) => (dishCheckbox.checked = false));
-    setListChecked([]);
-  };
-
-  const getIdDish = () => {
-    // dishesCheckbox.map((dishCheckbox) =>
-    //   console.log(dishCheckbox.dataset.dishCheckbox)
-    // );
+    dispatch(uncheckedAllDishes());
   };
 
   return (

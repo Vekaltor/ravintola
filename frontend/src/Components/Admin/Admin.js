@@ -3,7 +3,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { loggingAdmin, logoutAdmin } from "../../actions/adminActions";
+import { loggingAdmin, logoutAdmin } from "../../actions/rootActions";
 
 import Login from "./Login/Login";
 import PanelAdmin from "./PanelAdmin";
@@ -23,7 +23,7 @@ const Admin = () => {
 };
 
 const mapStateToProps = (state) => ({
-  admin: state.admin,
+  root: state.root,
 });
 
 const mapDispatchToProps = {

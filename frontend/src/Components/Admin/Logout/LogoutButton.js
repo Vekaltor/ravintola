@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import { logoutAdmin } from "../../../actions/adminActions";
+import { logoutAdmin } from "../../../actions/rootActions";
 import { useDispatch } from "react-redux";
 
 const LogoutButton = () => {

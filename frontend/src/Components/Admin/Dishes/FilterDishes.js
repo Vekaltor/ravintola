@@ -1,23 +1,26 @@
+import { useState } from "react";
 import { BiSearch } from "react-icons/bi";
+import { connect, useDispatch, useSelector } from "react-redux";
 import FiltrCategory from "./FiltrCategory";
 import FiltrRecommended from "./FiltrRecommended";
 
-const FilterDishes = ({
-  dishes,
-  phrase,
-  category,
-  recommended,
-  setPhrase,
-  setCategory,
-  setRecommended,
-  applyFilters,
-}) => {
+import { updateFilterDishes } from "../../../actions/adminActions";
+
+const FilterDishes = ({ applyFilters }) => {
+  const [phrase, setPhrase] = useState("");
+  const [category, setCategory] = useState("");
+  const [recommended, setRecommended] = useState("");
+
+  const dispatch = useDispatch();
+  const { dishes } = useSelector((state) => state.admin);
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
   const handleSearch = () => {
     applyFilters(filterDishes(phrase, category, recommended));
+    dispatch(updateFilterDishes(createObjectFiltersDishes()));
   };
 
   const handleInputPhrase = (e) => {
@@ -25,6 +28,7 @@ const FilterDishes = ({
     setPhrase(phrase);
     //Real-time search of dish phrases
     applyFilters(filterDishes(phrase, category, recommended));
+    dispatch(updateFilterDishes(createObjectFiltersDishes()));
   };
 
   const handleSelectCategory = (e) => {
@@ -37,33 +41,38 @@ const FilterDishes = ({
     setRecommended(recommended);
   };
 
-  const intersection = (arrA, arrB) => {
-    return arrA.filter((x) => arrB.includes(x));
+  const createObjectFiltersDishes = () => {
+    return {
+      category: category,
+      phrase: phrase,
+      recommended: recommended,
+    };
   };
 
   const filterDishes = (phrase, category, recommended) => {
     let filteredDishes = dishes;
     let isWithoutFilters = true;
+
     if (phrase && phrase.length > 0) {
-      let temporaryArray = filterByPhrase(phrase);
-      filteredDishes = intersection(filteredDishes, temporaryArray);
+      filteredDishes = filterByPhrase(filteredDishes, phrase);
       isWithoutFilters = false;
     }
-    if (category) {
-      let temporaryArray = filterByCategory(category);
-      filteredDishes = intersection(filteredDishes, temporaryArray);
+
+    if (category && category.length > 0) {
+      filteredDishes = filterByCategory(filteredDishes, category);
       isWithoutFilters = false;
     }
-    if (recommended) {
-      let temporaryArray = filterByRecommended(recommended);
-      filteredDishes = intersection(filteredDishes, temporaryArray);
+
+    if (recommended && recommended.length > 0) {
+      filteredDishes = filterByRecommended(filteredDishes, recommended);
       isWithoutFilters = false;
     }
+
     if (isWithoutFilters) return dishes;
     return filteredDishes;
   };
 
-  const filterByRecommended = (recommended) => {
+  const filterByRecommended = (dishes, recommended) => {
     let filteredDishes = [];
     filteredDishes = dishes.filter((dish) => {
       if (recommended === "all") return dish;
@@ -73,7 +82,7 @@ const FilterDishes = ({
     return filteredDishes;
   };
 
-  const filterByPhrase = (phrase) => {
+  const filterByPhrase = (dishes, phrase) => {
     let filteredDishes = [];
     let phraseLower = phrase.toLowerCase();
     filteredDishes = dishes.filter((dish) => {
@@ -83,7 +92,7 @@ const FilterDishes = ({
     return filteredDishes;
   };
 
-  const filterByCategory = (category) => {
+  const filterByCategory = (dishes, category) => {
     let filteredDishes = [];
     filteredDishes = dishes.filter((dish) => dish.mealCategory === category);
     return filteredDishes;
@@ -108,4 +117,12 @@ const FilterDishes = ({
   );
 };
 
-export default FilterDishes;
+const mapStateToProps = (state) => ({
+  filtersDishes: state.admin.filtersDishes,
+});
+
+const mapDispatchToProps = {
+  updateFilterDishes,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FilterDishes);

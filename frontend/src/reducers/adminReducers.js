@@ -1,23 +1,67 @@
-import { LOGGING_ADMIN, LOGOUT_ADMIN } from "../actions/types";
-
-function getValueAuthFromSessionStorage() {
-  const value = sessionStorage.getItem("auth");
-  if (value === "true") return true;
-  else if (value === "false") return false;
-  else return undefined;
-}
+import {
+  FETCH_DISHES_BEGIN,
+  FETCH_DISHES_SUCCESS,
+  FETCH_DISHES_FAILURE,
+  UPDATE_FILTER_DISHES,
+  UPDATE_CHECKED_DISHES,
+  CHECKED_ALL_DISHES,
+  UNCHECKED_ALL_DISHES,
+} from "../actions/types";
 
 const initialState = {
-  auth: getValueAuthFromSessionStorage() || false,
+  dishes: [],
+  filtersDishes: {
+    phrase: "",
+    category: "",
+    recommended: "",
+  },
+  checkedDishes: [],
+  loading: false,
+  error: null,
 };
 
-export default function reducer(state = initialState, action) {
+export default function adminReducer(state = initialState, action) {
   switch (action.type) {
-    case LOGGING_ADMIN:
-      return { auth: action.payload };
-    case LOGOUT_ADMIN:
-      return { auth: action.payload };
+    case FETCH_DISHES_BEGIN:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case FETCH_DISHES_SUCCESS:
+      return {
+        ...state,
+        dishes: action.payload.dishes,
+        loading: false,
+      };
+    case FETCH_DISHES_FAILURE:
+      return {
+        ...state,
+        dishes: [],
+        loading: false,
+        error: action.payload.error,
+      };
+    case UPDATE_FILTER_DISHES:
+      return {
+        ...state,
+        filtersDishes: action.payload.filters,
+      };
+    case UPDATE_CHECKED_DISHES:
+      return {
+        ...state,
+        checkedDishes: action.payload.checkedDishes,
+      };
+    case CHECKED_ALL_DISHES:
+      return {
+        ...state,
+        checkedDishes: [...state.dishes],
+      };
+    case UNCHECKED_ALL_DISHES:
+      return {
+        ...state,
+        checkedDishes: [],
+      };
     default:
-      return state;
+      return { ...state };
   }
 }

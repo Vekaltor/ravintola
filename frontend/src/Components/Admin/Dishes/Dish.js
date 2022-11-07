@@ -1,21 +1,28 @@
 import { useRef } from "react";
 
+import { useDispatch, useSelector } from "react-redux";
+import {
+  updateCheckedDishes,
+  updateDishes,
+} from "../../../actions/adminActions";
+
 import Star from "./Star";
 import SettingsDish from "./SettingsDish";
 
 import src from "../../../img/food2_1920x1280.jpg";
 
-const Dish = ({ dish, dishes, listChecked, setDishes, setListChecked }) => {
+const Dish = ({ dish }) => {
   const checkboxRef = useRef();
   const { id } = dish;
+  const { dishes, checkedDishes } = useSelector((state) => state.admin);
+  const dispatch = useDispatch();
 
   const changeRecommended = (idDish) => {
-    let modifiedListDishes = dishes.map((dish) => {
+    let changedListDishes = dishes.map((dish) => {
       if (dish.id === idDish) dish.recommended = !dish.recommended;
       return dish;
     });
-
-    setDishes(modifiedListDishes);
+    dispatch(updateDishes(changedListDishes));
   };
 
   const checkedDish = () => {
@@ -24,25 +31,21 @@ const Dish = ({ dish, dishes, listChecked, setDishes, setListChecked }) => {
     else removeCheckedDish(checkboxDish);
   };
 
-  const addCheckedDish = (checkboxDish) => {
-    let newListChecked = [...listChecked];
-    newListChecked.push(checkboxDish);
-    setListChecked(newListChecked);
+  const addCheckedDish = () => {
+    let newListCheckedDishes = [...checkedDishes];
+    newListCheckedDishes.push(dish);
+    dispatch(updateCheckedDishes(newListCheckedDishes));
   };
 
-  const removeCheckedDish = (checkboxDish) => {
-    let newListChecked = [...listChecked];
-    let indexCheckboxToDelete = findIndexCheckbox(checkboxDish);
-    newListChecked.splice(indexCheckboxToDelete, 1);
-    setListChecked(newListChecked);
+  const removeCheckedDish = () => {
+    let newListCheckedDishes = [...checkedDishes];
+    let indexCheckedDishToDelete = findIndexDish(dish);
+    newListCheckedDishes.splice(indexCheckedDishToDelete, 1);
+    dispatch(updateCheckedDishes(newListCheckedDishes));
   };
 
-  const findIndexCheckbox = (checkboxDish) => {
-    let idCheckboxDish = checkboxDish.dataset.dishCheckbox;
-    let index = listChecked.findIndex(
-      (elementChecked) => elementChecked.dataset.dishCheckbox === idCheckboxDish
-    );
-    return index;
+  const findIndexDish = () => {
+    return checkedDishes.findIndex((dishChecked) => dishChecked.id === id);
   };
 
   const handleClick = () => {
@@ -68,7 +71,7 @@ const Dish = ({ dish, dishes, listChecked, setDishes, setListChecked }) => {
         <Star recommended={dish.recommended} />
       </div>
       <div className="price">{dish.price} zł</div>
-      <SettingsDish dish={dish} dishes={dishes} setDishes={setDishes} />
+      <SettingsDish dish={dish} />
     </>
   );
 };
