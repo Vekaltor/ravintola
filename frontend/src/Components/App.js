@@ -27,7 +27,7 @@ function App() {
             }
           ></Route>
           <Route path="/admin/*" element={<Admin />} />
-          <Route path="/error" exact element={<Error404 props />}></Route>
+          {/* <Route path="/error" exact element={<Error404 props />}></Route> */}
         </Routes>
       </Router>
     </div>

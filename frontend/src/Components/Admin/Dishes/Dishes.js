@@ -7,12 +7,14 @@ import PrototypeDish from "./PrototypeDish";
 import { fetchDishes } from "../../../actions/adminActions";
 import { connect, useDispatch, useSelector } from "react-redux";
 import AddDishButton from "./AddDishButton";
+import { Route, Routes } from "react-router-dom";
+import Product from "./Product";
 
 const Dishes = () => {
-  const [filteredDishes, setFilteredDishes] = useState([]);
   const { dishes, filtersDishes, loading, error } = useSelector(
     (state) => state.admin
   );
+  const [filteredDishes, setFilteredDishes] = useState(dishes);
   const { phrase, category, recommended } = filtersDishes;
   const dispatch = useDispatch();
 
@@ -29,6 +31,7 @@ const Dishes = () => {
   };
 
   const intersection = (arrA, arrB) => {
+    if (arrA.toString() === arrB.toString()) return arrA;
     return arrA.filter((x) => arrB.includes(x));
   };
 
@@ -72,14 +75,19 @@ const Dishes = () => {
   }, []);
 
   return (
-    <div className="box-dishes">
-      <AddDishButton />
-      <FilterDishes applyFilters={applyFilters} />
-      <ul className="dishes">
-        <PrototypeDish />
-        {render()}
-      </ul>
-    </div>
+    <>
+      <div className="box-dishes">
+        <AddDishButton />
+        <FilterDishes applyFilters={applyFilters} />
+        <ul className="dishes">
+          <PrototypeDish />
+          {render()}
+        </ul>
+      </div>
+      <Routes>
+        <Route element={<Product />} path=":id" />
+      </Routes>
+    </>
   );
 };
 

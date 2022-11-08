@@ -642,6 +642,7 @@
   bottom: 0;
   padding: 10px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 /* DISHES  */
@@ -1160,12 +1161,43 @@ delay = 0s */
 /* DISH DETAILS  */
 
 .content-admin-panel .dish-detail-box {
+  position: absolute;
+  left: 0;
+  top: 0;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
   padding: 25px;
   background-color: #f0f0fa;
+  z-index: 5;
+  animation: hide-dish-detail-box 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22)
+    forwards;
+  transform: translate(0, 0);
+}
+
+.content-admin-panel .dish-detail-box.active {
+  animation: show-dish-detail-box 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22)
+    forwards;
+  transform: translate(100%, 0);
+}
+
+@keyframes show-dish-detail-box {
+  0% {
+    transform: translate(100%, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes hide-dish-detail-box {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100%, 0);
+  }
 }
 
 .dish-detail-box .top {
@@ -1270,7 +1302,7 @@ delay = 0s */
 .dish-detail-box .dish-info .buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: 25px;
+  margin-top: 50px;
 }
 
 .dish-detail-box .dish-info .buttons .button {
@@ -1289,6 +1321,7 @@ delay = 0s */
 
 .dish-detail-box .dish-info .buttons .button.edit {
   background-color: rgba(17, 0, 255, 0.674);
+  border: 1px solid rgba(17, 0, 255, 0.674);
 }
 
 .dish-detail-box .dish-info .buttons .button.delete {
@@ -1311,12 +1344,82 @@ delay = 0s */
 }
 
 .dish-detail-box .dish-more-info .description {
-  display: inline-block;
+  box-sizing: content-box;
+  display: flex;
+  align-items: center;
   width: 75%;
+  padding-right: 25%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(34, 34, 34, 0.137);
+  margin-bottom: 50px;
+}
+
+.dish-detail-box .dish-more-info .description > span {
+  padding: 10px 15px;
   font-size: 14px;
   line-height: 1.5em;
   color: #333;
-  margin-bottom: 50px;
+}
+
+.dish-detail-box .dish-more-info .description > span.edit-text {
+  padding: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.dish-detail-box .dish-more-info .description > span.edit-text textarea {
+  max-width: 100%;
+  width: 100%;
+  padding: 15px 25px;
+  margin: -6px -11px;
+  border: 1px solid rgba(34, 34, 34, 0.137);
+  line-height: 1.5em;
+  font-size: 14px;
+  color: #333;
+  background-color: transparent;
+  outline: none;
+  resize: vertical;
+  overflow: hidden;
+}
+
+.dish-detail-box
+  .dish-more-info
+  .description
+  > span.edit-text
+  .header-textarea {
+  display: block;
+  position: absolute;
+  left: 10px;
+  top: -15px;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: white;
+}
+
+.dish-detail-box .dish-more-info .description > span.icon {
+  display: flex;
+  align-self: flex-end;
+  margin-bottom: 0;
+  padding: 5px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.dish-detail-box .dish-more-info .description > span.icon svg {
+  font-size: 25px;
+  color: #333;
+  transition: 0.25s 0.05s ease-out;
+}
+
+.dish-detail-box .dish-more-info .description > span.icon:hover svg {
+  color: #0d6dfd;
+}
+
+.dish-detail-box .dish-more-info .description > span.icon.edited:hover svg {
+  color: greenyellow;
+  background-color: #333;
+  border: 1px solid transparent;
 }
 
 .dish-detail-box .dish-more-info .button {
@@ -1376,7 +1479,299 @@ delay = 0s */
   background-color: rgba(17, 0, 255, 0.674);
 }
 
+.content-admin-panel .box-form-add-dish {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 20px 40px 20px 50px;
+  background-color: #f0f0fa;
+}
+
+.box-form-add-dish .box-message {
+  height: 60px;
+  width: 100%;
+}
+
+.box-form-add-dish .message {
+  padding: 13px 20px;
+  border: 1px solid #07be6e;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #07be6e;
+  background-color: #e0ffef;
+  margin-bottom: 25px;
+}
+
+.box-form-add-dish .message span {
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+.box-form-add-dish .form-add-dish {
+  width: 100%;
+  height: 100%;
+}
+
+.box-form-add-dish .form-add-dish form {
+  display: flex;
+  height: 100%;
+}
+
+.box-form-add-dish .form-add-dish .section-form {
+  width: 50%;
+  background-color: white;
+  box-shadow: 0px 0px 10px 2px rgba(66, 68, 90, 0.089);
+  border-radius: 5px;
+}
+
+.box-form-add-dish .main-form {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  margin-right: 40px;
+}
+
+.box-form-add-dish .main-form .content-form {
+  display: flex;
+  flex-wrap: wrap;
+  height: fit-content;
+  padding: 25px;
+}
+
+.box-form-add-dish .form-add-dish .section-form .header {
+  width: 100%;
+  height: fit-content;
+  padding: 25px;
+  border-bottom: 1px solid rgba(34, 34, 34, 0.137);
+  font-size: 16px;
+  color: #222;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+.box-form-add-dish .form-add-dish .main-form label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  padding-bottom: 35px;
+  font-size: 14px;
+  color: #333;
+}
+
+.box-form-add-dish .form-add-dish .main-form label:nth-of-type(1),
+.box-form-add-dish .form-add-dish .main-form label:nth-last-of-type(1),
+.box-form-add-dish .form-add-dish .main-form label:nth-last-of-type(2) {
+  width: 100%;
+}
+
+.box-form-add-dish .form-add-dish .main-form label:nth-last-of-type(2) input {
+  word-wrap: break-word;
+  word-break: break-all;
+  padding-bottom: 100px;
+}
+
+.box-form-add-dish .form-add-dish .main-form label:nth-of-type(2n + 2) {
+  padding-right: 10px;
+}
+
+.box-form-add-dish .form-add-dish .main-form label:nth-last-of-type(2) {
+  padding-right: 0;
+}
+
+.box-form-add-dish .form-add-dish .main-form label input,
+.box-form-add-dish .form-add-dish .main-form label select,
+.box-form-add-dish .form-add-dish .main-form label textarea {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(34, 34, 34, 0.137);
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+}
+
+.box-form-add-dish .form-add-dish .main-form label textarea {
+  min-height: 100px;
+  max-height: 100px;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.box-form-add-dish .form-add-dish .main-form label select option {
+  font-size: 14px;
+}
+
+.box-form-add-dish .form-add-dish .main-form label input:focus,
+.box-form-add-dish .form-add-dish .main-form label select:focus,
+.box-form-add-dish .form-add-dish .main-form label textarea:focus {
+  outline: none;
+  box-shadow: 0 0 3px 1px rgba(17, 0, 255, 0.674);
+}
+
+.box-form-add-dish .form-add-dish .main-form .uploaded-image {
+  position: relative;
+  cursor: pointer;
+  padding-right: 0;
+  border: 1px solid rgba(34, 34, 34, 0.212);
+}
+
+.box-form-add-dish
+  .form-add-dish
+  .main-form
+  .uploaded-image::-webkit-file-upload-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  margin-right: 0;
+  border: 0px;
+  background-color: rgba(34, 34, 34, 0.082);
+  color: #777;
+  cursor: pointer;
+}
+
+.box-form-add-dish .second-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.box-form-add-dish .second-form .image {
+  width: 100%;
+  max-height: 400px;
+  padding: 0 25px;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.box-form-add-dish .second-form .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.box-form-add-dish .second-form .other-settings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 40px 25px;
+  margin-top: 30px;
+  border-bottom: 1px solid rgba(34, 34, 34, 0.137);
+}
+
+.box-form-add-dish .second-form .other-settings span {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.box-form-add-dish .second-form .other-settings label {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+.box-form-add-dish .second-form .other-settings input {
+  appearance: none;
+}
+
+.box-form-add-dish .second-form .other-settings .switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.box-form-add-dish .second-form .other-settings .switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.box-form-add-dish
+  .second-form
+  .other-settings
+  .switch
+  input:checked
+  + .slider {
+  background-color: rgba(17, 0, 255, 0.674);
+}
+
+.box-form-add-dish .second-form .other-settings .switch input:focus + .slider {
+  box-shadow: 0 0 1px rgba(17, 0, 255, 0.674);
+}
+
+.box-form-add-dish
+  .second-form
+  .other-settings
+  .switch
+  input:checked
+  + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.box-form-add-dish .second-form .buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+}
+
+.box-form-add-dish .second-form .buttons button {
+  font-size: 15px;
+  /* background-color: #07be6e;
+  border: 1px solid #07be6e; */
+  background-color: #0d6dfd;
+  border: 1px solid #0d6dfd;
+  padding: 20px 40px;
+  border-radius: 2px;
+  color: white;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
 /* RWD  */
+
+@media (max-width: 1200px) {
+  .box-form-add-dish .form-add-dish form {
+    flex-direction: column;
+  }
+  .box-form-add-dish .form-add-dish .section-form {
+    width: 100%;
+    margin-bottom: 25px;
+  }
+}
 
 @media (max-width: 600px) {
   .page-admin .login > div {

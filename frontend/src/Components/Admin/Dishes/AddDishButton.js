@@ -4,7 +4,7 @@ const AddDishButton = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/admin/dania/dodawanie");
+    navigate("creation");
   };
 
   return (

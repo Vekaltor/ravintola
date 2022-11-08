@@ -16,7 +16,7 @@ const Admin = () => {
         <Route element={<PrivateRoute />}>
           <Route exact path="/*" element={<PanelAdmin />} />
         </Route>
-        <Route element={<Login />} path="/logowanie" />
+        <Route element={<Login />} path="/login" />
       </Routes>
     </div>
   );

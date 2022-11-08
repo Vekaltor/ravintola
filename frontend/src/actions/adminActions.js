@@ -48,7 +48,7 @@ export const fetchDishes = () => (dispatch) => {
         (dishes) => dispatch(fetchDishesSuccess(dishes)),
         (err) => dispatch(fetchDishesFailure(err))
       );
-  }, 0);
+  }, 1000);
 };
 
 export const updateFilterDishes = (filters) => {
