@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { deleteDish } from "../../../actions/adminActions";
@@ -8,9 +8,12 @@ import { BsBoxArrowInUpRight } from "react-icons/bs";
 
 const SettingsDish = ({ dish }) => {
   const { id, name } = dish;
-  const nameDishToUrl = name.toLowerCase();
   const { dishes } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const nameDishURL = name.toLowerCase();
 
   const handleDeleteDish = () => {
     let idDishToDelete = id;
@@ -18,13 +21,20 @@ const SettingsDish = ({ dish }) => {
     dispatch(deleteDish(dishes, dishToDelete));
   };
 
+  const goToDish = () => {
+    const extraParams = {
+      state: {
+        dish,
+      },
+    };
+    navigate(`${nameDishURL}`, extraParams);
+  };
+
   return (
     <div className="settings">
-      <Link to={`:${nameDishToUrl}}`}>
-        <span className="more-info">
-          <BsBoxArrowInUpRight />
-        </span>
-      </Link>
+      <span className="more-info" onClick={goToDish}>
+        <BsBoxArrowInUpRight />
+      </span>
       <span className="delete" onClick={handleDeleteDish}>
         <RiDeleteBin5Fill />
       </span>

@@ -6,6 +6,7 @@ import PrototypeDish from "./PrototypeDish";
 
 import { fetchDishes } from "../../../actions/adminActions";
 import { connect, useDispatch, useSelector } from "react-redux";
+import AddDishButton from "./AddDishButton";
 
 const Dishes = () => {
   const [filteredDishes, setFilteredDishes] = useState([]);
@@ -49,7 +50,16 @@ const Dishes = () => {
 
   const render = () => {
     if (loading === true)
-      return <div className="dishes-loading">loading ...</div>;
+      return (
+        <div className="dishes-loading">
+          <span className="container">
+            <div className="box1"></div>
+            <div className="box2"></div>
+            <div className="box3"></div>
+          </span>
+          <span className="text">ładowanie</span>
+        </div>
+      );
     else if (!error) return renderDishes(dishes);
   };
 
@@ -63,6 +73,7 @@ const Dishes = () => {
 
   return (
     <div className="box-dishes">
+      <AddDishButton />
       <FilterDishes applyFilters={applyFilters} />
       <ul className="dishes">
         <PrototypeDish />

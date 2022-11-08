@@ -9,6 +9,7 @@ function Content() {
       <Routes>
         <Route element={<Dishes />} path="dania" />
         <Route element={<Product />} path="dania/:id" />
+        <Route element={<Product />} path="dodawanie" />
       </Routes>
     </div>
   );

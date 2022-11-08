@@ -774,14 +774,231 @@
 .content-admin-panel .dishes .dishes-loading {
   position: relative;
   left: 0;
-  top: 25%;
+  top: 0;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   height: 100%;
-  justify-content: center;
-  color: #0d6dfd;
-  letter-spacing: 2px;
-  font-size: 20px;
+  margin-top: 100px;
+}
+
+.content-admin-panel .dishes .dishes-loading span.container {
+  display: block;
+  position: relative;
+  width: 28px;
+  height: 28px;
+  margin-bottom: 10px;
+}
+
+/* timeFunction = ease-in-out
+duration = 4s
+delay = 0s */
+
+.content-admin-panel .dishes .dishes-loading span.container .box1,
+.content-admin-panel .dishes .dishes-loading span.container .box2,
+.content-admin-panel .dishes .dishes-loading span.container .box3 {
+  border: 2px solid slateblue;
+  box-sizing: border-box;
+  position: absolute;
+  display: block;
+}
+
+.content-admin-panel .dishes .dishes-loading span.container .box1 {
+  animation: anime1 4s 0s forwards ease-in-out infinite;
+}
+
+.content-admin-panel .dishes .dishes-loading span.container .box2 {
+  animation: anime2 4s 0s forwards ease-in-out infinite;
+}
+
+.content-admin-panel .dishes .dishes-loading span.container .box3 {
+  animation: anime3 4s 0s forwards ease-in-out infinite;
+}
+
+@keyframes anime1 {
+  0% {
+    width: 28px;
+    height: 12px;
+    margin-top: 16px;
+    margin-left: 0px;
+  }
+  12.5% {
+    width: 12px;
+    height: 12px;
+    margin-top: 16px;
+    margin-left: 0px;
+  }
+  25% {
+    width: 12px;
+    height: 12px;
+    margin-top: 16px;
+    margin-left: 0px;
+  }
+  37.5% {
+    width: 12px;
+    height: 12px;
+    margin-top: 16px;
+    margin-left: 0px;
+  }
+  50% {
+    width: 12px;
+    height: 12px;
+    margin-top: 16px;
+    margin-left: 0px;
+  }
+  62.5% {
+    width: 12px;
+    height: 12px;
+    margin-top: 16px;
+    margin-left: 0px;
+  }
+  75% {
+    width: 12px;
+    height: 28px;
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+
+  87.5% {
+    width: 12px;
+    height: 12px;
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+
+  100% {
+    width: 12px;
+    height: 12px;
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+}
+
+@keyframes anime2 {
+  0% {
+    width: 12px;
+    height: 12px;
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+  12.5% {
+    width: 12px;
+    height: 12px;
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+  25% {
+    width: 12px;
+    height: 12px;
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+  37.5% {
+    width: 12px;
+    height: 12px;
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+  50% {
+    width: 28px;
+    height: 12px;
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+  62.5% {
+    width: 12px;
+    height: 12px;
+    margin-top: 0px;
+    margin-left: 16px;
+  }
+  75% {
+    width: 12px;
+    height: 12px;
+    margin-top: 0px;
+    margin-left: 16px;
+  }
+  87.5% {
+    width: 12px;
+    height: 12px;
+    margin-top: 0px;
+    margin-left: 16px;
+  }
+  100% {
+    width: 12px;
+    height: 12px;
+    margin-top: 0px;
+    margin-left: 16px;
+  }
+}
+@keyframes anime3 {
+  0% {
+    width: 12px;
+    height: 12px;
+    margin-top: 0px;
+    margin-left: 16px;
+  }
+  12.5% {
+    width: 12px;
+    height: 12px;
+    margin-top: 0px;
+    margin-left: 16px;
+  }
+  25% {
+    width: 12px;
+    height: 28px;
+    margin-top: 0px;
+    margin-left: 16px;
+  }
+  37.5% {
+    width: 12px;
+    height: 12px;
+    margin-top: 16px;
+    margin-left: 16px;
+  }
+  50% {
+    width: 12px;
+    height: 12px;
+    margin-top: 16px;
+    margin-left: 16px;
+  }
+  62.5% {
+    width: 12px;
+    height: 12px;
+    margin-top: 16px;
+    margin-left: 16px;
+  }
+  75% {
+    width: 12px;
+    height: 12px;
+    margin-top: 16px;
+    margin-left: 16px;
+  }
+  87.5% {
+    width: 12px;
+    height: 12px;
+    margin-top: 16px;
+    margin-left: 16px;
+  }
+  100% {
+    width: 28px;
+    height: 12px;
+    margin-top: 16px;
+    margin-left: 0px;
+  }
+}
+
+.content-admin-panel .dishes .dishes-loading span.text {
+  color: slateblue;
+  letter-spacing: 1px;
+  font-size: 15px;
+  font-weight: 900;
+  font-family: "Lato", sans-serif;
+}
+
+.content-admin-panel .dishes .dishes-loading span.text::after {
+  content: ".";
+  animation: showDots 1.5s linear infinite;
 }
 
 .content-admin-panel .dishes > .dish {
@@ -938,6 +1155,225 @@
 
 .content-admin-panel .dishes .dish .settings span:hover svg {
   color: rgba(17, 0, 255, 0.674);
+}
+
+/* DISH DETAILS  */
+
+.content-admin-panel .dish-detail-box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+  background-color: #f0f0fa;
+}
+
+.dish-detail-box .top {
+  width: 100%;
+  height: auto;
+  margin-bottom: 25px;
+  box-shadow: 0px 0px 15px 2px rgba(66, 68, 90, 0.089);
+  background-color: white;
+}
+
+.dish-detail-box .top > h2 {
+  color: #333;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding: 25px;
+}
+
+.dish-detail-box .top > .image {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 25px;
+  border-top: 1px solid rgba(34, 34, 34, 0.137);
+}
+
+.dish-detail-box .top > .image img {
+  width: 100%;
+  height: auto;
+  max-height: 255px;
+  object-fit: cover;
+}
+
+.dish-detail-box .top > .image .name {
+  position: absolute;
+  left: 0;
+  bottom: 30px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 25px;
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+  text-shadow: 0px 0px 20px rgba(17, 0, 255, 0.674);
+}
+
+.dish-detail-box .bottom {
+  display: flex;
+  width: 100%;
+}
+
+.dish-detail-box .dish-info {
+  width: 50%;
+  height: fit-content;
+  padding: 25px;
+  margin-right: 25px;
+  background-color: white;
+  box-shadow: 0px 0px 15px 2px rgba(66, 68, 90, 0.089);
+}
+
+.dish-detail-box .dish-info .header {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.dish-detail-box .dish-info .list {
+  margin-top: 25px;
+}
+
+.dish-detail-box .dish-info .list > span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  border-top: 1px solid rgba(34, 34, 34, 0.137);
+}
+
+.dish-detail-box .dish-info .list > span > span:nth-of-type(1) {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.dish-detail-box .dish-info .list > span > span:nth-of-type(2) {
+  font-size: 14px;
+  color: #333;
+}
+
+.dish-detail-box .dish-info .list > span > span.recommended-block {
+  display: block;
+  width: auto;
+  height: auto;
+  padding: 2px 15px;
+  border-radius: 10px;
+  background-color: rgba(17, 0, 255, 0.674);
+  color: white;
+}
+
+.dish-detail-box .dish-info .buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.dish-detail-box .dish-info .buttons .button {
+  width: 110px;
+  font-size: 14px;
+  color: white;
+  border-radius: 5px;
+  padding: 12px 0;
+  cursor: pointer;
+  transition: 0.1s 0.05s linear;
+}
+
+.dish-detail-box .dish-info .buttons .button:hover {
+  filter: contrast(150%);
+}
+
+.dish-detail-box .dish-info .buttons .button.edit {
+  background-color: rgba(17, 0, 255, 0.674);
+}
+
+.dish-detail-box .dish-info .buttons .button.delete {
+  background-color: #222;
+}
+
+.dish-detail-box .dish-more-info {
+  width: 50%;
+  height: fit-content;
+  padding: 25px;
+  background-color: white;
+  box-shadow: 0px 0px 15px 2px rgba(66, 68, 90, 0.089);
+}
+
+.dish-detail-box .dish-more-info .header {
+  margin-bottom: 25px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.dish-detail-box .dish-more-info .description {
+  display: inline-block;
+  width: 75%;
+  font-size: 14px;
+  line-height: 1.5em;
+  color: #333;
+  margin-bottom: 50px;
+}
+
+.dish-detail-box .dish-more-info .button {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+}
+
+.dish-detail-box .dish-more-info .button span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  width: 150px;
+  height: 60px;
+  border-radius: 15px;
+  background-color: #0d6dfd;
+  font-weight: bold;
+  color: #eee;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.15s 0.04s ease-in-out;
+}
+
+.dish-detail-box .dish-more-info .button span svg {
+  margin-right: 10px;
+}
+
+.dish-detail-box .dish-more-info .button:hover span {
+  background-color: #0d6dfdf1;
+  color: #fff;
+}
+
+/* ADD DISH BUTTON  */
+.content-admin-panel .box-button-add-dish {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.content-admin-panel .button-add-dish {
+  padding: 7px 40px;
+  border: 2px solid rgba(17, 0, 255, 0.674);
+  margin: 30px 50px 0 0;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgba(17, 0, 255, 0.674);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.15s 0.05s ease-in-out;
+}
+
+.content-admin-panel .button-add-dish:hover {
+  color: white;
+  background-color: rgba(17, 0, 255, 0.674);
 }
 
 /* RWD  */
