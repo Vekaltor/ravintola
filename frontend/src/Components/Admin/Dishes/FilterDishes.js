@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { connect, useDispatch, useSelector } from "react-redux";

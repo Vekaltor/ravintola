@@ -63,7 +63,7 @@ const Dish = ({ dish }) => {
         />
       </div>
       <div className="image">
-        <img src={src} alt={`img ${dish.name}`} />
+        <img src={process.env.PUBLIC_URL + src} alt={`img ${dish.name}`} />
       </div>
       <div className="name">{dish.name}</div>
       <div className="description">{dish.description}</div>

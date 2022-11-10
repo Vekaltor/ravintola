@@ -79,6 +79,7 @@ function BookingDetails() {
   useEffect(() => {
     fetchData();
     if (listReservations.length > 0) runReservationService();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date, amountPeople]);
 
   return (

@@ -5,7 +5,7 @@ const ImageLoginForm = () => {
     <div className="image-login-form">
       <span className="background"></span>
       <div className="image">
-        <img src={logo} alt="logo-ravintola" />
+        <img src={process.env.PUBLIC_URL + logo} alt="logo-ravintola" />
       </div>
       <span className="title">
         rav<span>admin</span>

@@ -29,6 +29,7 @@ function Menu(props) {
 
   useEffect(() => {
     if (!data.length) getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

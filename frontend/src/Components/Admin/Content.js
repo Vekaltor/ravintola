@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import AddDishForm from "./Dishes/AddDishForm";
 
 import Dishes from "./Dishes/Dishes";
-import Product from "./Dishes/Product";
 
 function Content() {
   return (
@@ -11,7 +10,6 @@ function Content() {
       <Routes>
         <Route element={<Dishes />} path="dishes/*" />
         <Route exact element={<AddDishForm />} path="dishes/creation" />
-        {/* <Route exact element={<Product />} path="dishes/:id" /> */}
       </Routes>
     </div>
   );

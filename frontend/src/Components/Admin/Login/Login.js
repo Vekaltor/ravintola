@@ -34,6 +34,7 @@ function Login() {
 
   useEffect(() => {
     if (auth) navigate("/admin");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const elementLoading = (
