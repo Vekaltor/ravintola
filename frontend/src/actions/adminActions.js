@@ -3,11 +3,25 @@ import {
   FETCH_DISHES_BEGIN,
   FETCH_DISHES_SUCCESS,
   FETCH_DISHES_FAILURE,
+  ADD_DISH,
+  UPDATE_DISHES,
   UPDATE_FILTER_DISHES,
   UPDATE_CHECKED_DISHES,
   CHECKED_ALL_DISHES,
   UNCHECKED_ALL_DISHES,
 } from "./types";
+
+export const fetchDishes = () => (dispatch) => {
+  dispatch(fetchDishesBegin());
+  setTimeout(() => {
+    fetch(pathToApi + "api/menu")
+      .then((response) => response.json())
+      .then(
+        (dishes) => dispatch(fetchDishesSuccess(dishes)),
+        (err) => dispatch(fetchDishesFailure(err))
+      );
+  }, 1000);
+};
 
 export const fetchDishesBegin = () => ({
   type: FETCH_DISHES_BEGIN,
@@ -23,33 +37,38 @@ export const fetchDishesFailure = (error) => ({
   payload: { error },
 });
 
-export const updateDishes = (dishes) => ({
-  type: FETCH_DISHES_SUCCESS,
-  payload: { dishes },
-});
+export const addDish = (dishes, dish) => {
+  fetch(pathToApi + `api/menu`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(dish),
+  }).catch((error) => console.log(error));
+
+  dishes.push(dish);
+  return {
+    type: ADD_DISH,
+    payload: { dishes },
+  };
+};
 
 export const deleteDish = (dishes, dishToDelete) => {
   dishes = dishes.filter((dish) => dish.id !== dishToDelete.id);
   fetch(pathToApi + `api/menu/${dishToDelete.id}`, {
     method: "DELETE",
   }).catch((error) => console.log(error));
+
   return {
-    type: FETCH_DISHES_SUCCESS,
+    type: UPDATE_DISHES,
     payload: { dishes },
   };
 };
 
-export const fetchDishes = () => (dispatch) => {
-  dispatch(fetchDishesBegin());
-  setTimeout(() => {
-    fetch(pathToApi + "api/menu")
-      .then((response) => response.json())
-      .then(
-        (dishes) => dispatch(fetchDishesSuccess(dishes)),
-        (err) => dispatch(fetchDishesFailure(err))
-      );
-  }, 1000);
-};
+export const modifyDish = (dishes) => ({
+  type: UPDATE_DISHES,
+  payload: { dishes },
+});
 
 export const updateFilterDishes = (filters) => {
   return {

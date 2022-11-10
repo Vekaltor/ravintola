@@ -2,6 +2,8 @@ import {
   FETCH_DISHES_BEGIN,
   FETCH_DISHES_SUCCESS,
   FETCH_DISHES_FAILURE,
+  ADD_DISH,
+  UPDATE_DISHES,
   UPDATE_FILTER_DISHES,
   UPDATE_CHECKED_DISHES,
   CHECKED_ALL_DISHES,
@@ -40,6 +42,17 @@ export default function adminReducer(state = initialState, action) {
         dishes: [],
         loading: false,
         error: action.payload.error,
+      };
+    case ADD_DISH:
+      return {
+        ...state,
+        filtersDishes: initialState.filtersDishes,
+        dishes: action.payload.dishes,
+      };
+    case UPDATE_DISHES:
+      return {
+        ...state,
+        dishes: action.payload.dishes,
       };
     case UPDATE_FILTER_DISHES:
       return {

@@ -15,7 +15,7 @@ const Dishes = () => {
   const { dishes, filtersDishes, loading, error } = useSelector(
     (state) => state.admin
   );
-  const [filteredDishes, setFilteredDishes] = useState(dishes);
+  const [filteredDishes, setFilteredDishes] = useState([]);
   const { phrase, category, recommended } = filtersDishes;
   const dispatch = useDispatch();
 
@@ -32,12 +32,13 @@ const Dishes = () => {
   };
 
   const intersection = (arrA, arrB) => {
+    if (arrB.length === 0) return arrA;
     if (arrA.toString() === arrB.toString()) return arrA;
     return arrA.filter((x) => arrB.includes(x));
   };
 
   const renderDishes = (dishesToMap) => {
-    if (isFilterOn() || filteredDishes.length)
+    if (isFilterOn() || filteredDishes.length > 0)
       dishesToMap = intersection(dishes, filteredDishes);
 
     return dishesToMap.map((dish) => (

@@ -1,10 +1,7 @@
 import { useRef } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import {
-  updateCheckedDishes,
-  updateDishes,
-} from "../../../actions/adminActions";
+import { updateCheckedDishes, modifyDish } from "../../../actions/adminActions";
 
 import Star from "./Star";
 import SettingsDish from "./SettingsDish";
@@ -22,7 +19,7 @@ const Dish = ({ dish }) => {
       if (dish.id === idDish) dish.recommended = !dish.recommended;
       return dish;
     });
-    dispatch(updateDishes(changedListDishes));
+    dispatch(modifyDish(changedListDishes));
   };
 
   const checkedDish = () => {

@@ -1,31 +1,69 @@
 import { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
+import { useDispatch, useSelector } from "react-redux";
+import { addDish } from "../../../actions/adminActions";
+
 import testSRC from "../../../img/king_prawns_640x966.jpg";
 import AddDishMessage from "./AddDishMessage";
 
 const AddDishForm = () => {
-  const [click, setClick] = useState(false);
-  const navigate = useNavigate();
+  const [details, setDetails] = useState({
+    name: "",
+    category: "",
+    currency: "",
+    gramature: "",
+    price: "",
+    description: "",
+    img: "",
+    recommended: false,
+  });
+  const [submited, setSubmited] = useState(false);
+  const { dishes } = useSelector((state) => state.admin);
 
-  let message =
-    "Well done! You successfully read this important alert message.";
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    handleAddDish();
   };
 
   const handleClick = () => {
-    setClick(true);
+    setSubmited(true);
+
     setTimeout(() => {
       navigate(-1);
     }, 3000);
   };
-  console.log(click);
+
+  const changeDetail = (name, e) => {
+    setDetails({ ...details, [name]: e.target.value });
+  };
+
+  const handleSwitchRecommended = () => {
+    setDetails({ ...details, recommended: !details.recommended });
+  };
+
+  const handleAddDish = () => {
+    let newDish = {
+      name: details.name,
+      description: details.description,
+      mealCategory: details.category,
+      weight: details.weight,
+      price: details.price,
+      imageSrc: details.img,
+      recommended: details.recommended,
+    };
+    dispatch(addDish(dishes, newDish));
+  };
+
+  let message =
+    "Well done! You successfully read this important alert message.";
 
   return (
     <div className="box-form-add-dish">
-      {!click ? <Outlet /> : <AddDishMessage message={message} />}
+      {!submited ? <Outlet /> : <AddDishMessage message={message} />}
       <div className="form-add-dish">
         <form onSubmit={handleSubmit}>
           <div className="main-form section-form">
@@ -33,20 +71,20 @@ const AddDishForm = () => {
             <div className="content-form">
               <label>
                 Nazwa Produktu
-                <input type="text" />
+                <input type="text" onInput={(e) => changeDetail("name", e)} />
               </label>
               <label>
                 Wybierz Kategorie
-                <select>
-                  <option value="">Ryby</option>
-                  <option value="">Napoje</option>
-                  <option value="">Desery</option>
-                  <option value="">Sałatki</option>
+                <select onChange={(e) => changeDetail("category", e)}>
+                  <option value="FISH">Ryby</option>
+                  <option value="DRINK">Napoje</option>
+                  <option value="DESSERT">Desery</option>
+                  <option value="SALAD">Sałatki</option>
                 </select>
               </label>
               <label>
                 Waluta
-                <select>
+                <select onChange={(e) => changeDetail("currency", e)}>
                   <option value="PLN">PLN</option>
                   <option value="EURO">EURO</option>
                   <option value="USD">USD</option>
@@ -54,15 +92,21 @@ const AddDishForm = () => {
               </label>
               <label>
                 Gramatura
-                <input type="text" />
+                <input
+                  type="text"
+                  onInput={(e) => changeDetail("gramature", e)}
+                />
               </label>
               <label>
                 Cena
-                <input type="text" />
+                <input type="text" onInput={(e) => changeDetail("price", e)} />
               </label>
               <label>
                 Opis
-                <textarea placeholder="Wiadomość"></textarea>
+                <textarea
+                  placeholder="Wiadomość"
+                  onInput={(e) => changeDetail("description", e)}
+                ></textarea>
               </label>
               <label>
                 Zdjęcie produktu
@@ -70,6 +114,7 @@ const AddDishForm = () => {
                   type="file"
                   placeholder="Dodaj zdjęcie..."
                   className="uploaded-image"
+                  onChange={(e) => changeDetail("img", e)}
                 />
               </label>
             </div>
@@ -77,12 +122,16 @@ const AddDishForm = () => {
           <div className="second-form section-form">
             <div className="header">Produkt</div>
             <div className="image">
-              <img src={testSRC} alt="added img" />
+              <img src={process.env.NODE_ENV + testSRC} alt="added img" />
             </div>
             <div className="other-settings">
               <span>Rekomendacja</span>
               <label className="switch">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  checked={details.recommended}
+                  onChange={handleSwitchRecommended}
+                />
                 <span className="slider round"></span>
               </label>
             </div>
