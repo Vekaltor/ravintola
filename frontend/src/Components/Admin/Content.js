@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { Routes, Route } from "react-router-dom";
-import AddDishForm from "./Dishes/AddDishForm";
+import AddDishForm from "./Dishes/addDish/AddDishForm";
 
 import Dishes from "./Dishes/Dishes";
 

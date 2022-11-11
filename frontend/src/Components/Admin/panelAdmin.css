@@ -1486,7 +1486,8 @@ delay = 0s */
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: fit-content;
+  min-height: 100%;
   padding: 20px 40px 20px 50px;
   background-color: #f0f0fa;
 }
@@ -1540,7 +1541,7 @@ delay = 0s */
   display: flex;
   flex-wrap: wrap;
   height: fit-content;
-  padding: 25px;
+  padding: 10px 25px 25px 25px;
 }
 
 .box-form-add-dish .form-add-dish .section-form .header {
@@ -1554,41 +1555,49 @@ delay = 0s */
   text-transform: uppercase;
 }
 
-.box-form-add-dish .form-add-dish .main-form label {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.box-form-add-dish .form-add-dish .main-form .element {
+  position: relative;
+  left: 0;
+  top: 0;
   width: 50%;
-  padding-bottom: 35px;
+  padding-bottom: 20px;
+}
+
+.box-form-add-dish .form-add-dish .main-form .element label {
+  width: fit-content;
   font-size: 14px;
   color: #333;
 }
 
-.box-form-add-dish .form-add-dish .main-form label:nth-of-type(1),
-.box-form-add-dish .form-add-dish .main-form label:nth-last-of-type(1),
-.box-form-add-dish .form-add-dish .main-form label:nth-last-of-type(2) {
+.box-form-add-dish .form-add-dish .main-form .element:nth-of-type(1),
+.box-form-add-dish .form-add-dish .main-form .element:nth-last-of-type(1),
+.box-form-add-dish .form-add-dish .main-form .element:nth-last-of-type(2) {
   width: 100%;
 }
 
-.box-form-add-dish .form-add-dish .main-form label:nth-last-of-type(2) input {
+.box-form-add-dish
+  .form-add-dish
+  .main-form
+  .element:nth-last-of-type(2)
+  input {
   word-wrap: break-word;
   word-break: break-all;
   padding-bottom: 100px;
 }
 
-.box-form-add-dish .form-add-dish .main-form label:nth-of-type(2n + 2) {
+.box-form-add-dish .form-add-dish .main-form .element:nth-of-type(2n + 2) {
   padding-right: 10px;
 }
 
-.box-form-add-dish .form-add-dish .main-form label:nth-last-of-type(2) {
+.box-form-add-dish .form-add-dish .main-form .element:nth-last-of-type(2) {
   padding-right: 0;
 }
 
-.box-form-add-dish .form-add-dish .main-form label input,
-.box-form-add-dish .form-add-dish .main-form label select,
-.box-form-add-dish .form-add-dish .main-form label textarea {
+.box-form-add-dish .form-add-dish .main-form .element input,
+.box-form-add-dish .form-add-dish .main-form .element select,
+.box-form-add-dish .form-add-dish .main-form .element textarea {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 5px;
   padding: 10px 12px;
   border: 1px solid rgba(34, 34, 34, 0.137);
   border-radius: 4px;
@@ -1596,25 +1605,30 @@ delay = 0s */
   color: #333;
 }
 
-.box-form-add-dish .form-add-dish .main-form label textarea {
+.box-form-add-dish .form-add-dish .main-form .element input[name="price"],
+.box-form-add-dish .form-add-dish .main-form .element input[name="gramature"] {
+  padding-right: 40px;
+}
+
+.box-form-add-dish .form-add-dish .main-form .element textarea {
   min-height: 100px;
   max-height: 100px;
   min-width: 100%;
   max-width: 100%;
 }
 
-.box-form-add-dish .form-add-dish .main-form label select option {
+.box-form-add-dish .form-add-dish .main-form .element select option {
   font-size: 14px;
 }
 
-.box-form-add-dish .form-add-dish .main-form label input:focus,
-.box-form-add-dish .form-add-dish .main-form label select:focus,
-.box-form-add-dish .form-add-dish .main-form label textarea:focus {
+.box-form-add-dish .form-add-dish .main-form .element input:focus,
+.box-form-add-dish .form-add-dish .main-form .element select:focus,
+.box-form-add-dish .form-add-dish .main-form .element textarea:focus {
   outline: none;
   box-shadow: 0 0 3px 1px rgba(17, 0, 255, 0.674);
 }
 
-.box-form-add-dish .form-add-dish .main-form .uploaded-image {
+.box-form-add-dish .form-add-dish .main-form .element .uploaded-image {
   position: relative;
   cursor: pointer;
   padding-right: 0;
@@ -1624,6 +1638,7 @@ delay = 0s */
 .box-form-add-dish
   .form-add-dish
   .main-form
+  .element
   .uploaded-image::-webkit-file-upload-button {
   position: absolute;
   right: 0;
@@ -1637,6 +1652,31 @@ delay = 0s */
   cursor: pointer;
 }
 
+.box-form-add-dish .form-add-dish .main-form input ~ .mark {
+  position: absolute;
+  right: 30px;
+  top: 51px;
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+.box-form-add-dish .form-add-dish .main-form input[name="price"] ~ .mark {
+  right: 20px;
+}
+
+.box-form-add-dish .form-add-dish .main-form .content-form .error-message {
+  display: none;
+  margin: 5px 0 0 10px;
+  color: red;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+.form-add-dish .main-form input:invalid[focused="true"] ~ .error-message {
+  display: block;
+}
+
 .box-form-add-dish .second-form {
   display: flex;
   flex-direction: column;
@@ -1644,15 +1684,15 @@ delay = 0s */
 
 .box-form-add-dish .second-form .image {
   width: 100%;
+  height: fit-content;
   max-height: 400px;
   padding: 0 25px;
-  margin-top: 25px;
-  text-align: center;
+  margin: 25px 0 30px 0;
 }
 
 .box-form-add-dish .second-form .image img {
   width: 100%;
-  height: 100%;
+  height: 20vw;
   object-fit: cover;
   object-position: center;
 }
@@ -1663,7 +1703,6 @@ delay = 0s */
   align-items: center;
   width: 100%;
   padding: 40px 25px;
-  margin-top: 30px;
   border-bottom: 1px solid rgba(34, 34, 34, 0.137);
 }
 

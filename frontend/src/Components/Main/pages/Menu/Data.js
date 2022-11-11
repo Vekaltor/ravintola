@@ -1,14 +1,30 @@
 export const categoryOrder = [
-  { categoryName: "SNACK", polishTitle: "Przystawki", prefix: "Smaczne" },
-  { categoryName: "SOUP", polishTitle: "Zupy", prefix: "Gorące" },
-  { categoryName: "MAIN", polishTitle: "Dania główne", prefix: "Wybitne" },
-  { categoryName: "FISH", polishTitle: "Ryby", prefix: "Świeże" },
-  { categoryName: "SALAD", polishTitle: "Sałatki", prefix: "Zdrowe" },
   {
+    id: 0,
+    categoryName: "SNACK",
+    polishTitle: "Przystawki",
+    prefix: "Smaczne",
+  },
+  { id: 1, categoryName: "SOUP", polishTitle: "Zupy", prefix: "Gorące" },
+  {
+    id: 2,
+    categoryName: "MAIN",
+    polishTitle: "Dania główne",
+    prefix: "Wybitne",
+  },
+  { id: 3, categoryName: "FISH", polishTitle: "Ryby", prefix: "Świeże" },
+  { id: 4, categoryName: "SALAD", polishTitle: "Sałatki", prefix: "Zdrowe" },
+  {
+    id: 5,
     categoryName: "FOR_KIDS",
     polishTitle: "Dla dzieci",
     prefix: "Smerf-landia",
   },
-  { categoryName: "DESSERT", polishTitle: "Desery", prefix: "Bajeczne" },
-  { categoryName: "DRINK", polishTitle: "Napoje", prefix: "Orzeźwiające" },
+  { id: 6, categoryName: "DESSERT", polishTitle: "Desery", prefix: "Bajeczne" },
+  {
+    id: 7,
+    categoryName: "DRINK",
+    polishTitle: "Napoje",
+    prefix: "Orzeźwiające",
+  },
 ];

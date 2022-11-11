@@ -109,7 +109,7 @@ const FilterDishes = ({ applyFilters }) => {
           placeholder="Wyszukaj danie"
           onInput={handleInputPhrase}
         />
-        <FiltrCategory dishes={dishes} select={handleSelectCategory} />
+        <FiltrCategory select={handleSelectCategory} />
         <FiltrRecommended select={handleSelectRecommended} />
         <button type="submit" className="button-search" onClick={handleSearch}>
           <BiSearch />

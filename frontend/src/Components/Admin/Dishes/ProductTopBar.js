@@ -7,7 +7,7 @@ const ProductTopBar = ({ dish }) => {
     <div className="top">
       <h2>Szczegółowe informacje</h2>
       <div className="image">
-        <img src={process.env.NODE_ENV + srcImg} alt={name} />
+        <img src={process.env.PUBLIC_URL + srcImg} alt={name} />
         <span className="name">{name}</span>
       </div>
     </div>
