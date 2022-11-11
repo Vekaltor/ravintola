@@ -26,7 +26,11 @@ Possibility to edit the menu as an administrator, and access (possibility to edi
   <li>CSS3</li>
   <li>JavaScript (ES6)</li>
   <li>React version: 18.2.0</li>
-  <li>React-router-dom version: 6.3.0</li>
+  <li>react-router-dom version: 6.3.0</li>
+  <li>react-redux version: 8.0.4</li>
+  <li>redux version: 4.2.0</li>
+  <li>redux-thunk version: 2.4.2</li>
+  <li>react-icons version: 4.4.0</li>
 </ul>
 
 ## Setup
@@ -59,12 +63,41 @@ After sending the correct form, the data is sent to the API database and a messa
 ### - Admin Panel
 Administration panel in progress ... 
 
-![image](https://user-images.githubusercontent.com/56607344/198078114-2604681c-ae26-416f-a8b9-e241fdf4fe75.png)
+#### Filter Dishes
+
+The admin can filter the dishes by category, recommendation status, text phrase.
+The loading of dishes is done via API, the redux states (3 stages of data downloading -> change of the "loading" state) allow for lazy loading.
+Filters and fetched dishes from the API go to the global state of the application, which is stored by redux.
+Each item on the list has access to delete, quick edit the recommendation status and view detailed information.
+On the left side, check boxes are used to perform multitasking operations (delete, change status).
+
+![image](https://user-images.githubusercontent.com/56607344/201429928-40ab81c1-8b25-4b06-a02f-475862db64a2.png)
+
+#### Details of the dish
+
+View all information about a specific dish. Possibility to edit any information.
+Possibility to remove the dish. Button to go back to the previous list of dishes (if it was filtered, the filters will still be applied)
+
+![image](https://user-images.githubusercontent.com/56607344/201433060-f31b21fd-b2b4-4b1c-90c2-3de6e732f4be.png)
+
+
+#### Adding dishes
+
+The form is validated, all (*) fields are required and must match the patterns given.
+Uploading a photo causes the photo to be replaced in the second part of the form.
+After correct completion of the form, a message appears.
+
+![image](https://user-images.githubusercontent.com/56607344/201432316-7185ab31-9cc6-4c65-a230-276a66553ee5.png)
+
+
 
 #### Login
+```
 login: admin
-<br>
+
 password: admin
+```
+<br>
 
 ![image](https://user-images.githubusercontent.com/56607344/199515558-05080a8f-1acf-49e4-8ed5-e18fafbd02f7.png)
 
