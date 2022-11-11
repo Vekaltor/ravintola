@@ -1,11 +1,12 @@
 /* eslint-disable array-callback-return */
 import { useState } from "react";
-import { BiSearch } from "react-icons/bi";
 import { connect, useDispatch, useSelector } from "react-redux";
+import { updateFilterDishes } from "../../../actions/adminActions";
+
 import FiltrCategory from "./FiltrCategory";
 import FiltrRecommended from "./FiltrRecommended";
 
-import { updateFilterDishes } from "../../../actions/adminActions";
+import { BiSearch } from "react-icons/bi";
 
 const FilterDishes = ({ applyFilters }) => {
   const [phrase, setPhrase] = useState("");

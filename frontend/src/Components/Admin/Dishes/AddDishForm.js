@@ -1,17 +1,20 @@
 import { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-
 import { useDispatch, useSelector } from "react-redux";
 import { addDish } from "../../../actions/adminActions";
 
-import testSRC from "../../../img/king_prawns_640x966.jpg";
 import AddDishMessage from "./AddDishMessage";
+
+import { categoryOrder } from "../../Main/pages/Menu/Data";
+import { currencies } from "../data/currenciesData";
+
+import testSRC from "../../../img/king_prawns_640x966.jpg";
 
 const AddDishForm = () => {
   const [details, setDetails] = useState({
     name: "",
-    category: "",
-    currency: "",
+    category: categoryOrder[0].categoryName,
+    currency: currencies[0].nameCurrency,
     gramature: "",
     price: "",
     description: "",
@@ -58,6 +61,22 @@ const AddDishForm = () => {
     dispatch(addDish(dishes, newDish));
   };
 
+  const getSignCurrency = () => {
+    let currency = currencies.find(
+      (crr) => crr.nameCurrency === details.currency
+    );
+    return currency.signCurrency;
+  };
+
+  const handleInputPrice = (e) => {
+    let signPrice = getSignCurrency();
+    setDetails({
+      ...details,
+      price: details.price + e.target.value,
+    });
+    e.target.value = "";
+  };
+
   let message =
     "Well done! You successfully read this important alert message.";
 
@@ -76,18 +95,17 @@ const AddDishForm = () => {
               <label>
                 Wybierz Kategorie
                 <select onChange={(e) => changeDetail("category", e)}>
-                  <option value="FISH">Ryby</option>
-                  <option value="DRINK">Napoje</option>
-                  <option value="DESSERT">Desery</option>
-                  <option value="SALAD">Sałatki</option>
+                  {categoryOrder.map((ctg) => (
+                    <option value={ctg.categoryName}>{ctg.polishTitle}</option>
+                  ))}
                 </select>
               </label>
               <label>
                 Waluta
                 <select onChange={(e) => changeDetail("currency", e)}>
-                  <option value="PLN">PLN</option>
-                  <option value="EURO">EURO</option>
-                  <option value="USD">USD</option>
+                  {currencies.map((crr) => (
+                    <option value={crr.nameCurrency}>{crr.nameCurrency}</option>
+                  ))}
                 </select>
               </label>
               <label>
@@ -99,7 +117,7 @@ const AddDishForm = () => {
               </label>
               <label>
                 Cena
-                <input type="text" onInput={(e) => changeDetail("price", e)} />
+                <input type="text" onInput={handleInputPrice} />
               </label>
               <label>
                 Opis
