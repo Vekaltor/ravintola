@@ -6,7 +6,7 @@ import { categoryOrder } from "../../../Main/pages/Menu/Data";
 import { currencies } from "../../data/currenciesData";
 
 const DetailsForm = (props) => {
-  const { currency, changeDetail, typingNumbers } = props;
+  const { currency, changeDetail, handleFiles } = props;
 
   const categoryOptions = categoryOrder.map((ctg) => (
     <option key={ctg.id} value={ctg.categoryName}>
@@ -30,7 +30,7 @@ const DetailsForm = (props) => {
           changeDetail={changeDetail}
           required
           pattern="^[a-zA-Z\s]*$"
-          errorMessage="Nazwa nie może zawierać cyfr ani znaków specjalnych."
+          errorMessage="Pole nie może być puste oraz nazwa nie może zawierać cyfr ani znaków specjalnych."
         />
 
         <FormSelect
@@ -51,7 +51,7 @@ const DetailsForm = (props) => {
           changeDetail={changeDetail}
           required
           mark="g"
-          pattern="^\d{1,4}$"
+          pattern="^(\d{0,4})$"
           errorMessage="Waga nie może być większa niż 9999 gram."
         />
 
@@ -61,7 +61,7 @@ const DetailsForm = (props) => {
           changeDetail={changeDetail}
           required
           mark={currency}
-          pattern="^\d{1,4}$"
+          pattern="^\d{0,4}$"
           errorMessage={`Cena nie może być większa niż 9999 ${currency}.`}
         />
 
@@ -74,9 +74,11 @@ const DetailsForm = (props) => {
         <FormInput
           className="uploaded-image"
           type="file"
+          required
           placeholder="Dodaj zdjęcie..."
           name={["img", "Zdjęcie produktu"]}
-          changeDetail={changeDetail}
+          accept="image/png, image/jpeg,image/jpg"
+          changeDetail={handleFiles}
         />
       </div>
     </div>

@@ -7,7 +7,7 @@ function Sidebar() {
   function jsxLinksCategory(links) {
     return links.map((link, index) => (
       <li key={index} className="nav-item">
-        <NavLink to={link.pathname} end>
+        <NavLink to={link.pathname} end={link.pathname ? false : true}>
           <span className="nav-icon">{link.Icon}</span>
           <span className="item-text">{link.name}</span>
         </NavLink>

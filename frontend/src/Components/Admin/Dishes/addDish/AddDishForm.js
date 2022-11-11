@@ -36,12 +36,6 @@ const AddDishForm = () => {
     }, 2000);
   };
 
-  const handleClick = () => {
-    testValidate();
-  };
-
-  const testValidate = () => {};
-
   const changeDetail = (e) => {
     setDetails({ ...details, [e.target.name]: e.target.value });
   };
@@ -56,9 +50,15 @@ const AddDishForm = () => {
       weight: details.weight,
       price: details.price,
       imageSrc: details.img,
-      recommended: boolRecommended,
+      isRecommended: boolRecommended,
     };
     dispatch(addDish(dishes, newDish));
+  };
+
+  const handleFiles = (e) => {
+    let fileImage = e.target.files[0];
+    let urlImage = URL.createObjectURL(fileImage);
+    setDetails({ ...details, [e.target.name]: urlImage });
   };
 
   const MessageSuccess = !submited ? <Outlet /> : <AddDishMessage />;
@@ -67,14 +67,15 @@ const AddDishForm = () => {
     <div className="box-form-add-dish">
       {MessageSuccess}
       <div className="form-add-dish">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} autocomplete="off">
           <DetailsForm
             changeDetail={changeDetail}
+            handleFiles={handleFiles}
             currency={details.currency}
           />
           <OtherSettingsForm
-            handleClick={handleClick}
             changeDetail={changeDetail}
+            uploadedImg={details.img}
           />
         </form>
       </div>

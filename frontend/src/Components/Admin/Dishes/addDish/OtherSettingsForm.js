@@ -1,21 +1,24 @@
-import testSRC from "../../../../img/king_prawns_640x966.jpg";
 import FormSwitch from "./FormSwitch";
 
-const OtherSettingsForm = ({ handleClick, changeDetail }) => {
+import srcTemplateImage from "../../../../img/upload_image_1280x896.png";
+
+const OtherSettingsForm = ({ uploadedImg, changeDetail }) => {
+  const imageSrc = uploadedImg
+    ? uploadedImg
+    : process.env.PUBLIC_URL + srcTemplateImage;
+
   return (
     <div className="second-form section-form">
       <div className="header">Produkt</div>
       <div className="image">
-        <img src={process.env.PUBLIC_URL + testSRC} alt="added img" />
+        <img src={imageSrc} alt="Inserted from user" />
       </div>
       <FormSwitch
         name={["recommended", "Rekomendacja"]}
         changeDetail={changeDetail}
       />
       <div className="buttons">
-        <button type="submit" onClick={handleClick}>
-          Dodaj produkt
-        </button>
+        <button type="submit">Dodaj produkt</button>
       </div>
     </div>
   );

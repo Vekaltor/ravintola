@@ -1495,6 +1495,7 @@ delay = 0s */
 .box-form-add-dish .box-message {
   height: 60px;
   width: 100%;
+  overflow: hidden;
 }
 
 .box-form-add-dish .message {
@@ -1505,6 +1506,18 @@ delay = 0s */
   color: #07be6e;
   background-color: #e0ffef;
   margin-bottom: 25px;
+  animation: showMessage 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  transform: translateY(-100px);
+}
+
+@keyframes showMessage {
+  0% {
+    transform: translateY(-100px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .box-form-add-dish .message span {
@@ -1668,9 +1681,17 @@ delay = 0s */
 .box-form-add-dish .form-add-dish .main-form .content-form .error-message {
   display: none;
   margin: 5px 0 0 10px;
-  color: red;
+  color: rgba(255, 0, 0, 0.849);
   font-weight: bold;
   font-size: 10px;
+}
+
+.form-add-dish .main-form input:invalid[focused="true"] {
+  border: 1px solid rgba(255, 0, 0, 0.281);
+}
+
+.form-add-dish .main-form input:invalid:focus {
+  border: 1px solid rgba(34, 34, 34, 0.137);
 }
 
 .form-add-dish .main-form input:invalid[focused="true"] ~ .error-message {
