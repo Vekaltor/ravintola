@@ -1,11 +1,13 @@
 package com.kacwol.ravintolaAPI.controller;
 
 import com.kacwol.ravintolaAPI.reservation.ReservationCreateDto;
+import com.kacwol.ravintolaAPI.reservation.ReservationDetailsDto;
 import com.kacwol.ravintolaAPI.reservation.ReservationResponseDto;
 import com.kacwol.ravintolaAPI.reservation.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +17,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:3000","https://ravintola.herokuapp.com"})
-@RequestMapping("reservation")
+@RequestMapping("api/reservation")
 public class ReservationController {
 
     private final ReservationService service;
@@ -30,6 +32,10 @@ public class ReservationController {
         return service.getReservations();
     }
 
+    @GetMapping("/{id}")
+    public ReservationDetailsDto getReservationDetails(@PathVariable Long id) {
+        return service.getReservationDetails(id);
+    }
 
     @PostMapping
     public void makeReservation(@RequestBody ReservationCreateDto dto){

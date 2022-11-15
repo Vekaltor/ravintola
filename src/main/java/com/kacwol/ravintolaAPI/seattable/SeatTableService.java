@@ -1,19 +1,15 @@
 package com.kacwol.ravintolaAPI.seattable;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class SeatTableService {
 
     private final SeatTableRepo repo;
-
-    @Autowired
-    public SeatTableService(SeatTableRepo repo) {
-        this.repo = repo;
-    }
 
     public List<SeatTable> getSeatTables() {
         return repo.findAll();
@@ -34,5 +30,9 @@ public class SeatTableService {
 
     public SeatTable getSeatTable(Long id) {
         return repo.findById(id).orElseThrow();
+    }
+
+    public void changeSeatTable(SeatTable seatTable) {
+        repo.save(seatTable);
     }
 }

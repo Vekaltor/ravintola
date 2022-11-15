@@ -2,23 +2,18 @@ package com.kacwol.ravintolaAPI.menu.service;
 
 import com.kacwol.ravintolaAPI.menu.model.Meal;
 import com.kacwol.ravintolaAPI.menu.model.MealDto;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class MenuService {
 
     private final MealRepo repo;
 
     private final MealMapper mapper;
-
-    @Autowired
-    public MenuService(MealRepo mealRepo, MealMapper mapper) {
-        this.repo = mealRepo;
-        this.mapper = mapper;
-    }
 
     public void addMeal(MealDto dto) {
         repo.save(mapper.dtoToEntity(dto));
@@ -38,6 +33,10 @@ public class MenuService {
 
     public void deleteMeal(Long id) {
         repo.deleteById(id);
+    }
+
+    public void changeMeal(MealDto mealDto) {
+        repo.save(mapper.dtoToEntity(mealDto));
     }
 
 }

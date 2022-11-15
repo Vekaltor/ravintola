@@ -14,12 +14,13 @@ public class MealMapper {
         }
 
         return Meal.builder()
+                .id(dto.getId())
                 .name(dto.getName())
                 .description(dto.getDescription())
                 .price(dto.getPrice())
                 .mealCategory(dto.getMealCategory())
                 .weight(dto.getWeight())
-                .imageSrc(dto.getImageSrc())
+                .image(dto.getImage())
                 .isRecommended(dto.isRecommended())
                 .build();
     }
@@ -31,7 +32,7 @@ public class MealMapper {
                 .price(entity.getPrice())
                 .mealCategory(entity.getMealCategory())
                 .weight(entity.getWeight())
-                .imageSrc(entity.getImageSrc())
+                .image(entity.getImage())
                 .isRecommended(entity.isRecommended())
                 .build();
     }

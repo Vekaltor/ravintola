@@ -9,17 +9,19 @@ import lombok.Getter;
 @Builder
 public class MealDto {
 
+    private Long id;
+
     private String name;
 
     private String description;
 
     private MealCategory mealCategory;
 
-    private long weight;
+    private Long weight;
 
     private double price;
 
-    private String imageSrc;
+    private byte[] image;
 
     private boolean isRecommended;
 }

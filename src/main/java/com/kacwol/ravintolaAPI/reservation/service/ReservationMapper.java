@@ -2,8 +2,10 @@ package com.kacwol.ravintolaAPI.reservation.service;
 
 import com.kacwol.ravintolaAPI.reservation.Reservation;
 import com.kacwol.ravintolaAPI.reservation.ReservationCreateDto;
+import com.kacwol.ravintolaAPI.reservation.ReservationDetailsDto;
 import com.kacwol.ravintolaAPI.reservation.ReservationResponseDto;
 import com.kacwol.ravintolaAPI.seattable.SeatTable;
+import com.kacwol.ravintolaAPI.seattable.SeatTableDto;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -27,6 +29,22 @@ public class ReservationMapper {
                 entity.getDateTime(),
                 entity.getTable().getId()
         );
+    }
+
+    public ReservationDetailsDto entityToDetailsDto(Reservation entity) {
+        return new ReservationDetailsDto(
+                entity.getName(),
+                entity.getSurname(),
+                entity.getEmail(),
+                entity.getPeopleAmount(),
+                entity.getDateTime(),
+                entity.getTable().getId(),
+                new SeatTableDto(
+                        entity.getTable().getMinSeats(),
+                        entity.getTable().getMaxSeats()
+                )
+        );
+
     }
 
 
