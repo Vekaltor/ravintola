@@ -35,8 +35,8 @@ public class MenuService {
         repo.deleteById(id);
     }
 
-    public void changeMeal(MealDto mealDto) {
-        repo.save(mapper.dtoToEntity(mealDto));
+    public void changeMeal(Meal meal) {
+        repo.save(meal);
     }
 
 }

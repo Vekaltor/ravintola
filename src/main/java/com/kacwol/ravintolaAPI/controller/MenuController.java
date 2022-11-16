@@ -50,8 +50,8 @@ public class MenuController {
     }
 
     @PutMapping
-    public void changeMeal(@RequestBody MealDto mealDto) {
-
+    public void changeMeal(@RequestBody Meal meal) {
+        service.changeMeal(meal);
     }
 
 
