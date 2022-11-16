@@ -1,23 +1,30 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { deleteDish } from "../../../actions/adminActions";
+import PopupDelete from "./addDish/PopupDelete";
+
+import { useState } from "react";
 
 const ProductButtons = ({ dish }) => {
-  const { dishes } = useSelector((state) => state.admin);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const [activePopup, setActivePopup] = useState(false);
 
-  const handleDeleteDish = () => {
-    dispatch(deleteDish(dishes, dish));
-    navigate(-1);
+  const handleClick = () => {
+    setActivePopup((prevState) => !prevState);
   };
+
+  const componentPopupDelete = activePopup ? (
+    <PopupDelete
+      id={dish.id}
+      info="Usunięcie tego produktu spowoduje nieodwracalne zmiany."
+      className="product "
+      click={handleClick}
+    />
+  ) : null;
 
   return (
     <div className="buttons">
       <button className="edit button">Edycja</button>
-      <button className="delete button" onClick={handleDeleteDish}>
+      <button className="delete button" onClick={handleClick}>
         Usuń
       </button>
+      {componentPopupDelete}
     </div>
   );
 };

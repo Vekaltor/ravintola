@@ -35,7 +35,7 @@ const AddDishForm = () => {
     setSubmited(true);
     handleAddDish();
     scrollToTop();
-    // goToBack();
+    goToBack();
   };
 
   const goToBack = () => {
@@ -76,7 +76,6 @@ const AddDishForm = () => {
   };
 
   const scrollToTop = () => {
-    console.log(boxRef);
     boxRef.current.scrollIntoView({
       behavior: "smooth",
       block: "start",

@@ -336,7 +336,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(68, 68, 68, 0.596);
-  z-index: 5;
+  z-index: 999;
 }
 
 .page-admin .logout-popup {
@@ -1146,12 +1146,111 @@ delay = 0s */
 }
 
 .content-admin-panel .dishes .dish .settings {
+  position: relative;
   display: flex;
   justify-content: right;
   min-width: 100px;
   width: 100px;
   margin-left: 20px;
   text-align: right;
+}
+
+.popup-delete.dish {
+  position: absolute;
+  right: 0px;
+  top: -38px;
+  width: 275px;
+  border: 1px solid #554af6;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+.popup-delete.dish.inprogress::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+  border-radius: 10px;
+  background-color: rgba(34, 34, 34, 0.062);
+}
+
+.popup-delete.dish.inprogress::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 10px - 3.5px);
+  top: 33px;
+  width: 20px;
+  height: 20px;
+  border: 7px solid rgba(167, 167, 167, 0.842); /* Light grey */
+  border-top: 7px solid rgba(17, 0, 255, 0.674); /* Blue */
+  border-radius: 50%;
+  animation: spin 0.2s linear infinite;
+}
+
+.popup-delete.dish .image {
+  display: none;
+}
+
+.popup-delete.dish .content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.popup-delete.dish .content .title {
+  display: block;
+  width: 100%;
+  margin: 10px 0 15px 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #554af6;
+  text-align: center;
+}
+
+.popup-delete.dish .content .buttons {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.popup-delete.dish .confirm,
+.popup-delete.dish .cancel {
+  width: 100px;
+  padding: 10px 0;
+  font-size: 11px;
+  border: 1px solid #526dff;
+  border-radius: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.popup-delete.dish .confirm {
+  color: white;
+  background-color: #526dff;
+  transition: 0.2s linear;
+}
+
+.popup-delete.dish .confirm:hover {
+  color: white;
+  background-color: #526dff;
+  letter-spacing: 0.1em;
+}
+
+.popup-delete.dish .cancel {
+  color: #526dff;
+  background-color: white;
+  border: 1px solid transparent;
+  transition: border 0.2s linear;
+}
+
+.popup-delete.dish .cancel:hover {
+  border: 1px solid #526dff;
 }
 
 .content-admin-panel .dishes .dish.prototype .settings {
@@ -1331,17 +1430,172 @@ delay = 0s */
   transition: 0.1s 0.05s linear;
 }
 
-.dish-detail-box .dish-info .buttons .button:hover {
-  filter: contrast(150%);
-}
-
 .dish-detail-box .dish-info .buttons .button.edit {
   background-color: rgba(17, 0, 255, 0.674);
   border: 1px solid rgba(17, 0, 255, 0.674);
 }
 
+.dish-detail-box .dish-info .buttons .button.edit:hover {
+  background-color: rgba(17, 0, 255, 0.644);
+}
+
 .dish-detail-box .dish-info .buttons .button.delete {
   background-color: #222;
+}
+
+.dish-detail-box .dish-info .buttons .button.delete:hover {
+  background-color: #333;
+}
+
+.backdrop-popup.product {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(51, 51, 51, 0.123);
+  z-index: 1;
+}
+
+.popup-delete.product {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 350px;
+  padding-bottom: 20px;
+  border-radius: 40px;
+  box-shadow: 0px 30px 20px -10px #c1cbff;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  cursor: auto;
+  z-index: 1;
+}
+
+.popup-delete.product.inprogress::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+  border-radius: 40px;
+  background-color: rgba(34, 34, 34, 0.13);
+}
+
+.popup-delete.product.inprogress::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: calc(50% - 10px - 3.5px);
+  top: 65%;
+  border: 7px solid rgba(167, 167, 167, 0.842); /* Light grey */
+  border-top: 7px solid rgba(17, 0, 255, 0.674); /* Blue */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.popup-delete.product .image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 40px;
+  background-color: #c1cbff;
+}
+
+.popup-delete.product .image img {
+  height: 20%;
+  animation: grow 1s 0.1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+}
+
+@keyframes grow {
+  0% {
+    height: 20%;
+  }
+  100% {
+    height: 70%;
+  }
+}
+
+.popup-delete.product .content {
+  width: 100%;
+  padding: 10px 40px;
+}
+
+.popup-delete.product .content .title {
+  display: block;
+  width: 100%;
+  color: #333;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+
+.popup-delete.product .content .info {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+  font-size: 13px;
+  color: #888;
+  text-align: center;
+}
+
+.popup-delete.product .content .buttons {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.popup-delete.product .confirm,
+.popup-delete.product .cancel {
+  width: 110px;
+  padding: 10px 0;
+  font-size: 14px;
+  border: 1px solid #526dff;
+  border-radius: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.popup-delete.product .confirm {
+  color: white;
+  background-color: #526dff;
+  transition: 0.2s linear;
+}
+
+.popup-delete.product .confirm:hover {
+  color: white;
+  background-color: #526dff;
+  letter-spacing: 0.1em;
+}
+
+.popup-delete.product .cancel {
+  color: #526dff;
+  background-color: white;
+  border: 1px solid transparent;
+  transition: border 0.2s linear;
+}
+
+.popup-delete.product .cancel:hover {
+  border: 1px solid #526dff;
 }
 
 .dish-detail-box .dish-more-info {

@@ -1,25 +1,18 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useDispatch, useSelector } from "react-redux";
-import { deleteDish } from "../../../actions/adminActions";
+import PopupDelete from "./addDish/PopupDelete";
 
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { BsBoxArrowInUpRight } from "react-icons/bs";
 
 const SettingsDish = ({ dish }) => {
-  const { id, name } = dish;
-  const { dishes } = useSelector((state) => state.admin);
-  const dispatch = useDispatch();
+  const [activePopup, setActivePopup] = useState(false);
+  const { name } = dish;
 
   const navigate = useNavigate();
 
   const nameDishURL = name.toLowerCase();
-
-  const handleDeleteDish = () => {
-    let idDishToDelete = id;
-    const dishToDelete = dishes.find((dish) => dish.id === idDishToDelete);
-    dispatch(deleteDish(dishes, dishToDelete));
-  };
 
   const goToDish = () => {
     const extraParams = {
@@ -30,14 +23,28 @@ const SettingsDish = ({ dish }) => {
     navigate(`${nameDishURL}`, extraParams);
   };
 
+  const handleClick = () => {
+    setActivePopup((prevState) => !prevState);
+  };
+
+  const componentPopupDelete = activePopup ? (
+    <PopupDelete
+      id={dish.id}
+      className="dish "
+      click={handleClick}
+      animationDelay={300}
+    />
+  ) : null;
+
   return (
     <div className="settings">
       <span className="more-info" onClick={goToDish}>
         <BsBoxArrowInUpRight />
       </span>
-      <span className="delete" onClick={handleDeleteDish}>
+      <span className="delete" onClick={handleClick}>
         <RiDeleteBin5Fill />
       </span>
+      {componentPopupDelete}
     </div>
   );
 };
