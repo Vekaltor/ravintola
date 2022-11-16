@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import PopupDelete from "./addDish/PopupDelete";
+import { useDispatch, useSelector } from "react-redux";
+import { setActiveDish } from "../../../actions/adminActions";
+
+import PopupDelete from "./PopupDelete";
 
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { BsBoxArrowInUpRight } from "react-icons/bs";
@@ -9,12 +12,16 @@ import { BsBoxArrowInUpRight } from "react-icons/bs";
 const SettingsDish = ({ dish }) => {
   const [activePopup, setActivePopup] = useState(false);
   const { name } = dish;
+  const { activeDish } = useSelector((state) => state.admin);
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   const nameDishURL = name.toLowerCase();
 
   const goToDish = () => {
+    dispatch(setActiveDish(dish));
+    setActivePopup(false);
     const extraParams = {
       state: {
         dish,
@@ -23,18 +30,21 @@ const SettingsDish = ({ dish }) => {
     navigate(`${nameDishURL}`, extraParams);
   };
 
-  const handleClick = () => {
-    setActivePopup((prevState) => !prevState);
+  const handleClick = (valueState) => {
+    setActivePopup(false);
+    dispatch(setActiveDish(dish));
+    setActivePopup((prevState) => (prevState = valueState));
   };
 
-  const componentPopupDelete = activePopup ? (
-    <PopupDelete
-      id={dish.id}
-      className="dish "
-      click={handleClick}
-      animationDelay={300}
-    />
-  ) : null;
+  const componentPopupDelete =
+    activeDish.id === dish.id ? (
+      <PopupDelete
+        id={dish.id}
+        className="dish "
+        click={handleClick}
+        animationDelay={300}
+      />
+    ) : null;
 
   return (
     <div className="settings">
@@ -44,7 +54,7 @@ const SettingsDish = ({ dish }) => {
       <span className="delete" onClick={handleClick}>
         <RiDeleteBin5Fill />
       </span>
-      {componentPopupDelete}
+      {activePopup ? componentPopupDelete : null}
     </div>
   );
 };

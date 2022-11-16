@@ -1,12 +1,12 @@
-import PopupDelete from "./addDish/PopupDelete";
+import PopupDelete from "./PopupDelete";
 
 import { useState } from "react";
 
 const ProductButtons = ({ dish }) => {
   const [activePopup, setActivePopup] = useState(false);
 
-  const handleClick = () => {
-    setActivePopup((prevState) => !prevState);
+  const handleClick = (valueState) => {
+    setActivePopup(valueState);
   };
 
   const componentPopupDelete = activePopup ? (

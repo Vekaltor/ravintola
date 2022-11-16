@@ -3,6 +3,7 @@ import {
   FETCH_DISHES_BEGIN,
   FETCH_DISHES_SUCCESS,
   FETCH_DISHES_FAILURE,
+  SET_ACTIVE_DISH,
   ADD_DISH,
   UPDATE_DISHES,
   UPDATE_FILTER_DISHES,
@@ -35,6 +36,11 @@ export const fetchDishesSuccess = (dishes) => ({
 export const fetchDishesFailure = (error) => ({
   type: FETCH_DISHES_FAILURE,
   payload: { error },
+});
+
+export const setActiveDish = (dish) => ({
+  type: SET_ACTIVE_DISH,
+  payload: { dish },
 });
 
 export const addDish = (dishes, dish) => {

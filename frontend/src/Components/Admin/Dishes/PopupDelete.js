@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { deleteDish } from "../../../../actions/adminActions";
+import { deleteDish } from "../../../actions/adminActions";
 
-import image from "../../../../img/trash.png";
+import image from "../../../img/trash.png";
 
 const PopupDelete = ({ id, info, className, click, animationDelay = 1000 }) => {
   const popupRef = useRef();
@@ -21,7 +21,7 @@ const PopupDelete = ({ id, info, className, click, animationDelay = 1000 }) => {
   };
 
   const exitPopup = () => {
-    click();
+    click(false);
   };
 
   const handleClickConfirm = () => {
@@ -30,7 +30,7 @@ const PopupDelete = ({ id, info, className, click, animationDelay = 1000 }) => {
       popupRef.current.classList.remove("inprogress");
       setTimeout(() => {
         handleDeleteDish();
-        click();
+        click(false);
         if (isFromComponentDetails) navigate(-1);
       }, animationDelay / 5);
     }, animationDelay);
