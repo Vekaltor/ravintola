@@ -21,7 +21,7 @@ public class MealDto {
 
     private double price;
 
-    private byte[] image;
+    private String image;
 
     private boolean isRecommended;
 }

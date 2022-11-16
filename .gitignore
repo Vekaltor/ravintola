@@ -35,3 +35,5 @@ build/
 ### DB FILES ###
 db-file.mv.db
 db-file.trace.db
+
+### Images ###

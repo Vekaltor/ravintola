@@ -6,11 +6,11 @@ import { updateCheckedDishes, modifyDish } from "../../../actions/adminActions";
 import Star from "./Star";
 import SettingsDish from "./SettingsDish";
 
-import src from "../../../img/food2_1920x1280.jpg";
+import defaultImage from "../../../img/food2_1920x1280.jpg";
 
 const Dish = ({ dish }) => {
   const checkboxRef = useRef();
-  const { id } = dish;
+  const { id, image } = dish;
   const { dishes, checkedDishes } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
 
@@ -49,6 +49,8 @@ const Dish = ({ dish }) => {
     changeRecommended(id);
   };
 
+  const src = image ? image : process.env.PUBLIC_URL + defaultImage;
+
   return (
     <>
       <div className="checkbox">
@@ -60,7 +62,7 @@ const Dish = ({ dish }) => {
         />
       </div>
       <div className="image">
-        <img src={process.env.PUBLIC_URL + src} alt={`img ${dish.name}`} />
+        <img src={src} alt={`img ${dish.name}`} />
       </div>
       <div className="name">{dish.name}</div>
       <div className="description">{dish.description}</div>

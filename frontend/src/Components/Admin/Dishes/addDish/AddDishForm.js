@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addDish } from "../../../../actions/adminActions";
@@ -22,15 +22,23 @@ const AddDishForm = () => {
     recommended: false,
   });
   const [submited, setSubmited] = useState(false);
-  const { dishes } = useSelector((state) => state.admin);
+  const boxRef = useRef();
 
   const navigate = useNavigate();
+
+  const { dishes } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     setSubmited(true);
     handleAddDish();
+    scrollToTop();
+    // goToBack();
+  };
+
+  const goToBack = () => {
     setTimeout(() => {
       navigate(-1);
     }, 2000);
@@ -47,27 +55,42 @@ const AddDishForm = () => {
       name: details.name,
       description: details.description,
       mealCategory: details.category,
-      weight: details.weight,
+      weight: details.gramature,
       price: details.price,
-      imageSrc: details.img,
+      image: details.img,
       isRecommended: boolRecommended,
     };
     dispatch(addDish(dishes, newDish));
   };
 
   const handleFiles = (e) => {
-    let fileImage = e.target.files[0];
-    let urlImage = URL.createObjectURL(fileImage);
-    setDetails({ ...details, [e.target.name]: urlImage });
+    let file = e.target.files[0];
+    if (!e.target.files || !file) return;
+
+    const FR = new FileReader();
+    FR.onload = () => {
+      let imageBase64 = FR.result;
+      setDetails({ ...details, [e.target.name]: imageBase64 });
+    };
+    FR.readAsDataURL(file);
   };
 
-  const MessageSuccess = !submited ? <Outlet /> : <AddDishMessage />;
+  const scrollToTop = () => {
+    console.log(boxRef);
+    boxRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "start",
+    });
+  };
+
+  const MessageSuccess = submited ? <AddDishMessage /> : <Outlet />;
 
   return (
-    <div className="box-form-add-dish">
+    <div className="box-form-add-dish" ref={boxRef}>
       {MessageSuccess}
       <div className="form-add-dish">
-        <form onSubmit={handleSubmit} autocomplete="off">
+        <form onSubmit={handleSubmit} autoComplete="off">
           <DetailsForm
             changeDetail={changeDetail}
             handleFiles={handleFiles}

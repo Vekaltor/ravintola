@@ -78,8 +78,8 @@ const Dishes = () => {
 
   return (
     <>
-      <div className="box-dishes">
-        <AddDishButton />
+      <AddDishButton />
+      <div className="box-dishes scrollbar">
         <FilterDishes applyFilters={applyFilters} />
         <ul className="dishes">
           <PrototypeDish />

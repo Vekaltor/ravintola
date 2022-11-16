@@ -6,13 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -29,7 +23,7 @@ public class Meal {
 
     private String description;
 
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     private MealCategory mealCategory;
 
     private Long weight;
@@ -37,7 +31,8 @@ public class Meal {
     private double price;
 
     @Lob
-    private byte[] image;
+    @Column(name = "image", columnDefinition="BLOB")
+    private String image;
 
     private boolean isRecommended;
 

@@ -5,8 +5,6 @@ import ProductTopBar from "./ProductTopBar";
 import ProductInfo from "./ProductInfo";
 import ProductMore from "./ProductMore";
 
-const animationDuration = 500;
-
 const Product = () => {
   const location = useLocation();
   const { dish } = location.state;
@@ -15,13 +13,13 @@ const Product = () => {
 
   const handleGoToBack = () => {
     dishRef.current.classList.remove("active");
-    setTimeout(() => {
-      goToBack();
-    }, animationDuration);
+    goToBack(1000);
   };
 
-  const goToBack = () => {
-    navigate(-1);
+  const goToBack = (animationDuration) => {
+    setTimeout(() => {
+      navigate(-1);
+    }, animationDuration);
   };
 
   return (

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import DescriptionDish from "./DescriptionDish";
 import EditDescriptionDish from "./EditDescriptionDish";
@@ -11,6 +11,13 @@ import { BsCheckSquareFill } from "react-icons/bs";
 const ProductMore = ({ dish, goToBack }) => {
   const [action, setAction] = useState(false);
   const { description } = dish;
+
+  const btnRef = useRef();
+
+  const handleClick = () => {
+    btnRef.current.classList.add("clicked");
+    goToBack();
+  };
 
   const descriptionDish = description ? (
     action ? (
@@ -44,8 +51,8 @@ const ProductMore = ({ dish, goToBack }) => {
     <div className="dish-more-info">
       <div className="header">Opis</div>
       <div className="description">{descriptionDish}</div>
-      <div className="button">
-        <span onClick={goToBack}>
+      <div className="button" ref={btnRef}>
+        <span onClick={handleClick}>
           <BiExit />
           Cofnij
         </span>

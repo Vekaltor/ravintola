@@ -4,7 +4,7 @@ import srcTemplateImage from "../../../../img/upload_image_1280x896.png";
 
 const OtherSettingsForm = ({ uploadedImg, changeDetail }) => {
   const imageSrc = uploadedImg
-    ? uploadedImg
+    ? process.env.PUBLIC_URL + uploadedImg
     : process.env.PUBLIC_URL + srcTemplateImage;
 
   return (

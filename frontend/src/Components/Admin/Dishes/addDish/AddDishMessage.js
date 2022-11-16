@@ -2,8 +2,7 @@ const AddDishMessage = () => {
   return (
     <div className="box-message">
       <div className="message">
-        <span>Well done!</span> You successfully read this important alert
-        message.
+        <span>Well done!</span> Nowe danie zostało dodane do karty menu.
       </div>
     </div>
   );
