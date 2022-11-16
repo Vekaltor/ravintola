@@ -1,4 +1,6 @@
 import { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { modifyDish } from "../../../actions/adminActions";
 
 import DescriptionDish from "./DescriptionDish";
 import EditDescriptionDish from "./EditDescriptionDish";
@@ -9,35 +11,47 @@ import { AiTwotoneEdit } from "react-icons/ai";
 import { BsCheckSquareFill } from "react-icons/bs";
 
 const ProductMore = ({ dish, goToBack }) => {
-  const [action, setAction] = useState(false);
   const { description } = dish;
-
+  const [action, setAction] = useState(false);
+  const [descp, setDescp] = useState(description);
   const btnRef = useRef();
+
+  const dispatch = useDispatch();
 
   const handleClick = () => {
     btnRef.current.classList.add("clicked");
     goToBack();
   };
 
+  const handleEditDescription = (dishModified) => {
+    if (description === dishModified.description) return;
+    setDescp(dishModified.description);
+    dispatch(modifyDish(dishModified));
+  };
+
   const descriptionDish = description ? (
     action ? (
       <EditDescriptionDish
+        dish={dish}
         icon={<BsCheckSquareFill />}
-        description={description}
+        description={descp}
         setAction={setAction}
+        editDescription={handleEditDescription}
       />
     ) : (
       <DescriptionDish
         icon={<AiTwotoneEdit />}
-        description={description}
+        description={descp}
         setAction={setAction}
       />
     )
   ) : action ? (
     <EditDescriptionDish
+      dish={dish}
       icon={<BsCheckSquareFill />}
       description="dodaj opis"
       setAction={setAction}
+      editDescription={handleEditDescription}
     />
   ) : (
     <DescriptionDish

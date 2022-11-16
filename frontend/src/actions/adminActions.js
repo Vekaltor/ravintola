@@ -5,6 +5,8 @@ import {
   FETCH_DISHES_FAILURE,
   SET_ACTIVE_DISH,
   ADD_DISH,
+  DELETE_DISH,
+  MODIFY_DISH,
   UPDATE_DISHES,
   UPDATE_FILTER_DISHES,
   UPDATE_CHECKED_DISHES,
@@ -66,15 +68,25 @@ export const deleteDish = (dishes, dishToDelete) => {
   }).catch((error) => console.log(error));
 
   return {
-    type: UPDATE_DISHES,
+    type: DELETE_DISH,
     payload: { dishes },
   };
 };
 
-export const modifyDish = (dishes) => ({
-  type: UPDATE_DISHES,
-  payload: { dishes },
-});
+export const modifyDish = (dishModified) => {
+  // fetch(pathToApi + `api/menu/${dishModified.id}`, {
+  //   method: "PUT",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify(dishModified),
+  // }).catch((error) => console.log(error));
+
+  return {
+    type: MODIFY_DISH,
+    payload: { dishModified },
+  };
+};
 
 export const updateFilterDishes = (filters) => {
   return {

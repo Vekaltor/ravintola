@@ -14,12 +14,11 @@ const Dish = ({ dish }) => {
   const { dishes, checkedDishes } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
 
-  const changeRecommended = (idDish) => {
-    let changedListDishes = dishes.map((dish) => {
-      if (dish.id === idDish) dish.recommended = !dish.recommended;
-      return dish;
-    });
-    dispatch(modifyDish(changedListDishes));
+  const changeRecommended = (idModifiedDish) => {
+    let dishModified = dishes.find((dish) => dish.id === idModifiedDish);
+    dishModified = { ...dishModified, recommended: !dishModified.recommended };
+
+    dispatch(modifyDish(dishModified));
   };
 
   const checkedDish = () => {

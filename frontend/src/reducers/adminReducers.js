@@ -4,7 +4,8 @@ import {
   FETCH_DISHES_FAILURE,
   SET_ACTIVE_DISH,
   ADD_DISH,
-  UPDATE_DISHES,
+  DELETE_DISH,
+  MODIFY_DISH,
   UPDATE_FILTER_DISHES,
   UPDATE_CHECKED_DISHES,
   CHECKED_ALL_DISHES,
@@ -56,10 +57,21 @@ export default function adminReducer(state = initialState, action) {
         filtersDishes: initialState.filtersDishes,
         dishes: action.payload.dishes,
       };
-    case UPDATE_DISHES:
+    case DELETE_DISH:
       return {
         ...state,
         dishes: action.payload.dishes,
+      };
+    case MODIFY_DISH:
+      let dishModified = action.payload.dishModified;
+      let updateDishes = state.dishes.map((dish) => {
+        if (dish.id === dishModified.id) return dishModified;
+        return dish;
+      });
+
+      return {
+        ...state,
+        dishes: updateDishes,
       };
     case UPDATE_FILTER_DISHES:
       return {

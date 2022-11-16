@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 
-const EditDescriptionDish = ({ description, icon: Icon, setAction }) => {
+const EditDescriptionDish = (props) => {
+  const { dish, description, icon: Icon, setAction, editDescription } = props;
   const [value, setValue] = useState(description);
   const textareaRef = useRef();
 
@@ -14,7 +15,13 @@ const EditDescriptionDish = ({ description, icon: Icon, setAction }) => {
     textareaRef.current.style.height = textareaRef.current.scrollHeight + "px";
   };
 
+  const changeDescriptionDish = (dish) => {
+    return { ...dish, description: value };
+  };
+
   const handleClick = () => {
+    const dishModified = changeDescriptionDish(dish);
+    editDescription(dishModified);
     setAction(false);
   };
 

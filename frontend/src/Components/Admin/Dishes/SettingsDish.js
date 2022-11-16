@@ -37,7 +37,7 @@ const SettingsDish = ({ dish }) => {
   };
 
   const componentPopupDelete =
-    activeDish.id === dish.id ? (
+    activeDish === dish ? (
       <PopupDelete
         id={dish.id}
         className="dish "
