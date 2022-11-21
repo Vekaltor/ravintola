@@ -10,7 +10,7 @@ Present features:
 
 - Making reservations-->
 
-# ravintola
+# Restaurant - Ravintola
 
 A web application intended mainly for table reservations. Reservation is done through API operations (frontend logic).
 The user, thanks to the React-router-dom library, dynamically changes the content of the page. 
@@ -38,7 +38,8 @@ https://ravintola.toadres.pl
 
 ![image](https://user-images.githubusercontent.com/56607344/198079891-9b02fe6e-3a19-4147-9ea7-39d4928ae11a.png)
 
-![image](https://user-images.githubusercontent.com/56607344/201433060-f31b21fd-b2b4-4b1c-90c2-3de6e732f4be.png)
+![image](https://user-images.githubusercontent.com/56607344/203132252-a28f5c05-dbc6-46e8-91b5-7acc09424240.png)
+
 
 ## Setup
 To run this project, install it locally using npm:
