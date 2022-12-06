@@ -31,6 +31,7 @@ Possibility to edit the menu as an administrator, and access (possibility to edi
   <li>redux version: 4.2.0</li>
   <li>redux-thunk version: 2.4.2</li>
   <li>react-icons version: 4.4.0</li>
+  <li>recharts version: 2.1.16</li>
 </ul>
 
 ## Check on your own
