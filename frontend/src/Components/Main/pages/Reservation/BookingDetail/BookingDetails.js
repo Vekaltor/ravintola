@@ -32,22 +32,13 @@ function BookingDetails() {
   const [listTables, setListTables] = useState([]);
   const [listHours, setListHours] = useState(hours);
 
-  const { date, time, amountPeople, setDataFormState } =
+  const { date, amountPeople, setDataFormState } =
     useContext(ReservationContext);
 
   const service = new ReservationService();
 
   const runReservationService = (e) => {
-    console.log("run service");
     fetchData();
-
-    if (!time) {
-      setDataFormState("isValidate", false);
-      setDataFormState("submitReservation", false);
-    } else {
-      setDataFormState("time", "");
-    }
-
     initializeReservationService();
   };
 

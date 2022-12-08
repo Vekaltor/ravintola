@@ -49,7 +49,9 @@ export const setActiveDish = (dish) => ({
   payload: { dish },
 });
 
-export const addDish = (dishes, dish) => {
+export const addDish = (dish) => {
+  console.log(dish);
+
   fetch(pathToApi + `menu`, {
     method: "POST",
     headers: {
@@ -57,11 +59,8 @@ export const addDish = (dishes, dish) => {
     },
     body: JSON.stringify(dish),
   }).catch((error) => console.log(error));
-
-  dishes.push(dish);
   return {
     type: ADD_DISH,
-    payload: { dishes },
   };
 };
 

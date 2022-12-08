@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addDish } from "../../../../actions/adminActions";
 
 import AddDishMessage from "./AddDishMessage";
@@ -27,8 +27,6 @@ const AddDishForm = () => {
   const boxRef = useRef();
 
   const navigate = useNavigate();
-
-  const { dishes } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -62,7 +60,7 @@ const AddDishForm = () => {
       image: details.img,
       isRecommended: boolRecommended,
     };
-    dispatch(addDish(dishes, newDish));
+    dispatch(addDish(newDish));
   };
 
   const handleFiles = (e) => {

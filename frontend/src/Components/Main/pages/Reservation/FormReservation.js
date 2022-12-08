@@ -10,8 +10,6 @@ import ReservationContext from "./ReservationContext";
 
 class FormReservation extends Component {
   state = {
-    isValidate: false,
-    submitReservation: false,
     date: this.formatDate(new Date()),
     time: "",
     amountPeople: 2,
@@ -20,47 +18,18 @@ class FormReservation extends Component {
     email: "",
     phone: "",
     availableTablesByHour: [],
+    submitReservation: false,
   };
 
   validator = new ReservationDataValidator(".form-reservation > form");
 
   handleClick() {
-    if (this.state.time === "")
-      this.setDataFormState("submitReservation", false);
     this.validator.validateForm();
-    if (this.validator.isValidate) {
-      this.submitReservation();
-    } else this.setDataFormState("isValidate", false);
+    if (this.validator.isValidate) this.submitReservation();
   }
 
   handleSubmitForm(e) {
     e.preventDefault();
-  }
-
-  submitReservation() {
-    const service = new ReservationService();
-    const response = service.makeReservation(this.state);
-    this.clearData();
-    this.setDataFormState("submitReservation", response);
-  }
-
-  setDataFormState(name, newValue) {
-    if (name === "amountPeople") newValue = parseInt(newValue);
-    this.setState({
-      [name]: newValue,
-    });
-  }
-
-  padTo2Digits(num) {
-    return num.toString().padStart(2, "0");
-  }
-
-  formatDate(date) {
-    return [
-      this.padTo2Digits(date.getDate()),
-      this.padTo2Digits(date.getMonth() + 1),
-      date.getFullYear(),
-    ].join("/");
   }
 
   handleFocus = (e) => {
@@ -75,9 +44,25 @@ class FormReservation extends Component {
     }
   };
 
+  submitReservation() {
+    const service = new ReservationService();
+    const response = service.makeReservation(this.state);
+
+    this.setDataFormState("submitReservation", response);
+    this.clearData();
+  }
+
+  setDataFormState(name, newValue) {
+    if (name === "amountPeople") newValue = parseInt(newValue);
+    this.setState((prevState) => ({
+      ...prevState,
+      [name]: newValue,
+    }));
+  }
+
   clearData = () => {
-    this.setState({
-      isValidate: true,
+    this.setState((prevState) => ({
+      ...prevState,
       date: this.formatDate(new Date()),
       time: "",
       amountPeople: 2,
@@ -85,8 +70,20 @@ class FormReservation extends Component {
       surname: "",
       email: "",
       phone: "",
-    });
+    }));
   };
+
+  padTo2Digits(num) {
+    return num.toString().padStart(2, "0");
+  }
+
+  formatDate(date) {
+    return [
+      this.padTo2Digits(date.getDate()),
+      this.padTo2Digits(date.getMonth() + 1),
+      date.getFullYear(),
+    ].join("/");
+  }
 
   render() {
     const announcementComponent = this.state.submitReservation ? (

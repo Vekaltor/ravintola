@@ -57,8 +57,8 @@ export default function adminReducer(state = initialState, action) {
     case ADD_DISH:
       return {
         ...state,
+        dishes: initialState.dishes,
         filtersDishes: initialState.filtersDishes,
-        dishes: action.payload.dishes,
       };
     case DELETE_DISH:
       return {
