@@ -23,9 +23,9 @@ const BarChartReservations = (props) => {
       })
     );
     let monthAndYear = todayDate.slice(2, todayDate.length);
-    let firstDayOfWeek = getFirstDayOfWeek(todayDate, indexCurrentDayOfWeek);
+    let firstWeekday = getFirstWeekday(todayDate, indexCurrentDayOfWeek);
 
-    let day = firstDayOfWeek;
+    let day = firstWeekday;
     for (let i = 1; i <= 7; i++) {
       if (day < 9) day = "0" + day;
       let date = day + monthAndYear;
@@ -35,12 +35,19 @@ const BarChartReservations = (props) => {
     return dates;
   };
 
-  const getFirstDayOfWeek = (todayDate, indexCurrentDayOfWeek) => {
+  const getFirstWeekday = (todayDate, indexCurrentDayOfWeek) => {
     let indexCurrentDayOfMonth = todayDate.slice(1, 2);
     let indexFirstDayOfWeek =
       indexCurrentDayOfMonth - indexCurrentDayOfWeek + 1;
     return indexFirstDayOfWeek;
   };
+
+  function getWeekday(date) {
+    const [dd, mm, yyyy] = date.split("/");
+    return new Date(yyyy, mm - 1, dd).toLocaleDateString("pl-PL", {
+      weekday: "long",
+    });
+  }
 
   const changePatternDate = (date) => {
     return date.replaceAll(".", "/");
@@ -59,8 +66,10 @@ const BarChartReservations = (props) => {
     const datesOfWeek = getDatesOfCurrentWeek();
 
     datesOfWeek.forEach((date) => {
+      // date.toLocaleDateString();
+      let day = getWeekday(date, "pl");
       let objectDataChart = {
-        date: date,
+        day: day,
         reservations: countReservationsByDate(date, reservations),
       };
       dataToChart.push(objectDataChart);
@@ -79,9 +88,8 @@ const BarChartReservations = (props) => {
       <div className="title">{title}</div>
       <ResponsiveContainer width={width} height={height}>
         <BarChart data={reservationsDataChart}>
-          {console.log(reservationsDataChart)}
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" />
+          <XAxis dataKey="day" />
           <YAxis />
           <Tooltip />
           <Legend />

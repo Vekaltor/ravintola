@@ -52,7 +52,9 @@ const Dashboard = () => {
     return () => {
       disconnectData();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <div className="dashboard">
       <div className="header">Panel</div>
