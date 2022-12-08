@@ -1,15 +1,15 @@
 /* LOGIN */
 
-.page-admin .login {
+.login {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: #eee;
 }
 
-.page-admin .login .loading-login {
+.login .loading-login {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@
   background-color: rgba(51, 51, 51, 0.308);
 }
 
-.page-admin .login .loading-login .loader {
+.login .loading-login .loader {
   width: 48px;
   height: 48px;
   display: block;
@@ -54,14 +54,14 @@
   }
 }
 
-.page-admin .login .loading-login .title {
+.login .loading-login .title {
   font-size: 18px;
   color: #fff;
   margin-top: 15px;
   text-shadow: 0px 0px 5px #333;
 }
 
-.page-admin .login .loading-login .title .dots::after {
+.login .loading-login .title .dots::after {
   animation: showDots 2s linear infinite;
   content: "";
 }
@@ -84,7 +84,7 @@
   }
 }
 
-.page-admin .login > div {
+.login > div {
   display: flex;
   align-items: center;
   width: 800px;
@@ -94,7 +94,7 @@
   box-shadow: 0px 31px 65px -24px rgba(66, 68, 90, 1);
 }
 
-.page-admin .login .form {
+.login .form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -103,31 +103,31 @@
   padding: 50px 40px;
 }
 
-.page-admin .login .form > div.button-login {
+.login .form > div.button-login {
   margin-left: auto;
 }
 
-.page-admin .login .form .info {
+.login .form .info {
   display: block;
   width: 100%;
   margin-bottom: 35px;
 }
 
-.page-admin .login .form .info h3 {
+.login .form .info h3 {
   font-size: 33px;
   font-family: "Noto Sans JP", sans-serif;
   font-weight: 500;
   color: #444;
 }
 
-.page-admin .login .form .info span {
+.login .form .info span {
   font-size: 16px;
   color: #666;
   font-weight: 500;
   font-family: "Noto Sans Wancho", sans-serif;
 }
 
-.page-admin .login label {
+.login label {
   display: block;
   width: 100%;
   border: 1px solid #aaa;
@@ -136,7 +136,7 @@
   font-size: 16px;
 }
 
-.page-admin .login label input {
+.login label input {
   width: 100%;
   padding: 12px 20px 12px 60px;
   border: none;
@@ -146,7 +146,7 @@
   font-family: "Roboto", sans-serif;
 }
 
-.page-admin .login label .icon {
+.login label .icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,27 +157,27 @@
   background-color: rgba(221, 221, 221, 0.452);
 }
 
-.page-admin .login label .icon svg {
+.login label .icon svg {
   font-size: 15px;
   color: rgba(102, 102, 102, 0.281);
   transition: 0.15s linear;
 }
 
-.page-admin .login label.active .icon svg {
+.login label.active .icon svg {
   font-size: 15px;
   color: #0d6dfd;
 }
 
-.page-admin .login label input:focus {
+.login label input:focus {
   outline-color: #0d6dfd;
 }
 
-.page-admin .login label input::placeholder {
+.login label input::placeholder {
   font-size: 15px;
   font-family: "Roboto", sans-serif;
 }
 
-.page-admin .login button {
+.login button {
   width: max-content;
   padding: 10px 35px;
   border: 1px solid #333;
@@ -189,13 +189,13 @@
   transition: 0.15s linear;
 }
 
-.page-admin .login button:hover {
+.login button:hover {
   cursor: pointer;
   text-shadow: 0px 0px 1px white;
   background-color: rgba(51, 51, 51, 0.959);
 }
 
-.page-admin .login .image-login-form {
+.login .image-login-form {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -205,7 +205,7 @@
   height: 100%;
 }
 
-.page-admin .login .image-login-form .background {
+.login .image-login-form .background {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -218,7 +218,7 @@
   z-index: 1;
 }
 
-.page-admin .login .image-login-form .background::after {
+.login .image-login-form .background::after {
   content: "";
   width: 100%;
   height: 100%;
@@ -227,7 +227,7 @@
   z-index: 5;
 }
 
-.page-admin .login .image-login-form .image {
+.login .image-login-form .image {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -238,13 +238,13 @@
   z-index: 3;
 }
 
-.page-admin .login .image-login-form .image img {
+.login .image-login-form .image img {
   width: 100%;
   image-rendering: optimizeQuality;
 }
 
-.page-admin .login .image-login-form .title,
-.page-admin .login .image-login-form .title span {
+.login .image-login-form .title,
+.login .image-login-form .title span {
   margin-top: 15px;
   color: #fff;
   font-size: 22px;
@@ -254,12 +254,43 @@
   z-index: 3;
 }
 
-.page-admin .login .image-login-form .title span {
+.login .image-login-form .title span {
   color: #0d6dfd;
 }
 
-.page-admin .login .error-login {
+.login .error-login {
   color: red;
   font-weight: bold;
   font-size: 12px;
+}
+
+@media (max-width: 800px) {
+  .login > div {
+    flex-direction: column-reverse;
+    height: auto;
+    width: 100%;
+    padding-top: 50px;
+  }
+  .login .form {
+    padding: 20px 40px 50px 40px;
+  }
+
+  .login .image-login-form {
+    width: 65%;
+    padding: 50px 0;
+  }
+
+  @media (max-width: 700px) {
+    .login .form {
+      width: 65%;
+    }
+    @media (max-width: 600px) {
+      .login .form {
+        width: 90%;
+      }
+      .login .image-login-form {
+        width: 90%;
+      }
+    }
+  }
 }
