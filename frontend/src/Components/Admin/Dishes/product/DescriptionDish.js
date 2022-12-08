@@ -5,7 +5,7 @@ const DescriptionDish = ({ description, icon: Icon, setAction }) => {
 
   return (
     <>
-      <span>{description}</span>
+      <span>{description ? description : "dodaj opis"}</span>
       <span className="icon" onClick={handleClick}>
         {Icon}
       </span>

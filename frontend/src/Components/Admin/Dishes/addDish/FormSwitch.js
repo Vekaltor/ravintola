@@ -7,7 +7,7 @@ const FormSwitch = ({ name, changeDetail }) => {
   let polishName = name[1];
 
   const existsRef = switchRef.current ? switchRef.current.checked : false;
-  const getValue = !existsRef ? true : false;
+  const setValue = !existsRef ? true : false;
 
   return (
     <div className="other-settings">
@@ -17,7 +17,7 @@ const FormSwitch = ({ name, changeDetail }) => {
           ref={switchRef}
           type="checkbox"
           name={orginalName}
-          value={getValue}
+          value={setValue}
           onChange={changeDetail}
         />
         <span className="slider round"></span>

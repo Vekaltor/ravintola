@@ -10,6 +10,8 @@ import { categoryOrder } from "../../../Main/pages/Menu/Data";
 import { currencies } from "../../data/currenciesData";
 import OtherSettingsForm from "./OtherSettingsForm";
 
+import "./addDish.css";
+
 const AddDishForm = () => {
   const [details, setDetails] = useState({
     name: "",

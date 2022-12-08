@@ -1,4 +1,4 @@
 export const pathToApi =
   process.env.NODE_ENV !== "development"
-    ? "https://ravintola.herokuapp.com/"
-    : "http://localhost:8080/";
+    ? "https://ravintola.toadres.pl/api/"
+    : "http://localhost:8080/api/";

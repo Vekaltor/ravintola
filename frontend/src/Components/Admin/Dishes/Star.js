@@ -1,7 +1,7 @@
 import { AiFillStar } from "react-icons/ai";
 
-const Star = ({ recommended }) => {
-  const className = recommended ? "star recommended" : "star";
+const Star = ({ isRecommended }) => {
+  const className = isRecommended ? "star recommended" : "star";
 
   return (
     <div className={className}>

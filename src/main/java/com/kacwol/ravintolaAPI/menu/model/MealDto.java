@@ -3,6 +3,7 @@ package com.kacwol.ravintolaAPI.menu.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 @AllArgsConstructor
 @Getter
@@ -24,4 +25,11 @@ public class MealDto {
     private String image;
 
     private boolean isRecommended;
+
+    @JsonProperty(value = "isRecommended")
+    public boolean getIsRecommended() {
+        return isRecommended;
+    }
+
+
 }

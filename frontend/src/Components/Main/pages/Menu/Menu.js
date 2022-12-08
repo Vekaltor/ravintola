@@ -11,7 +11,7 @@ function Menu(props) {
   const [data, setData] = useState([]);
 
   const getData = () => {
-    fetch(pathToApi + "api/menu")
+    fetch(pathToApi + "menu")
       .then((response) => {
         if (response.ok) return response.json();
         throw Error(response.status);

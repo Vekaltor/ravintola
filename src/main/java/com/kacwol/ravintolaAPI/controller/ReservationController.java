@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000","https://ravintola.herokuapp.com"})
+@CrossOrigin(origins = {"http://localhost:3000","http://ravintola.toadres.pl","https://ravintola.herokuapp.com"})
 @RequestMapping("api/reservation")
 public class ReservationController {
 

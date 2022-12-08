@@ -5,11 +5,13 @@ import Dish from "./Dish";
 import FilterDishes from "./FilterDishes";
 import PrototypeDish from "./PrototypeDish";
 
-import { fetchDishes } from "../../../actions/adminActions";
+import { fetchDishes, clearDishes } from "../../../actions/adminActions";
 import { connect, useDispatch, useSelector } from "react-redux";
 import AddDishButton from "./AddDishButton";
 import { Route, Routes } from "react-router-dom";
-import Product from "./Product";
+import Product from "./product/Product";
+
+import "./dishes.css";
 
 const Dishes = () => {
   const { dishes, filtersDishes, loading, error } = useSelector(
@@ -72,8 +74,15 @@ const Dishes = () => {
     dispatch(fetchDishes());
   };
 
+  const disconnectDishes = () => {
+    dispatch(clearDishes());
+  };
+
   useEffect(() => {
     loadDishes();
+    return () => {
+      disconnectDishes();
+    };
   }, []);
 
   return (

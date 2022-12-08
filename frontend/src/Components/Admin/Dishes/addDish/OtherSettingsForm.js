@@ -1,24 +1,40 @@
 import FormSwitch from "./FormSwitch";
 
 import srcTemplateImage from "../../../../img/upload_image_1280x896.png";
+import { useRef } from "react";
 
 const OtherSettingsForm = ({ uploadedImg, changeDetail }) => {
-  const imageSrc = uploadedImg
-    ? process.env.PUBLIC_URL + uploadedImg
-    : process.env.PUBLIC_URL + srcTemplateImage;
+  const style = uploadedImg ? { display: "block" } : { display: "none" };
+
+  const btnRef = useRef();
+
+  const handleClick = () => {
+    btnRef.current.disabled = true;
+  };
 
   return (
     <div className="second-form section-form">
       <div className="header">Produkt</div>
       <div className="image">
-        <img src={imageSrc} alt="Inserted from user" />
+        <img
+          src={process.env.PUBLIC_URL + srcTemplateImage}
+          alt="Inserted from user"
+        />
+        <img
+          src={process.env.PUBLIC_URL + uploadedImg}
+          alt="Inserted from user"
+          className="uploaded"
+          style={style}
+        />
       </div>
       <FormSwitch
         name={["recommended", "Rekomendacja"]}
         changeDetail={changeDetail}
       />
       <div className="buttons">
-        <button type="submit">Dodaj produkt</button>
+        <button type="submit" ref={btnRef} onSubmit={handleClick}>
+          Dodaj produkt
+        </button>
       </div>
     </div>
   );

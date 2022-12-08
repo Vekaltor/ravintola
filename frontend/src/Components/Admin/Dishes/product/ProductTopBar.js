@@ -1,4 +1,4 @@
-import defaultImage from "../../../img/recommended_food2_1920_1271.jpg";
+import defaultImage from "../../../../img/recommended_food2_1920_1271.jpg";
 
 const ProductTopBar = ({ dish }) => {
   const { name, image } = dish;

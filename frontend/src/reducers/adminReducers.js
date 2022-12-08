@@ -2,6 +2,7 @@ import {
   FETCH_DISHES_BEGIN,
   FETCH_DISHES_SUCCESS,
   FETCH_DISHES_FAILURE,
+  CLEAR_DISHES,
   SET_ACTIVE_DISH,
   ADD_DISH,
   DELETE_DISH,
@@ -18,7 +19,7 @@ const initialState = {
   filtersDishes: {
     phrase: "",
     category: "",
-    recommended: "",
+    isRecommended: "",
   },
   checkedDishes: [],
   loading: false,
@@ -46,6 +47,8 @@ export default function adminReducer(state = initialState, action) {
         loading: false,
         error: action.payload.error,
       };
+    case CLEAR_DISHES:
+      return initialState;
     case SET_ACTIVE_DISH:
       return {
         ...state,

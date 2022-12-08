@@ -5,6 +5,8 @@ import ProductTopBar from "./ProductTopBar";
 import ProductInfo from "./ProductInfo";
 import ProductMore from "./ProductMore";
 
+import "./product.css";
+
 const Product = () => {
   const location = useLocation();
   const { dish } = location.state;

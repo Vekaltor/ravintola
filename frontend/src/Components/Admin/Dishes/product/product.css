@@ -1,0 +1,501 @@
+/*  FEATURES */
+
+/* DISH DETAILS  */
+
+.content-admin-panel .dish-detail-box {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+  padding: 25px;
+  gap: 25px;
+  background-color: #f0f0fa;
+  z-index: 5;
+  animation: hide-dish-detail-box 0.5s 0.25s
+    cubic-bezier(0.895, 0.03, 0.685, 0.22) forwards;
+  transform: translate(0, 0);
+}
+
+.content-admin-panel .dish-detail-box.active {
+  animation: show-dish-detail-box 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22)
+    forwards;
+  transform: translate(100%, 0);
+}
+
+.content-admin-panel .dish-detail-box.active.blurred {
+  filter: blur(5px);
+}
+
+@keyframes show-dish-detail-box {
+  0% {
+    transform: translate(100%, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes hide-dish-detail-box {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100%, 0);
+  }
+}
+
+.dish-detail-box .top {
+  width: 100%;
+  height: auto;
+  box-shadow: 0px 0px 15px 2px rgba(66, 68, 90, 0.089);
+  background-color: white;
+}
+
+.dish-detail-box .bottom {
+  display: flex;
+  width: 100%;
+  gap: 25px;
+}
+
+.dish-detail-box .top > h2 {
+  color: #333;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding: 25px;
+}
+
+.dish-detail-box .top > .image {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 25px;
+  border-top: 1px solid rgba(34, 34, 34, 0.137);
+}
+
+.dish-detail-box .top > .image img {
+  width: 100%;
+  height: auto;
+  max-height: 255px;
+  object-fit: cover;
+}
+
+.dish-detail-box .top > .image .name {
+  position: absolute;
+  left: 0;
+  bottom: 30px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 25px;
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+  text-shadow: 0px 0px 20px rgba(17, 0, 255, 0.674);
+}
+
+/* DISH INFO */
+
+.dish-detail-box .dish-info {
+  width: 50%;
+  height: fit-content;
+  padding: 25px;
+  background-color: white;
+  box-shadow: 0px 0px 15px 2px rgba(66, 68, 90, 0.089);
+}
+
+.dish-detail-box .dish-info .header {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.dish-detail-box .dish-info .list {
+  margin-top: 25px;
+}
+
+.dish-detail-box .dish-info .list > span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  border-top: 1px solid rgba(34, 34, 34, 0.137);
+}
+
+.dish-detail-box .dish-info .list > span > span:nth-of-type(1) {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.dish-detail-box .dish-info .list > span > span:nth-of-type(2) {
+  font-size: 14px;
+  color: #333;
+}
+
+.dish-detail-box .dish-info .list > span > span.recommended-block {
+  display: block;
+  width: auto;
+  height: auto;
+  padding: 2px 15px;
+  border-radius: 10px;
+  background-color: rgba(17, 0, 255, 0.674);
+  color: white;
+}
+
+.dish-detail-box .dish-info .buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.dish-detail-box .dish-info .buttons .button {
+  width: 110px;
+  font-size: 14px;
+  color: white;
+  border-radius: 5px;
+  padding: 12px 0;
+  cursor: pointer;
+  transition: 0.1s 0.05s linear;
+}
+
+.dish-detail-box .dish-info .buttons .button.edit {
+  background-color: rgba(17, 0, 255, 0.674);
+  border: 1px solid rgba(17, 0, 255, 0.674);
+}
+
+.dish-detail-box .dish-info .buttons .button.edit:hover {
+  background-color: rgba(17, 0, 255, 0.644);
+}
+
+.dish-detail-box .dish-info .buttons .button.delete {
+  background-color: #222;
+}
+
+.dish-detail-box .dish-info .buttons .button.delete:hover {
+  background-color: #333;
+}
+
+/* DISH MORE INFO */
+
+.dish-detail-box .dish-more-info {
+  width: 50%;
+  height: fit-content;
+  padding: 25px;
+  background-color: white;
+  box-shadow: 0px 0px 15px 2px rgba(66, 68, 90, 0.089);
+}
+
+.dish-detail-box .dish-more-info .header {
+  margin-bottom: 25px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.dish-detail-box .dish-more-info .description {
+  box-sizing: content-box;
+  display: flex;
+  align-items: center;
+  width: 75%;
+  padding-right: 25%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(34, 34, 34, 0.137);
+  margin-bottom: 50px;
+}
+
+.dish-detail-box .dish-more-info .description > span {
+  padding: 10px 15px;
+  font-size: 14px;
+  line-height: 1.5em;
+  color: #333;
+}
+
+.dish-detail-box .dish-more-info .description > span.edit-text {
+  padding: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.dish-detail-box .dish-more-info .description > span.edit-text textarea {
+  max-width: 100%;
+  width: 100%;
+  padding: 15px 25px;
+  margin: -6px -11px;
+  border: 1px solid rgba(34, 34, 34, 0.137);
+  line-height: 1.5em;
+  font-size: 14px;
+  color: #333;
+  background-color: transparent;
+  outline: none;
+  resize: vertical;
+  overflow: hidden;
+}
+
+.dish-detail-box
+  .dish-more-info
+  .description
+  > span.edit-text
+  .header-textarea {
+  display: block;
+  position: absolute;
+  left: 10px;
+  top: -15px;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: white;
+}
+
+.dish-detail-box .dish-more-info .description > span.icon {
+  display: flex;
+  align-self: flex-end;
+  margin-bottom: 0;
+  padding: 5px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.dish-detail-box .dish-more-info .description > span.icon svg {
+  font-size: 25px;
+  color: #333;
+  transition: 0.25s 0.05s ease-out;
+}
+
+.dish-detail-box .dish-more-info .description > span.icon:hover svg {
+  color: #0d6dfd;
+}
+
+.dish-detail-box .dish-more-info .description > span.icon.edited:hover svg {
+  color: greenyellow;
+  background-color: #333;
+  border: 1px solid transparent;
+}
+
+.dish-detail-box .dish-more-info .button {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+}
+
+.dish-detail-box .dish-more-info .button.clicked {
+  transform: translateX(0);
+  animation: MoveleftAndRight 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes MoveleftAndRight {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-25%);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(10%);
+  }
+}
+
+.dish-detail-box .dish-more-info .button span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  width: 150px;
+  height: 60px;
+  border-radius: 15px;
+  background-color: #0d6dfd;
+  font-weight: bold;
+  color: #eee;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.15s 0.04s ease-in-out;
+}
+
+.dish-detail-box .dish-more-info .button span svg {
+  margin-right: 10px;
+}
+
+.dish-detail-box .dish-more-info .button:hover span {
+  background-color: #0d6dfdf1;
+  color: #fff;
+}
+
+/* POPUP DELETE */
+
+.backdrop-popup.product {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(51, 51, 51, 0.123);
+  z-index: 1;
+}
+
+.popup-delete.product {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 350px;
+  padding-bottom: 20px;
+  border-radius: 40px;
+  box-shadow: 0px 30px 20px -10px #c1cbff;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  cursor: auto;
+  z-index: 1;
+}
+
+.popup-delete.product.inprogress::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+  border-radius: 40px;
+  background-color: rgba(34, 34, 34, 0.13);
+}
+
+.popup-delete.product.inprogress::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: calc(50% - 10px - 3.5px);
+  top: 65%;
+  border: 7px solid rgba(167, 167, 167, 0.842); /* Light grey */
+  border-top: 7px solid rgba(17, 0, 255, 0.674); /* Blue */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.popup-delete.product .image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 40px;
+  background-color: #c1cbff;
+}
+
+.popup-delete.product .image img {
+  height: 20%;
+  animation: grow 1s 0.1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+}
+
+@keyframes grow {
+  0% {
+    height: 20%;
+  }
+  100% {
+    height: 70%;
+  }
+}
+
+.popup-delete.product .content {
+  width: 100%;
+  padding: 10px 40px;
+}
+
+.popup-delete.product .content .title {
+  display: block;
+  width: 100%;
+  color: #333;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+
+.popup-delete.product .content .info {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+  font-size: 13px;
+  color: #888;
+  text-align: center;
+}
+
+.popup-delete.product .content .buttons {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.popup-delete.product .confirm,
+.popup-delete.product .cancel {
+  width: 110px;
+  padding: 10px 0;
+  font-size: 14px;
+  border: 1px solid #526dff;
+  border-radius: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.popup-delete.product .confirm {
+  color: white;
+  background-color: #526dff;
+  transition: 0.2s linear;
+}
+
+.popup-delete.product .confirm:hover {
+  color: white;
+  background-color: #526dff;
+  letter-spacing: 0.1em;
+}
+
+.popup-delete.product .cancel {
+  color: #526dff;
+  background-color: white;
+  border: 1px solid transparent;
+  transition: border 0.2s linear;
+}
+
+.popup-delete.product .cancel:hover {
+  border: 1px solid #526dff;
+}
+
+@media (max-width: 700px) {
+  .dish-detail-box .bottom {
+    /* display: flex; */
+    flex-direction: column;
+  }
+  .dish-detail-box .dish-info {
+    width: 100%;
+  }
+  .dish-detail-box .dish-more-info {
+    width: 100%;
+
+    padding: 25px;
+  }
+  @media (max-width: 500px) {
+    .content-admin-panel .dish-detail-box {
+      padding: 15px 5px;
+    }
+  }
+}

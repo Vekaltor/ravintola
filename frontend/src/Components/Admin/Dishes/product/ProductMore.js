@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { modifyDish } from "../../../actions/adminActions";
+import { modifyDish } from "../../../../actions/adminActions";
 
 import DescriptionDish from "./DescriptionDish";
 import EditDescriptionDish from "./EditDescriptionDish";
@@ -29,34 +29,18 @@ const ProductMore = ({ dish, goToBack }) => {
     dispatch(modifyDish(dishModified));
   };
 
-  const descriptionDish = description ? (
-    action ? (
-      <EditDescriptionDish
-        dish={dish}
-        icon={<BsCheckSquareFill />}
-        description={descp}
-        setAction={setAction}
-        editDescription={handleEditDescription}
-      />
-    ) : (
-      <DescriptionDish
-        icon={<AiTwotoneEdit />}
-        description={descp}
-        setAction={setAction}
-      />
-    )
-  ) : action ? (
+  const descriptionDish = action ? (
     <EditDescriptionDish
       dish={dish}
       icon={<BsCheckSquareFill />}
-      description="dodaj opis"
+      description={descp}
       setAction={setAction}
       editDescription={handleEditDescription}
     />
   ) : (
     <DescriptionDish
-      icon={<IoIosAddCircle />}
-      description="dodaj opis"
+      icon={descp ? <AiTwotoneEdit /> : <IoIosAddCircle />}
+      description={descp}
       setAction={setAction}
     />
   );

@@ -3,11 +3,11 @@ import {
   FETCH_DISHES_BEGIN,
   FETCH_DISHES_SUCCESS,
   FETCH_DISHES_FAILURE,
+  CLEAR_DISHES,
   SET_ACTIVE_DISH,
   ADD_DISH,
   DELETE_DISH,
   MODIFY_DISH,
-  UPDATE_DISHES,
   UPDATE_FILTER_DISHES,
   UPDATE_CHECKED_DISHES,
   CHECKED_ALL_DISHES,
@@ -17,7 +17,7 @@ import {
 export const fetchDishes = () => (dispatch) => {
   dispatch(fetchDishesBegin());
   setTimeout(() => {
-    fetch(pathToApi + "api/menu")
+    fetch(pathToApi + "menu")
       .then((response) => response.json())
       .then(
         (dishes) => dispatch(fetchDishesSuccess(dishes)),
@@ -40,13 +40,17 @@ export const fetchDishesFailure = (error) => ({
   payload: { error },
 });
 
+export const clearDishes = () => ({
+  type: CLEAR_DISHES,
+});
+
 export const setActiveDish = (dish) => ({
   type: SET_ACTIVE_DISH,
   payload: { dish },
 });
 
 export const addDish = (dishes, dish) => {
-  fetch(pathToApi + `api/menu`, {
+  fetch(pathToApi + `menu`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -63,7 +67,7 @@ export const addDish = (dishes, dish) => {
 
 export const deleteDish = (dishes, dishToDelete) => {
   dishes = dishes.filter((dish) => dish.id !== dishToDelete.id);
-  fetch(pathToApi + `api/menu/${dishToDelete.id}`, {
+  fetch(pathToApi + `menu/${dishToDelete.id}`, {
     method: "DELETE",
   }).catch((error) => console.log(error));
 
@@ -74,13 +78,13 @@ export const deleteDish = (dishes, dishToDelete) => {
 };
 
 export const modifyDish = (dishModified) => {
-  // fetch(pathToApi + `api/menu/${dishModified.id}`, {
-  //   method: "PUT",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify(dishModified),
-  // }).catch((error) => console.log(error));
+  fetch(pathToApi + `menu`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(dishModified),
+  }).catch((error) => console.log(error));
 
   return {
     type: MODIFY_DISH,

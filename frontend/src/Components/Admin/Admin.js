@@ -11,7 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 
 const Admin = () => {
   return (
-    <div className="page-admin">
+    <div>
       <Routes>
         <Route element={<PrivateRoute />}>
           <Route exact path="/*" element={<PanelAdmin />} />

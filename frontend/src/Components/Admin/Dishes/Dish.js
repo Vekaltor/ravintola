@@ -16,8 +16,10 @@ const Dish = ({ dish }) => {
 
   const changeRecommended = (idModifiedDish) => {
     let dishModified = dishes.find((dish) => dish.id === idModifiedDish);
-    dishModified = { ...dishModified, recommended: !dishModified.recommended };
-
+    dishModified = {
+      ...dishModified,
+      isRecommended: !dishModified.isRecommended,
+    };
     dispatch(modifyDish(dishModified));
   };
 
@@ -66,7 +68,7 @@ const Dish = ({ dish }) => {
       <div className="name">{dish.name}</div>
       <div className="description">{dish.description}</div>
       <div className="recommended" onClick={handleClick}>
-        <Star recommended={dish.recommended} />
+        <Star isRecommended={dish.isRecommended} />
       </div>
       <div className="price">{dish.price} zł</div>
       <SettingsDish dish={dish} />

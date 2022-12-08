@@ -3,6 +3,8 @@ import { useState } from "react";
 import { MdLogout } from "react-icons/md";
 import LogoutPopup from "./LogoutPopup";
 
+import "./logout.css";
+
 function Logout() {
   const [isClicked, setIsClicked] = useState(false);
 

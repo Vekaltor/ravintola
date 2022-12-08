@@ -39,7 +39,7 @@ const PrototypeDish = () => {
       <div className="checkbox">
         <input type="checkbox" onChange={handleChange} ref={checkboxRef} />
       </div>
-      <div className="image"></div>
+      <div className="image">Zdjęcie</div>
       <div className="name">Nazwa</div>
       <div className="description">Opis</div>
       <div className="recommended">Rekomendowane</div>

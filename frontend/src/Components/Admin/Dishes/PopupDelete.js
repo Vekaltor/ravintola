@@ -21,7 +21,9 @@ const PopupDelete = ({ id, info, className, click, animationDelay = 1000 }) => {
   };
 
   const exitPopup = () => {
-    click(false);
+    click({
+      isActivePopup: false,
+    });
   };
 
   const handleClickConfirm = () => {
@@ -30,7 +32,9 @@ const PopupDelete = ({ id, info, className, click, animationDelay = 1000 }) => {
       popupRef.current.classList.remove("inprogress");
       setTimeout(() => {
         handleDeleteDish();
-        click(false);
+        click({
+          isActivePopup: false,
+        });
         if (isFromComponentDetails) navigate(-1);
       }, animationDelay / 5);
     }, animationDelay);

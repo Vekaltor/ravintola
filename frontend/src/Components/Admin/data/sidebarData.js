@@ -10,8 +10,8 @@ import { IoMdSettings } from "react-icons/io";
 export const menuSideBar = [
   {
     id: 0,
-    categoryTitle: "Główna",
-    links: [{ id: 0, Icon: <MdDashboard />, name: "Home", pathname: "" }],
+    categoryTitle: "Panel",
+    links: [{ id: 0, Icon: <MdDashboard />, name: "Panel", pathname: "" }],
   },
   {
     id: 1,

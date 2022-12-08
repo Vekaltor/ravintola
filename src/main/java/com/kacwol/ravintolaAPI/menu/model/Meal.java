@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 import javax.persistence.*;
 
@@ -36,4 +37,8 @@ public class Meal {
 
     private boolean isRecommended;
 
+    @JsonProperty(value = "isRecommended")
+    public boolean getIsRecommended() {
+        return isRecommended;
+    }
 }

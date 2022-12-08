@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +10,7 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import { BsBoxArrowInUpRight } from "react-icons/bs";
 
 const SettingsDish = ({ dish }) => {
-  const [activePopup, setActivePopup] = useState(false);
+  const [activePopup, setActivePopup] = useState({ isActivePopup: false });
   const { name } = dish;
   const { activeDish } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
@@ -31,9 +31,13 @@ const SettingsDish = ({ dish }) => {
   };
 
   const handleClick = (valueState) => {
-    setActivePopup(false);
+    console.log(valueState);
+
+    setActivePopup((prevState) => ({
+      ...prevState,
+      ...valueState,
+    }));
     dispatch(setActiveDish(dish));
-    setActivePopup((prevState) => (prevState = valueState));
   };
 
   const componentPopupDelete =
@@ -51,10 +55,13 @@ const SettingsDish = ({ dish }) => {
       <span className="more-info" onClick={goToDish}>
         <BsBoxArrowInUpRight />
       </span>
-      <span className="delete" onClick={handleClick}>
+      <span
+        className="delete"
+        onClick={() => handleClick({ isActivePopup: true })}
+      >
         <RiDeleteBin5Fill />
       </span>
-      {activePopup ? componentPopupDelete : null}
+      {activePopup.isActivePopup ? componentPopupDelete : null}
     </div>
   );
 };

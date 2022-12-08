@@ -6,12 +6,15 @@ import { updateFilterDishes } from "../../../actions/adminActions";
 import FiltrCategory from "./FiltrCategory";
 import FiltrRecommended from "./FiltrRecommended";
 
-import { BiSearch } from "react-icons/bi";
+import { BiSearch, BiArrowToBottom, BiArrowToTop } from "react-icons/bi";
+import { useRef } from "react";
 
 const FilterDishes = ({ applyFilters }) => {
   const [phrase, setPhrase] = useState("");
   const [category, setCategory] = useState("");
-  const [recommended, setRecommended] = useState("");
+  const [isRecommended, setIsRecommended] = useState("");
+
+  const componentRef = useRef();
 
   const dispatch = useDispatch();
   const { dishes } = useSelector((state) => state.admin);
@@ -21,15 +24,16 @@ const FilterDishes = ({ applyFilters }) => {
   };
 
   const handleSearch = () => {
-    applyFilters(filterDishes(phrase, category, recommended));
+    applyFilters(filterDishes(phrase, category, isRecommended));
     dispatch(updateFilterDishes(createObjectFiltersDishes()));
+    hideComponent();
   };
 
   const handleInputPhrase = (e) => {
     const phrase = e.target.value;
     setPhrase(phrase);
     //Real-time search of dish phrases
-    applyFilters(filterDishes(phrase, category, recommended));
+    applyFilters(filterDishes(phrase, category, isRecommended));
     dispatch(updateFilterDishes(createObjectFiltersDishes()));
   };
 
@@ -39,19 +43,19 @@ const FilterDishes = ({ applyFilters }) => {
   };
 
   const handleSelectRecommended = (e) => {
-    const recommended = e.target.value;
-    setRecommended(recommended);
+    const isRecommended = e.target.value;
+    setIsRecommended(isRecommended);
   };
 
   const createObjectFiltersDishes = () => {
     return {
       category: category,
       phrase: phrase,
-      recommended: recommended,
+      isRecommended: isRecommended,
     };
   };
 
-  const filterDishes = (phrase, category, recommended) => {
+  const filterDishes = (phrase, category, isRecommended) => {
     let filteredDishes = dishes;
     let isWithoutFilters = true;
 
@@ -65,8 +69,8 @@ const FilterDishes = ({ applyFilters }) => {
       isWithoutFilters = false;
     }
 
-    if (recommended && recommended.length > 0) {
-      filteredDishes = filterByRecommended(filteredDishes, recommended);
+    if (isRecommended && isRecommended.length > 0) {
+      filteredDishes = filterByRecommended(filteredDishes, isRecommended);
       isWithoutFilters = false;
     }
 
@@ -74,12 +78,12 @@ const FilterDishes = ({ applyFilters }) => {
     return filteredDishes;
   };
 
-  const filterByRecommended = (dishes, recommended) => {
+  const filterByRecommended = (dishes, isRecommended) => {
     let filteredDishes = [];
     filteredDishes = dishes.filter((dish) => {
-      if (recommended === "all") return dish;
-      if (recommended === "true" && dish.recommended) return dish;
-      if (recommended === "false" && !dish.recommended) return dish;
+      if (isRecommended === "all") return dish;
+      if (isRecommended === "true" && dish.isRecommended) return dish;
+      if (isRecommended === "false" && !dish.isRecommended) return dish;
     });
     return filteredDishes;
   };
@@ -100,8 +104,25 @@ const FilterDishes = ({ applyFilters }) => {
     return filteredDishes;
   };
 
+  const togglePositionComponent = () => {
+    componentRef.current.classList.toggle("hidden");
+    toggleIconButton();
+  };
+
+  const hideComponent = () => {
+    componentRef.current.classList.add("hidden");
+  };
+
+  const [IconButton, setIconButton] = useState(<BiArrowToTop />);
+
+  const toggleIconButton = () => {
+    if (IconButton.type.name === "BiArrowToBottom")
+      setIconButton(<BiArrowToTop />);
+    else setIconButton(<BiArrowToBottom />);
+  };
+
   return (
-    <div className="dishes-search">
+    <div className="dishes-search " ref={componentRef}>
       <form onSubmit={handleSubmit}>
         <input
           value={phrase}
@@ -115,6 +136,9 @@ const FilterDishes = ({ applyFilters }) => {
           <BiSearch />
         </button>
       </form>
+      <div className="toggle-btn" onClick={togglePositionComponent}>
+        {IconButton}
+      </div>
     </div>
   );
 };

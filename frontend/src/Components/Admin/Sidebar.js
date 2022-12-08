@@ -3,16 +3,20 @@ import { NavLink } from "react-router-dom";
 import { menuSideBar } from "./data/sidebarData";
 import Logout from "./Logout/Logout";
 
-function Sidebar() {
+function Sidebar({ activeSideBar, setActiveSideBar }) {
   function jsxLinksCategory(links) {
     return links.map((link, index) => (
-      <li key={index} className="nav-item">
+      <li key={index} className="nav-item" onClick={hideSideBar}>
         <NavLink to={link.pathname} end={link.pathname ? false : true}>
           <span className="nav-icon">{link.Icon}</span>
           <span className="item-text">{link.name}</span>
         </NavLink>
       </li>
     ));
+  }
+
+  function hideSideBar() {
+    setActiveSideBar();
   }
 
   function jsxCategoriesMenu(menu) {
@@ -24,6 +28,8 @@ function Sidebar() {
     ));
   }
 
+  const stylesSideBar = activeSideBar ? "sidebar active" : "sidebar";
+
   const jsxMenuSideBar = (
     <ul className="sidebar-nav">
       {jsxCategoriesMenu(menuSideBar)}
@@ -34,8 +40,10 @@ function Sidebar() {
   return (
     <aside>
       <nav>
-        <div className="sidebar">
-          <span className="head-text">ravadmin</span>
+        <div className={stylesSideBar}>
+          <div>
+            <span className="head-text">ravadmin</span>
+          </div>
           {jsxMenuSideBar}
         </div>
       </nav>

@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import LoginForm from "./LoginForm";
 import ImageLoginForm from "./ImageLoginForm";
 
+import "./login.css";
+
 // TESTED VARIOUBLES
 const data = { login: "admin", pass: "admin" };
 

@@ -1,0 +1,393 @@
+.dashboard {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+  min-height: 100%;
+  padding-bottom: 10px;
+  gap: 20px;
+  background-color: #f0f1f6;
+}
+
+.dashboard .header {
+  width: 100%;
+  margin: 10px 10px 0 10px;
+  font-weight: 500;
+  font-size: 24px;
+  color: #555;
+  font-family: "Nunito", sans-serif;
+}
+
+.dashboard .info-cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 10px;
+  gap: 20px;
+}
+
+.dashboard .info-cards .card {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.dashboard .card .back-details {
+  width: 100%;
+}
+
+.dashboard .card .details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  background-color: white;
+}
+
+.dashboard .card .details .title {
+  font-size: 16px;
+  color: #222;
+  font-family: "Nunito", sans-serif;
+}
+
+.dashboard .card .details .title::first-letter {
+  text-transform: uppercase;
+}
+
+.dashboard .card .details .value {
+  position: relative;
+  height: 32px;
+  margin: 10px 0 25px 0;
+  font-weight: bolder;
+  font-size: 24px;
+  color: #222;
+  font-family: "Nunito", sans-serif;
+}
+
+.dashboard .card .details .value .loading {
+  position: absolute;
+  left: 0;
+  top: 15px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  transform: translateX(-50%);
+}
+
+.dashboard .card .details .value .loading .dot {
+  display: block;
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+  background-color: var(--clr);
+  transform: scale(1);
+}
+
+.dashboard .card .details .value .loading .dot:nth-of-type(1) {
+  animation: pulse 1.5s infinite;
+}
+
+.dashboard .card .details .value .loading .dot:nth-of-type(2) {
+  animation: pulse 1.5s 0.25s infinite;
+}
+
+.dashboard .card .details .value .loading .dot:nth-of-type(3) {
+  animation: pulse 1.5s 0.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+.dashboard .card .details .link {
+  margin-top: 20px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dashboard .card .details .link a {
+  font-size: 14px;
+  color: #888;
+  text-decoration: none;
+  font-family: "Nunito", sans-serif;
+  border-bottom: 1px solid #777;
+}
+
+.dashboard .card .details .link:hover a {
+  color: var(--clr);
+}
+
+.dashboard .card .details .icon-block {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.dashboard .card .details .icon-block > svg {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  transform: rotate(270deg);
+}
+
+.dashboard .card .details .icon-block svg circle {
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke-width: 6;
+  stroke: #e5e5e5;
+  transform: translate(5px, 5px);
+}
+
+.dashboard .card .details .icon-block svg circle:nth-child(2) {
+  stroke: var(--clr);
+  stroke-dasharray: 440;
+  stroke-dashoffset: calc(440 - (440 * var(--num)) / 100);
+  opacity: 0;
+}
+
+.dashboard .card .details .icon-block.animate svg circle:nth-child(2) {
+  animation: fadeIn 0.7s 1.7s linear forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.dashboard .card .details .icon-block .dot {
+  position: absolute;
+  inset: 5px;
+  z-index: 5;
+}
+
+.dashboard .card .details .icon-block.animate .dot {
+  /* 360deg / 100 = 3.6*/
+  animation: animateDot 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+
+@keyframes animateDot {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(calc(3.6deg * var(--num)));
+  }
+}
+
+.dashboard .card .details .icon-block .dot::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--clr);
+  box-shadow: 0 0 10px var(--clr), 0 0 30px var(--clr);
+}
+
+.dashboard .card .details .icon-block .icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+}
+
+.dashboard .card .details .icon-block .icon svg {
+  width: 35px;
+  height: fit-content;
+  color: #ddd;
+}
+
+.dashboard .card .details .icon-block.animate .icon svg {
+  animation: changeColor 0.5s 1.7s linear forwards;
+}
+
+@keyframes changeColor {
+  0% {
+    color: #ddd;
+  }
+  100% {
+    color: var(--clr);
+  }
+}
+
+@media (max-width: 800px) {
+  .dashboard .info-cards .card {
+    width: calc(50% - 10px);
+  }
+
+  @media (max-width: 450px) {
+    .dashboard .info-cards {
+      gap: 10px;
+    }
+    .dashboard .info-cards .card {
+      width: 100%;
+    }
+  }
+}
+
+.dashboard .chart {
+  height: fit-content;
+  margin: 0 10px;
+  background-color: white;
+}
+
+.dashboard .row {
+  display: flex;
+  margin: 0 10px;
+  gap: 20px;
+}
+
+.dashboard .row .chart {
+  width: 60%;
+  padding-right: 25px;
+  padding-bottom: 25px;
+  margin: 0;
+}
+
+.dashboard .chart > .title {
+  font-size: 18px;
+  margin: 25px 0 10px 25px;
+  font-weight: 300;
+}
+
+.dashboard .chart * {
+  font-size: 16px;
+  font-family: "Nunito", sans-serif;
+}
+
+.dashboard .chart svg {
+  padding-bottom: 10px;
+}
+
+.dashboard .recent-updates {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  padding: 25px;
+  gap: 10px;
+  background-color: white;
+}
+
+.dashboard .recent-updates .header {
+  width: 100%;
+  margin: 0;
+  font-size: 18px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  color: #333;
+}
+
+.dashboard .recent-updates .content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dashboard .recent-updates .information {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.dashboard .recent-updates .information > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-family: "Nunito", sans-serif;
+  color: #aaa;
+  font-weight: 300;
+}
+
+.dashboard .recent-updates .information > span svg {
+  font-size: 18px;
+}
+
+.dashboard .recent-updates .information > span:nth-of-type(2) svg {
+  color: white;
+  background-color: #aaa;
+  border-radius: 50%;
+}
+
+.dashboard .recent-updates .action {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dashboard .recent-updates .action .image {
+  width: 100%;
+  height: fit-content;
+  overflow: hidden;
+}
+
+.dashboard .recent-updates .action .image img {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.dashboard .recent-updates .action span {
+  font-size: 16px;
+  text-align: right;
+  text-transform: uppercase;
+  color: #666;
+  font-weight: 500;
+}
+
+@media (max-width: 1100px) {
+  .dashboard .row {
+    flex-wrap: wrap;
+  }
+  .dashboard .row .chart,
+  .dashboard .recent-updates {
+    width: 100%;
+  }
+
+  @media (max-width: 700px) {
+    .dashboard .chart svg {
+      padding-bottom: 0;
+    }
+    @media (max-width: 500px) {
+      .dashboard .recent-updates .action .image img {
+        max-height: 300px;
+        height: auto;
+      }
+    }
+  }
+}

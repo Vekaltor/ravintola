@@ -33,7 +33,12 @@ const EditDescriptionDish = (props) => {
     <>
       <span className="edit-text">
         <div className="header-textarea">Edit</div>
-        <textarea ref={textareaRef} onInput={handleInput}>
+        <textarea
+          value={value}
+          ref={textareaRef}
+          onChange={handleInput}
+          placeholder="dodaj opis"
+        >
           {value}
         </textarea>
       </span>
