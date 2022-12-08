@@ -1,20 +1,43 @@
 import InfoCard from "./InfoCard";
 
-import { progressBars } from "../data/progressBars";
+import { BsDisplay } from "react-icons/bs";
+import { MdLightbulb, MdBookmarkAdded } from "react-icons/md";
 
-const ProgressBars = ({ dishes }) => {
+const ProgressBars = ({ dishes, reservations }) => {
   const amountDishes = dishes.length;
-  const createProgressBars = () => {
-    return progressBars.map((bar, index) => {
-      // temporary way to dynamically add statistics to bar progress in one item (dishes)
-      if (bar.link.includes("dishes")) bar.value = amountDishes;
-      return <InfoCard key={index} bar={bar} />;
-    });
-  };
+  const amountReservations = reservations.length;
 
-  const ProgressBarsJSX = createProgressBars();
-
-  return <div className="info-cards">{ProgressBarsJSX}</div>;
+  return (
+    <div className="info-cards">
+      <InfoCard
+        title="Suma rezerwacji"
+        textForLink="Przejdź do rezerwacji"
+        link="/admin/reservations"
+        value={amountReservations}
+        icon={<MdBookmarkAdded />}
+        color="#5144ef"
+        percentage={75}
+      />
+      <InfoCard
+        title="Wszystkie dania"
+        textForLink="Zobacz wszystkie dania"
+        link="/admin/dishes"
+        value={amountDishes}
+        icon={<MdLightbulb />}
+        color="#f89235"
+        percentage={77}
+      />
+      <InfoCard
+        title="Odwiedzający online"
+        textForLink="Zobacz szczegóły"
+        link="/admin/#visitors"
+        value={699}
+        icon={<BsDisplay />}
+        color="#afe94f"
+        percentage={94}
+      />
+    </div>
+  );
 };
 
 export default ProgressBars;

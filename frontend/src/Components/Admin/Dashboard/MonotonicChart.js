@@ -7,15 +7,14 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { reservationsDataChart } from "../data/charts";
 
-const MonotonicChart = ({ width, height, color, title }) => {
+const MonotonicChart = ({ dataChart, width, height, color, title }) => {
   return (
     <div className="chart">
       <div className="title">{title}</div>
       <ResponsiveContainer width={width} height={height}>
         <AreaChart
-          data={reservationsDataChart}
+          data={dataChart}
           margin={{
             top: 10,
             right: 30,

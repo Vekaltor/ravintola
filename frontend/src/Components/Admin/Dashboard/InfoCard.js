@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import PulseDots from "./PulseDots";
 
-const InfoCard = ({ bar }) => {
-  const globalStyle = { "--clr": bar.color, "--num": bar.num };
+const InfoCard = (props) => {
+  const bar = props;
+
+  const globalStyle = { "--clr": bar.color, "--num": bar.percentage };
   const barValue = bar.value ? bar.value : <PulseDots />;
   const animationStyle = bar.value ? "icon-block animate" : "icon-block";
   return (

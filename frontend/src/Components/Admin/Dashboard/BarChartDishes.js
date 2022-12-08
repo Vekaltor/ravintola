@@ -1,6 +1,3 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchDishes, clearDishes } from "../../../actions/adminActions";
 import {
   BarChart,
   Bar,
@@ -14,9 +11,6 @@ import {
 import { translatedCategories } from "../data/categoryMeals";
 
 const BarChartDishes = ({ dishes, width, height, color, title }) => {
-  // const { dishes } = useSelector((state) => state.admin);
-  // const dispatch = useDispatch();
-
   const getNonDuplicatedCategories = (dishes) => {
     let categories = [];
     dishes.forEach((dish) => {
@@ -57,21 +51,6 @@ const BarChartDishes = ({ dishes, width, height, color, title }) => {
     });
     return data;
   };
-
-  // const loadDishes = () => {
-  //   dispatch(fetchDishes());
-  // };
-
-  // const disconnectDishes = () => {
-  //   dispatch(clearDishes());
-  // };
-
-  // useEffect(() => {
-  //   loadDishes();
-  //   return () => {
-  //     disconnectDishes();
-  //   };
-  // }, []);
 
   const dishesDataChart = dataToChart();
 
