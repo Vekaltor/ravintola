@@ -13,44 +13,92 @@ const BarChartReservations = (props) => {
   const { reservations, width, height, color, title } = props;
 
   const getDatesOfCurrentWeek = () => {
-    let dates = [];
-    let indexCurrentDayOfWeek = new Date().getDay();
-    let todayDate = changePatternDate(
-      new Date().toLocaleDateString("pl-PL", {
-        day: "2-digit",
-        month: "numeric",
-        year: "numeric",
-      })
-    );
-    let monthAndYear = todayDate.slice(2, todayDate.length);
-    let firstWeekday = getFirstWeekday(todayDate, indexCurrentDayOfWeek);
+    let date = new Date();
+    let indexCurrentDayOfWeek = getIndexOfCurrentWeekday(date);
+    let stringDate = date.toLocaleDateString("en-GB");
 
-    let day = firstWeekday;
-    for (let i = 1; i <= 7; i++) {
-      if (day < 9) day = "0" + day;
-      let date = day + monthAndYear;
-      dates.push(date);
-      day++;
+    let dateFirstDayOfWeek = getDateFirstDayOfWeek(
+      stringDate,
+      indexCurrentDayOfWeek
+    );
+
+    return setDatesOfCurrentWeek(dateFirstDayOfWeek);
+  };
+
+  const setDatesOfCurrentWeek = (dateFirstDayOfWeek) => {
+    let dates = [];
+    let [day, month, year] = getDayMonthYear(dateFirstDayOfWeek);
+    let daysInCurrentMonth = new Date(year, month, 0).getDate();
+
+    for (let i = 1; i <= 7; i++, day++) {
+      if (day > daysInCurrentMonth) {
+        day = 1;
+        month++;
+        if (month > 12) {
+          month = 1;
+          year++;
+        }
+      }
+      let date = day + "/" + month + "/" + year;
+
+      dates.push(formatDate(date));
     }
+
     return dates;
   };
 
-  const getFirstWeekday = (todayDate, indexCurrentDayOfWeek) => {
-    let indexCurrentDayOfMonth = todayDate.slice(1, 2);
-    let indexFirstDayOfWeek =
-      indexCurrentDayOfMonth - indexCurrentDayOfWeek + 1;
-    return indexFirstDayOfWeek;
+  const getIndexOfCurrentWeekday = (date) => {
+    let index = date.getDay();
+    if (index === 0) index = 7;
+    return index;
   };
 
-  function getWeekday(date) {
+  const getDateFirstDayOfWeek = (todayDate, indexCurrentDayOfWeek) => {
+    let [day, month, year] = getDayMonthYear(todayDate);
+    let dateFirstDayOfWeek = todayDate;
+
+    for (let i = 1; i < indexCurrentDayOfWeek; i++) {
+      day--;
+      if (day === 0) {
+        month--;
+        if (month === 0) {
+          month = 12;
+          year--;
+        }
+        let daysInCurrentMonth = new Date(year, month, 0).getDate();
+        day = daysInCurrentMonth;
+      }
+      dateFirstDayOfWeek = day + "/" + month + "/" + year;
+    }
+
+    return formatDate(dateFirstDayOfWeek);
+  };
+
+  const getNameWeekday = (date) => {
     const [dd, mm, yyyy] = date.split("/");
     return new Date(yyyy, mm - 1, dd).toLocaleDateString("pl-PL", {
       weekday: "long",
     });
-  }
+  };
 
-  const changePatternDate = (date) => {
-    return date.replaceAll(".", "/");
+  const formatDate = (date) => {
+    let [day, month, year] = getDayMonthYear(date);
+    if (day <= 9) day = prefixZero(day);
+    if (month <= 9) month = prefixZero(month);
+    return day + "/" + month + "/" + year;
+  };
+
+  const getDayMonthYear = (date) => {
+    let reversedDate = date.split("/").reverse().join(",");
+    date = new Date(reversedDate);
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    return [day, month, year];
+  };
+
+  const prefixZero = (number) => {
+    return "0" + number;
   };
 
   const countReservationsByDate = (date, reservations) => {
@@ -66,8 +114,7 @@ const BarChartReservations = (props) => {
     const datesOfWeek = getDatesOfCurrentWeek();
 
     datesOfWeek.forEach((date) => {
-      // date.toLocaleDateString();
-      let day = getWeekday(date, "pl");
+      let day = getNameWeekday(date);
       let objectDataChart = {
         day: day,
         reservations: countReservationsByDate(date, reservations),

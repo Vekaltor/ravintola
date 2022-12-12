@@ -476,8 +476,10 @@
   background: #def2d6;
   border-radius: 3px;
   transform: translate(calc(50vw + 1px), -50%);
-  animation: rightToMid 0.75s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
-    midToLeft 0.75s 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  animation: rightToMid var(--duration) cubic-bezier(0.175, 0.885, 0.32, 1.275)
+      forwards,
+    midToLeft var(--duration) var(--delay)
+      cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
 
 @keyframes rightToMid {
