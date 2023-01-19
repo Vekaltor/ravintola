@@ -32,7 +32,6 @@ export default function adminReducer(state = initialState, action) {
       return {
         ...state,
         loading: true,
-        error: null,
       };
     case FETCH_DISHES_SUCCESS:
       return {

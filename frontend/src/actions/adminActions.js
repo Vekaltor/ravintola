@@ -1,4 +1,4 @@
-import { pathToApi } from "../Components/PathToAPI";
+import { pathToApi } from "../api/pathToAPI";
 import {
   FETCH_DISHES_BEGIN,
   FETCH_DISHES_SUCCESS,

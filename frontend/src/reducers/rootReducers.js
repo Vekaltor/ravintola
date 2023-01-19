@@ -6,6 +6,7 @@ function getValueAuthFromSessionStorage() {
   else if (value === "false") return false;
   else return undefined;
 }
+
 const initialState = {
   auth: getValueAuthFromSessionStorage() || false,
 };
