@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import Home from "./pages/HomePage/Home";
+import Home from "./pages/home-page/Home";
 import Menu from "./pages/MenuPage/Menu";
 import Reservation from "./pages/ReservationPage/Reservation";
-import About from "./pages/AboutPage/About";
-import Contact from "./pages/ContactPage/Contact";
+import About from "./pages/about-page/About";
+import Contact from "./pages/contact-page/Contact";
 
 import "./index.css";
 

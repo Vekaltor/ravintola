@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 import BoxCategoryMeal from "./BoxCategoryMeal";
+import InitialView from "../../components/InitialView";
 
 import { categoryMeals } from "../../../data/categoryMeals";
-import { fetchAllDishes } from "../../../api/dishes";
+import { fetchAllDishes } from "../../../services/dishes";
 
 import "./Menu.css";
-import InitialView from "../../components/InitialView";
 
 function Menu() {
   const [data, setData] = useState([]);

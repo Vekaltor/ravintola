@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 
-import Dashboard from "./features/Dashboard/Dashboard";
-import AddDishForm from "./features/Dishes/addDish/AddDishForm";
-import Dishes from "./features/Dishes/Dishes";
+import Dashboard from "./features/dashboard/Dashboard";
+import AddDishForm from "./features/dishes/addDish/AddDishForm";
+import Dishes from "./features/dishes/Dishes";
 
 function Content() {
   return (

@@ -4,7 +4,7 @@ import {
   fetchAddDish,
   fetchDeleteDish,
   fetchModifyDish,
-} from "../../../api/dishes";
+} from "../../../services/dishes";
 
 const initialState = {
   dishes: [],

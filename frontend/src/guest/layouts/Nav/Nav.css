@@ -107,23 +107,6 @@
   margin-right: auto;
   border-bottom: 1px solid #353232; */
 }
-/* 
-.nav > *:nth-child(2) {
-  flex-grow: 0;
-  flex-basis: 50px;
-  width: 35%;
-  margin-left: auto;
-  margin-right: auto;
-  border-bottom: 2px solid #353232;
-  text-align: center;
-}
-
-.nav > *:nth-child(2) > .nameLogo {
-  color: #bf6848;
-  font-family: "Kaushan Script", cursive;
-  font-size: 0.75em;
-  font-weight: bold;
-} */
 
 /* LISTA MENU */
 

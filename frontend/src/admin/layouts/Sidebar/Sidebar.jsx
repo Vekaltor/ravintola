@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-import Logout from "../../features/authorization/Logout/Logout";
+import Logout from "../../features/authorization/logout/Logout";
 
 import { navAdmin } from "../../../data/navigations";
 

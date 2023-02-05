@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 import Content from "./Content";
-import Topbar from "./layouts/Topbar/Topbar";
-import Sidebar from "./layouts/Sidebar/Sidebar";
+import Topbar from "./layouts/topbar/Topbar";
+import Sidebar from "./layouts/sidebar/Sidebar";
 
 import "./panelAdmin.css";
 

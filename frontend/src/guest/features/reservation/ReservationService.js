@@ -1,47 +1,17 @@
-import { pathToApi } from "../../../api/pathToAPI";
 import {
   fetchAddReservation,
   fetchAllReservations,
   fetchAllTables,
-} from "../../../api/reservations";
+} from "../../../services/reservations";
 
 export default class ReservationService {
   constructor() {
     this.availableTables = [];
   }
 
-  getAllReservations() {
-    // let listReservations = [];
-    // fetch(pathToApi + "reservation")
-    //   .then((response) => {
-    //     if (response.ok) return response.json();
-    //     throw Error(response.status);
-    //   })
-    //   .then((reservations) => {
-    //     reservations.forEach((reservation) => {
-    //       listReservations.push(reservation);
-    //     });
-    //   })
-    //   .catch((error) => console.log(error));
-    // return listReservations;
-    return fetchAllReservations();
-  }
+  getAllReservations = () => fetchAllReservations();
 
-  getAllTables() {
-    // let tablesByAmountPeople = [];
-    // fetch(pathToApi + "seattable")
-    //   .then((response) => {
-    //     if (response.ok) return response.json();
-    //     throw Error(response.status);
-    //   })
-    //   .then((tables) => {
-    //     tables.forEach((table) => {
-    //       tablesByAmountPeople.push(table);
-    //     });
-    //   })
-    //   .catch((error) => console.log(error));
-    return fetchAllTables();
-  }
+  getAllTables = () => fetchAllTables();
 
   filterReservationsByDate(listReservations, selectedDate) {
     const filteredReservations = [];

@@ -23,19 +23,13 @@ const Dish = ({ dish }) => {
     dispatch(modifyDish(dishModified));
   };
 
-  const checkedDish = () => {
-    let checkboxDish = checkboxRef.current;
-    if (checkboxDish.checked) addCheckedDish(checkboxDish);
-    else removeCheckedDish(checkboxDish);
-  };
-
-  const addCheckedDish = () => {
+  const addToCheckedDishes = () => {
     let newListCheckedDishes = [...checkedDishes];
     newListCheckedDishes.push(dish);
     dispatch(updateCheckedDishes(newListCheckedDishes));
   };
 
-  const removeCheckedDish = () => {
+  const removeFromCheckedDishes = () => {
     let newListCheckedDishes = [...checkedDishes];
     let indexCheckedDishToDelete = findIndexDish(dish);
     newListCheckedDishes.splice(indexCheckedDishToDelete, 1);
@@ -44,6 +38,12 @@ const Dish = ({ dish }) => {
 
   const findIndexDish = () => {
     return checkedDishes.findIndex((dishChecked) => dishChecked.id === id);
+  };
+
+  const handleChange = () => {
+    let checkboxDish = checkboxRef.current;
+    if (checkboxDish.checked) addToCheckedDishes(dish);
+    else removeFromCheckedDishes(dish);
   };
 
   const handleClick = () => {
@@ -57,9 +57,9 @@ const Dish = ({ dish }) => {
       <div className="checkbox">
         <input
           type="checkbox"
-          data-dish-checkbox={id}
+          data-id-dish={id}
           ref={checkboxRef}
-          onChange={checkedDish}
+          onChange={handleChange}
         />
       </div>
       <div className="image">

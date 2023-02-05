@@ -6,8 +6,8 @@ import BarChartDishes from "./BarChartDishes";
 import BarChartReservations from "./BarChartReservations";
 import RecentUpdates from "./RecentUpdates";
 
-import { fetchAllReservations } from "../../../api/reservations";
-import { fetchAllDishes } from "../../../api/dishes";
+import { fetchAllReservations } from "../../../services/reservations";
+import { fetchAllDishes } from "../../../services/dishes";
 
 import { reservationsDataChart } from "../../../data/charts";
 
@@ -22,12 +22,14 @@ const Dashboard = () => {
   const [reservations, setReservations] = useState([]);
   const getAllReservations = async () => {
     const listReservations = await fetchAllReservations();
+    await new Promise((resolve) => setTimeout(resolve, 700));
     setReservations(listReservations);
   };
 
   const [dishes, setDishes] = useState([]);
   const getAllDishes = async () => {
     const listDishes = await fetchAllDishes();
+    await new Promise((resolve) => setTimeout(resolve, 700));
     setDishes(listDishes);
   };
 

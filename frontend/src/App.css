@@ -5,14 +5,6 @@
 #dab6a8 - kremowy
 #b81e0e - red
 */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  /* font-family: "Domine", serif; */
-  font-family: "Inter", sans-serif;
-  font-size: 30px;
-}
 
 body {
   background-color: #333131 !important;
@@ -21,16 +13,4 @@ body {
 .wrapper {
   height: fit-content;
   width: 100%;
-}
-
-.test {
-  width: 200px;
-  height: 200px;
-  background-color: red;
-}
-
-.test2 {
-  width: 200px;
-  height: 200px;
-  background-color: bisque;
 }

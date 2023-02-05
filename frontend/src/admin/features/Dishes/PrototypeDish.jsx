@@ -1,19 +1,19 @@
 import { useRef } from "react";
 
-import { useDispatch } from "react-redux";
-import {
-  checkedAllDishes,
-  uncheckedAllDishes,
-} from "../../../actions/adminActions";
+import { useDispatch, useSelector } from "react-redux";
+import { updateCheckedDishes } from "./dishesSlice";
 
 const PrototypeDish = () => {
   const checkboxRef = useRef();
   const dispatch = useDispatch();
 
+  const { dishes } = useSelector((state) => state.dishes);
+
   const handleChange = () => {
-    let checked = checkboxRef.current.checked;
-    if (checked) selectAllDishes();
-    else unselectAllDishes();
+    let prototypeCheckbox = checkboxRef.current;
+    let checkboxesOfDishes = [...document.querySelectorAll("[data-id-dish]")];
+    if (prototypeCheckbox.checked) selectAllDishes(checkboxesOfDishes);
+    else unselectAllDishes(checkboxesOfDishes);
     swapChecked();
   };
 
@@ -22,16 +22,14 @@ const PrototypeDish = () => {
     checkboxRef.current.checked = checked;
   };
 
-  const selectAllDishes = () => {
-    let dishesCheckbox = [...document.querySelectorAll("[data-dish-checkbox]")];
-    dishesCheckbox.map((dishCheckbox) => (dishCheckbox.checked = true));
-    dispatch(checkedAllDishes());
+  const selectAllDishes = (checkboxesOfDishes) => {
+    checkboxesOfDishes.map((checkbox) => (checkbox.checked = true));
+    dispatch(updateCheckedDishes(dishes));
   };
 
-  const unselectAllDishes = () => {
-    let dishesCheckbox = [...document.querySelectorAll("[data-dish-checkbox]")];
-    dishesCheckbox.map((dishCheckbox) => (dishCheckbox.checked = false));
-    dispatch(uncheckedAllDishes());
+  const unselectAllDishes = (checkboxesOfDishes) => {
+    checkboxesOfDishes.map((checkbox) => (checkbox.checked = false));
+    dispatch(updateCheckedDishes([]));
   };
 
   return (

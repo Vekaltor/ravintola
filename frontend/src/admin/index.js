@@ -3,9 +3,8 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { loggingAdmin, logoutAdmin } from "../actions/rootActions";
 
-import Login from "./features/authorization/Login/Login";
+import Login from "./features/authorization/login/Login";
 import PanelAdmin from "./PanelAdmin";
 import PrivateRoute from "./PrivateRoute";
 
@@ -23,12 +22,7 @@ const Admin = () => {
 };
 
 const mapStateToProps = (state) => ({
-  root: state.root,
+  admin: state.admin,
 });
 
-const mapDispatchToProps = {
-  loggingAdmin,
-  logoutAdmin,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Admin);
+export default connect(mapStateToProps, {})(Admin);

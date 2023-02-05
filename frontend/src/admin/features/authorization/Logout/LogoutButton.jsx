@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { logoutAdmin } from "../../../../actions/rootActions";
+import { logout } from "../authorizationSlice";
 
 const LogoutButton = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   function handleClick() {
-    dispatch(logoutAdmin());
+    dispatch(logout());
     navigate("/");
   }
 

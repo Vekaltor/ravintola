@@ -1,4 +1,4 @@
-import ButtonReservation from "../../pages/HomePage/ButtonReservation";
+import ButtonReservation from "../../pages/home-page/ButtonReservation";
 
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";

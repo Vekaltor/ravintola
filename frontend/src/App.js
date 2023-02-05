@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Main from "./guest/index";
 import Admin from "./admin/index";
 
-import Header from "./guest/layouts/Header/Header";
-import Footer from "./guest/layouts/Footer/Footer";
-import Nav from "./guest/layouts/Nav/Nav";
+import Header from "./guest/layouts/header/Header";
+import Footer from "./guest/layouts/footer/Footer";
+import Nav from "./guest/layouts/nav/Nav";
 
 import "./App.css";
 

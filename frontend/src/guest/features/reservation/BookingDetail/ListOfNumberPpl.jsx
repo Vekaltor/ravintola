@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 
 import ReservationContext from "../ReservationContext";
 
-import { fetchAllTables } from "../../../../api/reservations";
+import { fetchAllTables } from "../../../../services/reservations";
 
 function ListOfNumberPpl() {
   const [isOpen, setIsOpen] = useState(false);

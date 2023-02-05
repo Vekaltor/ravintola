@@ -1,5 +1,10 @@
-import { applyMiddleware, createStore } from "redux";
-import thunk from "redux-thunk";
-import allReducers from "./reducers/allReducers";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import authorizationReducer from "./admin/features/authorization/authorizationSlice";
+import dishesReducer from "./admin/features/dishes/dishesSlice";
 
-export const store = createStore(allReducers, applyMiddleware(thunk));
+const reducer = combineReducers({
+  authorization: authorizationReducer,
+  dishes: dishesReducer,
+});
+
+export default configureStore({ reducer });
