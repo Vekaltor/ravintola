@@ -111,18 +111,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>com.heroku.sdk</groupId>
-				<artifactId>heroku-maven-plugin</artifactId>
-				<version>3.0.4</version>
-				<configuration>
-					<processTypes>
-						<web>java -jar target/ravintolaAPI-0.0.1-SNAPSHOT.jar</web>
-					</processTypes>
-					<appName>ravintola</appName>
-				</configuration>
-
-			</plugin>
 		</plugins>
 	</build>
 
