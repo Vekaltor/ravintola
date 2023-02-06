@@ -1,6 +1,6 @@
-import imagePerson1 from "../assets/img/person1_400x400.png";
-import imagePerson2 from "../assets/img/person2_400x400.png";
-import imagePerson3 from "../assets/img/person3_400x400.png";
+import imagePerson1 from "../assets/img/person1_100x100.png";
+import imagePerson2 from "../assets/img/person2_100x100.png";
+import imagePerson3 from "../assets/img/person3_100x100.png";
 
 export const comments = [
   {

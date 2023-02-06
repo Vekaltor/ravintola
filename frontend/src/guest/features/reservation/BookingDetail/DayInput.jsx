@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 
 import Calendar from "../../calendar/Calendar";
-import IconForInput from "../IconForInput";
+import IconForInput from "../../reservation/IconForInput";
 
-import ReservationContext from "../ReservationContext";
+import ReservationContext from "../../reservation/ReservationContext";
 
 import { BsCalendarPlus } from "react-icons/bs";
 

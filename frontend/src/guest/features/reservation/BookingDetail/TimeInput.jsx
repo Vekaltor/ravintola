@@ -1,10 +1,10 @@
 import React, { useState, useRef } from "react";
 
-import IconForInput from "../IconForInput";
+import IconForInput from "../../reservation/IconForInput";
 import ListOfHours from "./ListOfHours/ListOfHours";
 
-import ReservationDataValidator from "../ReservationDataValidator";
-import ReservationContext from "../ReservationContext";
+import ReservationDataValidator from "../../reservation/ReservationDataValidator";
+import ReservationContext from "../../reservation/ReservationContext";
 
 import { MdOutlineAccessTime } from "react-icons/md";
 

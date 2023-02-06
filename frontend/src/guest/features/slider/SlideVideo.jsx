@@ -1,7 +1,5 @@
 import React from "react";
 
-import "./Slider.css";
-
 export default function SlideVideo({ src, title, text }) {
   return (
     <>

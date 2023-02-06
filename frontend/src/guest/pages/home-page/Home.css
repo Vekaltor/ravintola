@@ -556,7 +556,6 @@
   text-align: left;
   padding-top: 30px;
   color: #fffcf2;
-  /* text-shadow: 1px 1px 1px b; */
 }
 
 .recommends .recommended .option .animation-text span {
@@ -745,8 +744,8 @@
   margin: 50px 50px;
 }
 .section-comments .comment .image img {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   border-left: 3px solid #999966;
   border-bottom: 5px solid #999966;
   border-top: 1px solid #999966;

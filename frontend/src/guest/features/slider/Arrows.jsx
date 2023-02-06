@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 import { SliderContext } from "./Slider";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-import "./Slider.css";
-
 const Arrows = () => {
   const { changeSlide } = useContext(SliderContext);
 

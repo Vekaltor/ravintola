@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { deleteDish } from "../dishesSlice";
 
-import image from "../../../../assets/img/trash.png";
+import image from "../../../../assets/img/trash_500x550.png";
 
 const PopupDelete = ({ id, info, className, click, animationDelay = 1000 }) => {
   const popupRef = useRef();

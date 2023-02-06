@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { NavLink } from "react-router-dom";
 
-import srcLogo from "../../../assets/img/logo.png";
+import srcLogo from "../../../assets/img/logo_1050x610.png";
 
 class Logo extends Component {
   state = {};

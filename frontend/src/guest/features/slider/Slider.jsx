@@ -6,6 +6,8 @@ import SlidesList from "./SlideList";
 
 import { movies } from "../../../data/sliderData";
 
+import "./slider.css";
+
 export const SliderContext = createContext();
 
 const Slider = function ({ autoPlay, autoPlayTime }) {
