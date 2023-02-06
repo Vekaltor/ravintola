@@ -5,7 +5,7 @@ const RecommendedFood = (props) => {
       <div className="animation-block"></div>
       <div className="click-to-show">{Icon}</div>
       <span className="animation-text">
-        <h3>{name}</h3>
+        <h2>{name}</h2>
         <span>{description}</span>
       </span>
       <img src={src} alt={name} />

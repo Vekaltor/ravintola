@@ -4,6 +4,7 @@ const ButtonNav = (props) => {
       <button
         onClick={props.click}
         className={props.isActive ? "buttonNav active" : "buttonNav"}
+        title='Button of navigation'
       >
         <HamburgerNav />
       </button>

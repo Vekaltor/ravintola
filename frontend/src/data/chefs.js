@@ -1,6 +1,6 @@
-import chef1 from "../assets/img/about_chef_640x960.jpg";
-import chef2 from "../assets/img/about_chef2_640x960.jpg";
-import chef3 from "../assets/img/about_chef3_640x960.jpg";
+import chef1 from "../assets/img/about_chef_333x500.jpg";
+import chef2 from "../assets/img/about_chef2_333x500.jpg";
+import chef3 from "../assets/img/about_chef3_333x500.jpg";
 
 export const chefs = [
   {

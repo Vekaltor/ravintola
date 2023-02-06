@@ -10,11 +10,13 @@ export default function SlidesList() {
   ));
 
   return (
-    <div
-      className="slide-list"
-      style={{ transform: `translateX(-${slideNumber * 100}%)` }}
-    >
-      {SlideComponents}
-    </div>
+    <aside>
+      <div
+        className="slide-list"
+        style={{ transform: `translateX(-${slideNumber * 100}%)` }}
+      >
+        {SlideComponents}
+      </div>
+    </aside>
   );
 }

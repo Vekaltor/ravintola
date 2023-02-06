@@ -26,8 +26,8 @@
   display: block;
   position: relative;
 }
-.loader::after,
-.loader::before {
+.login .loading-login .loader::after,
+.login .loading-login .loader::before {
   content: "";
   box-sizing: border-box;
   width: 48px;
@@ -38,7 +38,7 @@
   top: 0;
   animation: animloader 2s ease-in-out infinite;
 }
-.loader::after {
+.login .loading-login .loader::after {
   border-color: #0d6dfd;
   animation-delay: 1s;
 }

@@ -1,7 +1,7 @@
-import imageSrc1 from "../assets/img/chef_640x426.jpg";
-import imageSrc2 from "../assets/img/teammates_640x520.jpg";
-import imageSrc3 from "../assets/img/meals_640x515.jpg";
-import imageSrc4 from "../assets/img/local_640x960.jpg";
+import imageSrc1 from "../assets/img/chef_500x350.jpg";
+import imageSrc2 from "../assets/img/teammates_500x350.jpg";
+import imageSrc3 from "../assets/img/meals_500x350.jpg";
+import imageSrc4 from "../assets/img/local_500x350.jpg";
 
 export const aboutRestauration = [
   {

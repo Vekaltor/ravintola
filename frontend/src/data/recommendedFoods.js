@@ -1,9 +1,9 @@
-import srcImageRF1 from "../assets/img/recommended_food1_1920_1280.jpg";
-import srcImageRF2 from "../assets/img/recommended_food2_1920_1271.jpg";
-import srcImageRF3 from "../assets/img/recommended_food3_1920_1280.jpg";
-import srcImageRF4 from "../assets/img/recommended_food4_1920_1280.jpg";
-import srcImageRF5 from "../assets/img/recommended_food5_1920_1298.jpg";
-import srcImageRF6 from "../assets/img/recommended_food6_1920_1473.jpg";
+import srcImageRF1 from "../assets/img/recommended_food1_400x250.jpg";
+import srcImageRF2 from "../assets/img/recommended_food2_400x250.jpg";
+import srcImageRF3 from "../assets/img/recommended_food3_400x250.jpg";
+import srcImageRF4 from "../assets/img/recommended_food4_400x250.jpg";
+import srcImageRF5 from "../assets/img/recommended_food5_400x250.jpg";
+import srcImageRF6 from "../assets/img/recommended_food6_400x250.jpg";
 
 export const recommendedFoods = [
   {

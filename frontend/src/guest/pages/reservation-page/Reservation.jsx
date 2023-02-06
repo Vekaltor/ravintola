@@ -1,15 +1,19 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 
-import FormReservation from "../../features/reservation/FormReservation";
 import InitialView from "../../components/InitialView";
+import LoadingComponent from "../../../common/components/LoadingComponent"
 
 import "./Reservation.css";
+
+const FormReservation = lazy(() => import("../../features/reservation/FormReservation"))
 
 function Reservation() {
   return (
     <div>
       <InitialView className="reservation-start-view" title="rezerwacja" />
-      <FormReservation />
+      <Suspense fallback={<LoadingComponent />}>
+        <FormReservation />
+      </Suspense>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { MdPersonOutline } from "react-icons/md";
 import { IoMdTime } from "react-icons/io";
 
-import src from "../../../assets/img/recommended_food5_1920_1298.jpg";
+import src from "../../../assets/img/recommended_food5_400x250.jpg";
 
 const RecentUpdates = () => {
   return (

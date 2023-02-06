@@ -1,4 +1,4 @@
-import basicImage from "../../../assets/img/king_prawns_640x966.jpg";
+import basicImage from "../../../assets/img/king_prawns_464x700.jpg";
 
 function FirstDish(props) {
   const { name, weight, description, price, imageSrc } = props.dish;

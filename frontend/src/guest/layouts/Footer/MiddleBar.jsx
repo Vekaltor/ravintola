@@ -12,7 +12,7 @@ function MiddleBar() {
         <ButtonReservation text="rezerwacja online" />
       </div>
       <div>
-        <h3>follow</h3>
+        <h2>follow</h2>
         <div>
           <span>
             <FaFacebookSquare />

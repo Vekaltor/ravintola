@@ -1,6 +1,6 @@
 import ButtonReservation from "./ButtonReservation";
 
-import imageChef from "../../../assets/img/chef_1280x1266.png";
+import imageChef from "../../../assets/img/chef_icon_350x346.jpg";
 
 const BannerReservation = () => {
   return (

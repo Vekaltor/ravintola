@@ -1,4 +1,4 @@
-import image from "../../../assets/img/food2_1920x1280.jpg";
+import image from "../../../assets/img/food2_1200x795.jpg";
 import AboutMenuDescription from "./AboutMenuDescription";
 
 function AboutMenu() {

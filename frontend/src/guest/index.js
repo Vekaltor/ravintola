@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import "./index.css";
 
 import Home from "./pages/home-page/Home";
 import Menu from "./pages/menu-page/Menu";
 import Reservation from "./pages/reservation-page/Reservation";
 import About from "./pages/about-page/About";
 import Contact from "./pages/contact-page/Contact";
-
-import "./index.css";
 
 class Main extends Component {
   state = {};

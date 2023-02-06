@@ -6,7 +6,7 @@ import { modifyDish, updateCheckedDishes } from "./dishesSlice";
 import Star from "./Star";
 import SettingsDish from "./SettingsDish";
 
-import defaultImage from "../../../assets/img/food2_1920x1280.jpg";
+import defaultImage from "../../../assets/img/food2_1200x795.jpg";
 
 const Dish = ({ dish }) => {
   const checkboxRef = useRef();
