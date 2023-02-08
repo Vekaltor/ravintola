@@ -351,6 +351,8 @@
 .sidebar-nav {
   width: 100%;
   padding: 25px 20px;
+  overflow-y: auto;
+
 }
 
 .sidebar-nav .category-menu {
