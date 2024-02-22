@@ -33,9 +33,9 @@ Possibility to edit the menu as an administrator, and access (possibility to edi
 </ul>
 
 ## Check on your own
-<!-- https://ravintola.toadres.pl
+https://ravintola.toadres.pl
 
-https://ravintola.toadres.pl/admin -->
+https://ravintola.toadres.pl/admin
 
 ![image](https://user-images.githubusercontent.com/56607344/198079891-9b02fe6e-3a19-4147-9ea7-39d4928ae11a.png)
 
