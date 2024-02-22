@@ -37,6 +37,12 @@ https://ravintola.toadres.pl
 
 https://ravintola.toadres.pl/admin
 
+```
+login: admin
+
+password: admin
+```
+
 ![image](https://user-images.githubusercontent.com/56607344/198079891-9b02fe6e-3a19-4147-9ea7-39d4928ae11a.png)
 
 ![image](https://user-images.githubusercontent.com/56607344/203132252-a28f5c05-dbc6-46e8-91b5-7acc09424240.png)
@@ -79,13 +85,6 @@ Buttons allow you to select a specific slide, arrows scroll to the
 previous and next slide as the queue wraps.
 
 ### Admin Panel
-
-```
-login: admin
-
-password: admin
-```
-<br>
 
 #### - Filter Dishes
 
