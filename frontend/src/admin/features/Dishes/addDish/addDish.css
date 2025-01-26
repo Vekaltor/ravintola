@@ -1,0 +1,430 @@
+/* ADD DISH BUTTON  */
+.content-admin-panel .box-button-add-dish {
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.content-admin-panel .button-add-dish {
+  padding: 7px 40px;
+  border: 2px solid rgba(17, 0, 255, 0.674);
+  margin-top: 15px;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgba(17, 0, 255, 0.674);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.15s 0.05s ease-in-out;
+}
+
+.content-admin-panel .button-add-dish:hover {
+  color: white;
+  background-color: rgba(17, 0, 255, 0.674);
+}
+
+.content-admin-panel .box-form-add-dish {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+  min-height: 100%;
+  padding: 20px 40px 20px 50px;
+  background-color: #f0f0fa;
+}
+
+.box-form-add-dish .box-message {
+  height: 60px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.box-form-add-dish .message {
+  padding: 13px 20px;
+  border: 1px solid #07be6e;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #07be6e;
+  background-color: #e0ffef;
+  margin-bottom: 25px;
+  animation: showMessage 0.6s 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55)
+    forwards;
+  transform: translateY(-100px);
+}
+
+@keyframes showMessage {
+  0% {
+    transform: translateY(-100px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.box-form-add-dish .message span {
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+.box-form-add-dish .form-add-dish {
+  width: 100%;
+  height: 100%;
+}
+
+.box-form-add-dish .form-add-dish form {
+  display: flex;
+  height: 100%;
+}
+
+.box-form-add-dish .form-add-dish .section-form {
+  width: 50%;
+  height: fit-content;
+  background-color: white;
+  box-shadow: 0px 0px 10px 2px rgba(66, 68, 90, 0.089);
+  border-radius: 5px;
+}
+
+.box-form-add-dish .main-form {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  margin-right: 40px;
+}
+
+.box-form-add-dish .main-form .content-form {
+  display: flex;
+  flex-wrap: wrap;
+  height: fit-content;
+  padding: 10px 25px 25px 25px;
+}
+
+.box-form-add-dish .form-add-dish .section-form .header {
+  width: 100%;
+  height: fit-content;
+  padding: 25px;
+  border-bottom: 1px solid rgba(34, 34, 34, 0.137);
+  font-size: 16px;
+  color: #222;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+.box-form-add-dish .form-add-dish .main-form .element {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 50%;
+  padding-bottom: 20px;
+}
+
+.box-form-add-dish .form-add-dish .main-form .element label {
+  width: fit-content;
+  font-size: 14px;
+  color: #333;
+}
+
+.box-form-add-dish .form-add-dish .main-form .element:nth-of-type(1),
+.box-form-add-dish .form-add-dish .main-form .element:nth-last-of-type(1),
+.box-form-add-dish .form-add-dish .main-form .element:nth-last-of-type(2) {
+  width: 100%;
+}
+
+.box-form-add-dish
+  .form-add-dish
+  .main-form
+  .element:nth-last-of-type(2)
+  input {
+  word-wrap: break-word;
+  word-break: break-all;
+  padding-bottom: 100px;
+}
+
+.box-form-add-dish .form-add-dish .main-form .element:nth-of-type(2n + 2) {
+  padding-right: 10px;
+}
+
+.box-form-add-dish .form-add-dish .main-form .element:nth-last-of-type(2) {
+  padding-right: 0;
+}
+
+.box-form-add-dish .form-add-dish .main-form .element input,
+.box-form-add-dish .form-add-dish .main-form .element select,
+.box-form-add-dish .form-add-dish .main-form .element textarea {
+  width: 100%;
+  margin-top: 5px;
+  padding: 10px 12px;
+  border: 1px solid rgba(34, 34, 34, 0.137);
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+}
+
+.box-form-add-dish .form-add-dish .main-form .element input[name="price"],
+.box-form-add-dish .form-add-dish .main-form .element input[name="gramature"] {
+  padding-right: 40px;
+}
+
+.box-form-add-dish .form-add-dish .main-form .element textarea {
+  min-height: 100px;
+  max-height: 100px;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.box-form-add-dish .form-add-dish .main-form .element select option {
+  font-size: 14px;
+}
+
+.box-form-add-dish .form-add-dish .main-form .element input:focus,
+.box-form-add-dish .form-add-dish .main-form .element select:focus,
+.box-form-add-dish .form-add-dish .main-form .element textarea:focus {
+  outline: none;
+  box-shadow: 0 0 3px 1px rgba(17, 0, 255, 0.674);
+}
+
+.box-form-add-dish .form-add-dish .main-form .element .uploaded-image {
+  position: relative;
+  cursor: pointer;
+  padding-right: 0;
+  border: 1px solid rgba(34, 34, 34, 0.212);
+}
+
+.box-form-add-dish
+  .form-add-dish
+  .main-form
+  .element
+  .uploaded-image::-webkit-file-upload-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  margin-right: 0;
+  border: 0px;
+  background-color: rgba(34, 34, 34, 0.082);
+  color: #777;
+  cursor: pointer;
+}
+
+.box-form-add-dish .form-add-dish .main-form input ~ .mark {
+  position: absolute;
+  right: 30px;
+  top: 51px;
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+.box-form-add-dish .form-add-dish .main-form input[name="price"] ~ .mark {
+  right: 20px;
+}
+
+.box-form-add-dish .form-add-dish .main-form .content-form .error-message {
+  display: none;
+  margin: 5px 0 0 10px;
+  color: rgba(255, 0, 0, 0.849);
+  font-weight: bold;
+  font-size: 10px;
+}
+
+.form-add-dish .main-form input:invalid[focused="true"] {
+  border: 1px solid rgba(255, 0, 0, 0.281);
+}
+
+.form-add-dish .main-form input:invalid:focus {
+  border: 1px solid rgba(34, 34, 34, 0.137);
+}
+
+.form-add-dish .main-form input:invalid[focused="true"] ~ .error-message {
+  display: block;
+}
+
+.box-form-add-dish .second-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.box-form-add-dish .second-form .image {
+  position: relative;
+  left: 0;
+  top: 0;
+  height: 20vw;
+  margin: 25px 25px 30px 25px;
+  background-color: #eaebec;
+}
+
+.box-form-add-dish .second-form .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.box-form-add-dish .second-form .image img.uploaded {
+  position: absolute;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+}
+
+.box-form-add-dish .second-form .other-settings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 40px 25px;
+  border-bottom: 1px solid rgba(34, 34, 34, 0.137);
+}
+
+.box-form-add-dish .second-form .other-settings span {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.box-form-add-dish .second-form .other-settings label {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+.box-form-add-dish .second-form .other-settings input {
+  appearance: none;
+}
+
+.box-form-add-dish .second-form .other-settings .switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.box-form-add-dish .second-form .other-settings .switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.box-form-add-dish
+  .second-form
+  .other-settings
+  .switch
+  input:checked
+  + .slider {
+  background-color: rgba(17, 0, 255, 0.674);
+}
+
+.box-form-add-dish .second-form .other-settings .switch input:focus + .slider {
+  box-shadow: 0 0 1px rgba(17, 0, 255, 0.674);
+}
+
+.box-form-add-dish
+  .second-form
+  .other-settings
+  .switch
+  input:checked
+  + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.box-form-add-dish .second-form .buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+}
+
+.box-form-add-dish .second-form .buttons button {
+  padding: 20px 40px;
+  margin-top: 25px;
+  border: 1px solid #0d6dfd;
+  border-radius: 2px;
+  font-size: 15px;
+  background-color: #0d6dfd;
+  color: white;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+/* RWD  */
+
+@media (max-width: 1200px) {
+  .box-form-add-dish .form-add-dish form {
+    flex-direction: column;
+  }
+  .box-form-add-dish .form-add-dish .section-form {
+    width: 100%;
+    margin-bottom: 25px;
+  }
+  @media (max-width: 1024px) {
+    .box-form-add-dish .second-form .image {
+      height: 40vw;
+    }
+    @media (max-width: 600px) {
+      .page-admin .login > div {
+        flex-direction: column-reverse;
+        height: auto;
+      }
+
+      .page-admin .login .form {
+        width: 100%;
+      }
+
+      .page-admin .login .image-login-form {
+        width: 100%;
+        padding: 50px 0;
+      }
+      @media (max-width: 500px) {
+        .box-form-add-dish .form-add-dish .main-form .element {
+          width: 100%;
+        }
+        .box-form-add-dish
+          .form-add-dish
+          .main-form
+          .element:nth-of-type(2n + 2) {
+          padding-right: 0px;
+        }
+
+        .content-admin-panel .box-form-add-dish {
+          padding: 20px 15px 20px 15px;
+        }
+        .box-form-add-dish .second-form .image {
+          height: 50vw;
+        }
+        .box-form-add-dish .second-form .other-settings {
+          padding: 0px 25px 30px 25px;
+        }
+      }
+    }
+  }
+}

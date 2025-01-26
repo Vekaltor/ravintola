@@ -1,0 +1,78 @@
+.mainHeader {
+  position: relative;
+  width: 100%;
+}
+
+.mainHeader .top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  border-bottom: 1px solid #353232;
+  background-color: #252422;
+  z-index: 3;
+}
+.mainHeader .top .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.mainHeader .top .wrapper > div:nth-of-type(2) {
+  width: 135px;
+  height: inherit;
+}
+
+.mainHeader .top .wrapper .imgLogo {
+  font-size: 0;
+  margin-left: 2.5vw;
+}
+
+.mainHeader .top .wrapper .imgLogo > img {
+  width: 100%;
+  height: 100%;
+}
+
+.mainHeader .top .wrapper .nameLogo {
+  margin: 0;
+  color: #fffcf2;
+  font-family: "Splash", cursive;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.mainHeader .top .wrapper > div {
+  width: 125px;
+  height: 100%;
+  margin-right: 2.5vw;
+}
+
+@media (max-width: 500px) {
+  .mainHeader .top .wrapper .imgLogo img {
+    width: 75px;
+    height: 100%;
+  }
+
+  .mainHeader .top .wrapper .nameLogo {
+    font-size: 25px;
+  }
+
+  .mainHeader .top .wrapper > div {
+    width: 75px;
+  }
+}
+
+@media (max-height: 400px) and (orientation: landscape) {
+  .mainHeader .top {
+    height: 60px;
+  }
+  .mainHeader .top .wrapper .imgLogo > img {
+    width: 75px;
+  }
+  .mainHeader .top .wrapper > div {
+    width: 75px;
+  }
+}
